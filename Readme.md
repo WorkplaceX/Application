@@ -38,7 +38,7 @@ Now let's set up a database connection like this: [Database Connection](https://
 
 Next we need to create a simple SQL table:
 
-```	
+```sql
 CREATE TABLE HelloWorld
 (
 	Id INT PRIMARY KEY IDENTITY,
