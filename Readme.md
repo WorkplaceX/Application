@@ -17,17 +17,19 @@ The command "git submodule init" and "update" downloads the source code of the W
 
 ## Install
 Run the BuildTool "installAll" command. This downloads, installs Angular 4 and runs additional scripts.
-    cd BuildTool
-    dotnet restore
-    dotnet run -- installAll
 
-## Serve
+```	
+cd BuildTool
+dotnet restore
+dotnet run -- installAll
+```	
+
+## Test
 As a first test serve the hello world application. You don't need a database connection for this.
-    dotnet run -- serve
+```	
+dotnet run -- serve
+```	
+	
 Internet browser will first show a page not found error. Wait about 30 seconds! It will refresh automatically once ready.
 
-## Database Connection
-Now lets connect the database. Set the database connection string like this:
-    dotnet run -- connection "Data Source=localhost; Initial Catalog=Application; Integrated Security=True;"
-	dotnet run -- connection --check
-The command "connection --check" checks the database connection.
+
