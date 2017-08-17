@@ -32,7 +32,21 @@ dotnet run -- serve
 	
 Internet browser will first show a page not found error. Wait about 30 seconds! It will refresh automatically once ready.
 
-Now let's set up a database connection like this: [Database Connection](https://github.com/WorkplaceX/Framework/wiki/Database-Connection)
+## Next steps
+
+Now let's set up a database connection like this: [Database Connection](https://github.com/WorkplaceX/Framework/wiki/Database-Connection).
+
+Next we need to create a simple SQL table:
+
+```	
+CREATE TABLE HelloWorld
+(
+	Id INT PRIMARY KEY IDENTITY,
+  	Text NVARCHAR(256),
+	Number FLOAT
+)
+```	
+
 
 
 
