@@ -24,7 +24,7 @@ dotnet restore
 dotnet run -- installAll
 ```	
 
-## Test
+## Start
 As a first test serve the hello world application. You don't need a database connection for this.
 ```	
 dotnet run -- serve
