@@ -4,7 +4,7 @@ Use this repo to build a new database application with WorkplaceX framework. Thi
 
 ## Clone
 
-Clone the git repository like this.
+Clone git repository like this.
 
 ```	
 git clone https://github.com/WorkplaceX/ApplicationStart.git
@@ -13,7 +13,7 @@ git submodule init
 git submodule update
 ```
 
-The command "git submodule init" and "update" downloads the source code of the WorkplaceX framework component.
+Command "git submodule init" and "update" downloads the source code of the WorkplaceX framework component.
 
 ## Install
 Run the BuildTool "installAll" command. This downloads, installs Angular 4 and runs additional scripts.
