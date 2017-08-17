@@ -32,4 +32,6 @@ dotnet run -- serve
 	
 Internet browser will first show a page not found error. Wait about 30 seconds! It will refresh automatically once ready.
 
+Now let's set up a database connection like this: https://github.com/WorkplaceX/Framework/wiki/Database-Connection
+
 
