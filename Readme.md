@@ -6,7 +6,7 @@ Use this repo to build a new database application with WorkplaceX framework. Thi
 
 Clone git repository like this.
 
-```	
+```ps
 git clone https://github.com/WorkplaceX/ApplicationStart.git
 cd ApplicationDemo
 git submodule init
@@ -18,7 +18,7 @@ Command "git submodule init" and "update" downloads the source code of the Workp
 ## Install
 Run the BuildTool "installAll" command. This downloads, installs Angular 4 and runs additional scripts.
 
-```	
+```cmd
 cd BuildTool
 dotnet restore
 dotnet run -- installAll
