@@ -6,7 +6,7 @@ Use this repo to build a new database application with WorkplaceX framework. Thi
 
 Clone git repository like this.
 
-```ps
+```cmd
 git clone https://github.com/WorkplaceX/ApplicationStart.git
 cd ApplicationDemo
 git submodule init
@@ -26,7 +26,7 @@ dotnet run -- installAll
 
 ## Start
 As a first test serve the hello world application. You don't need a database connection for this.
-```	
+```cmd
 dotnet run -- serve
 ```	
 	
