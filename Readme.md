@@ -1,12 +1,17 @@
 # Application Start
+
 Use this repo to build a new database application with WorkplaceX framework. This repo contains an empty application to get started with.
 
 ## Clone
+
 Clone the git repository like this.
-    git clone https://github.com/WorkplaceX/ApplicationStart.git
-    cd ApplicationDemo
-    git submodule init
-    git submodule update
+
+```	
+git clone https://github.com/WorkplaceX/ApplicationStart.git
+cd ApplicationDemo
+git submodule init
+git submodule update
+```
 
 The command "git submodule init" and "update" downloads the source code of the WorkplaceX framework component.
 
