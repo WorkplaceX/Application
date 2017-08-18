@@ -1,7 +1,6 @@
 ﻿namespace Server
 {
     using Application;
-    using Framework.Application;
     using Framework.Server;
     using Microsoft.AspNetCore.Mvc;
     using System.Threading.Tasks;
@@ -11,7 +10,7 @@
         [Route(Startup.ControllerPath + "{*uri}")]
         public async Task<IActionResult> Web()
         {
-            return await UtilServer.ControllerWebRequest(this, Startup.ControllerPath, new AppMain());
+            return await UtilServer.ControllerWebRequest(this, Startup.ControllerPath, typeof(AppMain));
         }
     }
 }
