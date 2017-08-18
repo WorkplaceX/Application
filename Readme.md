@@ -7,10 +7,8 @@ Use this repo to build a new database application with WorkplaceX framework. Thi
 Clone git repository like this.
 
 ```cmd
-git clone https://github.com/WorkplaceX/ApplicationStart.git
-cd ApplicationStart
-git submodule init
-git submodule update
+git clone https://github.com/WorkplaceX/ApplicationStart.git --recursive
+git submodule foreach git checkout master
 ```
 
 Command "git submodule init" and "update" downloads the source code of the WorkplaceX framework component.
