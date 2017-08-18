@@ -47,6 +47,10 @@ CREATE TABLE HelloWorld
 )
 ```	
 
+Run the BuildTool command generate
 
+```cmd
+dotnet run -- generate
+```	
 
 
