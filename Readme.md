@@ -12,7 +12,7 @@ cd ApplicationStart
 git submodule foreach git checkout master
 ```
 
-Note: after running command "git submodule foreach git checkout master", submodule is no more in detached head mode.
+After git command "git submodule foreach git checkout master" submodule is no more in detached head mode.
 
 ## Install
 Run BuildTool "installAll" command. This downloads, installs Angular 4 and runs additional scripts.
