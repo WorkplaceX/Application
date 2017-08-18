@@ -12,10 +12,10 @@ cd ApplicationStart
 git submodule foreach git checkout master
 ```
 
-Command "git submodule init" and "update" downloads the source code of the WorkplaceX framework component.
+Note: after running command "git submodule foreach git checkout master", submodule is no more in detached head mode.
 
 ## Install
-Run the BuildTool "installAll" command. This downloads, installs Angular 4 and runs additional scripts.
+Run BuildTool "installAll" command. This downloads, installs Angular 4 and runs additional scripts.
 
 ```cmd
 cd BuildTool
