@@ -8,6 +8,7 @@ Clone git repository like this.
 
 ```cmd
 git clone https://github.com/WorkplaceX/ApplicationStart.git --recursive
+cd ApplicationStart
 git submodule foreach git checkout master
 ```
 
