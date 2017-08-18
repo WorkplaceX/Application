@@ -8,7 +8,7 @@ Clone git repository like this.
 
 ```cmd
 git clone https://github.com/WorkplaceX/ApplicationStart.git
-cd ApplicationDemo
+cd ApplicationStart
 git submodule init
 git submodule update
 ```
