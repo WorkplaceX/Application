@@ -46,7 +46,7 @@ CREATE TABLE HelloWorld
 )
 ```	
 
-Run the BuildTool command generate
+Run the BuildTool generate command (See also [BuildTool Generate Command](https://github.com/WorkplaceX/Framework/wiki/BuildTool-Generate-Command))
 
 ```cmd
 dotnet run -- generate
