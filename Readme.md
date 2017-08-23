@@ -26,6 +26,7 @@ dotnet run -- installAll
 ## Start
 As a first test serve the hello world application. You don't need a database connection for this.
 ```cmd
+cd BuildTool
 dotnet run -- serve
 ```	
 	
@@ -49,6 +50,7 @@ CREATE TABLE HelloWorld
 Run the BuildTool generate command (See also [BuildTool Generate Command](https://github.com/WorkplaceX/Framework/wiki/BuildTool-Generate-Command))
 
 ```cmd
+cd BuildTool
 dotnet run -- generate
 ```	
 
