@@ -47,18 +47,18 @@ CREATE TABLE HelloWorld
 )
 ```	
 
-* Run the BuildTool generate command (See also [BuildTool generate](https://github.com/WorkplaceX/Framework/wiki/BuildTool-generate))
+* Run the BuildTool generate command (See also [BuildTool generate](https://github.com/WorkplaceX/Framework/wiki/BuildTool-generate)). This generates a C# class for every table and every column.
 
 ```cmd
 cd BuildTool
 dotnet run -- generate
 ```	
 
-* Run the BuildTool runSql command (See [BuildTool runSql](https://github.com/WorkplaceX/Framework/wiki/BuildTool-runSql)). It adds "Framework" prefixed tables to the database.
+* Run the BuildTool runSql command (See [BuildTool runSql](https://github.com/WorkplaceX/Framework/wiki/BuildTool-runSql)). It adds "Framework" prefixed tables to the database. These tables are used internally by the framework.
 
 ```cmd
 cd BuildTool
 dotnet run -- runSql
 ```	
 
-* Run BuildTool runSqlTable command (See [BuildTool runSql](https://github.com/WorkplaceX/Framework/wiki/BuildTool-runSql)). It populates for example the table "FrameworkColumn".
+* Run BuildTool runSqlTable command (See [BuildTool runSql](https://github.com/WorkplaceX/Framework/wiki/BuildTool-runSql)). In C# declared classes are written for example the table "FrameworkColumn". It serves as meta data for configuration.
