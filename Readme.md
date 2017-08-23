@@ -61,4 +61,4 @@ cd BuildTool
 dotnet run -- runSql
 ```	
 
-* Run BuildTool runSqlTable command (See [BuildTool runSql](https://github.com/WorkplaceX/Framework/wiki/BuildTool-runSql)). In C# declared classes are written for example the table "FrameworkColumn". It serves as meta data for configuration.
+* Run BuildTool runSqlTable command (See [BuildTool runSqlTable](https://github.com/WorkplaceX/Framework/wiki/BuildTool-runSqlTable)). In C# declared classes are written for example the table "FrameworkColumn". It serves as meta data for configuration.
