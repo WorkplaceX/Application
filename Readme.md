@@ -36,7 +36,7 @@ Internet browser will first show a page not found error. Wait about 30 seconds! 
 
 Set up a database connection string like this: [BuildTool connection](https://github.com/WorkplaceX/Framework/wiki/BuildTool-connection).
 
-Create a simple SQL table:
+* Create a simple SQL table:
 
 ```sql
 CREATE TABLE HelloWorld
@@ -47,18 +47,18 @@ CREATE TABLE HelloWorld
 )
 ```	
 
-Run the BuildTool generate command (See also [BuildTool generate](https://github.com/WorkplaceX/Framework/wiki/BuildTool-generate))
+* Run the BuildTool generate command (See also [BuildTool generate](https://github.com/WorkplaceX/Framework/wiki/BuildTool-generate))
 
 ```cmd
 cd BuildTool
 dotnet run -- generate
 ```	
 
-Run the BuildTool runSql command (See [BuildTool runSql](https://github.com/WorkplaceX/Framework/wiki/BuildTool-runSql)). It adds "Framework" prefixed tables to the database.
+* Run the BuildTool runSql command (See [BuildTool runSql](https://github.com/WorkplaceX/Framework/wiki/BuildTool-runSql)). It adds "Framework" prefixed tables to the database.
 
 ```cmd
 cd BuildTool
 dotnet run -- runSql
 ```	
 
-Run BuildTool runSqlTable command (See [BuildTool runSql](https://github.com/WorkplaceX/Framework/wiki/BuildTool-runSql)). It populates for example the table "FrameworkColumn".
+* Run BuildTool runSqlTable command (See [BuildTool runSql](https://github.com/WorkplaceX/Framework/wiki/BuildTool-runSql)). It populates for example the table "FrameworkColumn".
