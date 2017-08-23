@@ -34,7 +34,7 @@ Internet browser will first show a page not found error. Wait about 30 seconds! 
 
 ## Next steps
 
-Set up a database connection like this: [Connection String](https://github.com/WorkplaceX/Framework/wiki/Connection-String).
+Set up a database connection like this: [Connection String](https://github.com/WorkplaceX/Framework/wiki/BuildTool-connection).
 
 Create a simple SQL table:
 
