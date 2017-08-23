@@ -54,11 +54,11 @@ cd BuildTool
 dotnet run -- generate
 ```	
 
-Run the BuildTool runSql command (See [BuildTool runSql](https://github.com/WorkplaceX/Framework/wiki/BuildTool-runSql). It will add framework related tables to the database prefixed with "Framework".
+Run the BuildTool runSql command (See [BuildTool runSql](https://github.com/WorkplaceX/Framework/wiki/BuildTool-runSql)). It adds "Framework" prefixed tables to the database.
 
 ```cmd
 cd BuildTool
 dotnet run -- runSql
 ```	
 
-Run BuildTool runSqlTable command (See [BuildTool runSql](https://github.com/WorkplaceX/Framework/wiki/BuildTool-runSql)
+Run BuildTool runSqlTable command (See [BuildTool runSql](https://github.com/WorkplaceX/Framework/wiki/BuildTool-runSql)). It populates for example the table "FrameworkColumn".
