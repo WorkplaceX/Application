@@ -57,7 +57,7 @@ dotnet run -- generate
 ```	
 
 ### SqlCreate Script
-Call BuildTool runSql command (See [BuildTool runSqlCreate](https://github.com/WorkplaceX/Framework/wiki/BuildTool-runSqlScript)). It adds "Framework" prefixed tables to the database. These tables are used internally by the framework. Additionally in C# declared classes are written for example the table "FrameworkColumn". It serves as meta data for configuration.
+Call BuildTool runSql command (See [BuildTool runSqlCreate](https://github.com/WorkplaceX/Framework/wiki/BuildTool-runSqlCreate)). It adds "Framework" prefixed tables to the database. These tables are used internally by the framework. Additionally in C# declared classes are written for example the table "FrameworkColumn". It serves as meta data for configuration.
 
 ```cmd
 cd BuildTool
