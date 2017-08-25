@@ -1,9 +1,9 @@
-﻿namespace Application
-{
-    using Database.dbo;
-    using Framework.Application;
-    using Framework.Component;
+﻿using Database.dbo;
+using Framework.Application;
+using Framework.Component;
 
+namespace Application
+{
     public class PageMain : Page
     {
         protected override void InitJson(App app)
