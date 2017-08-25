@@ -49,7 +49,7 @@ CREATE TABLE HelloWorld
 ```	
 
 ### Generate C# Code
-Run the BuildTool generate command (See also [BuildTool generate](https://github.com/WorkplaceX/Framework/wiki/BuildTool-generate)). This generates a C# class for every table and every column.
+Run the BuildTool generate command (See also [BuildTool generate](https://github.com/WorkplaceX/Framework/wiki/BuildTool-generate)). This generates a C# class for every table and every column in the file "Database.Generate.cs".
 
 ```cmd
 cd BuildTool
