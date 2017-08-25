@@ -9,6 +9,7 @@ namespace Application
         protected override void InitJson(App app)
         {
             new Label(this) { Text = "Hello World!" };
+            // new GridField(this, null, null, null);
             new Grid(this, "Grid1");
             app.GridData.LoadDatabase<HelloWorld>("Grid1");
         }
