@@ -63,3 +63,25 @@ Call BuildTool runSql command (See [BuildTool runSqlCreate](https://github.com/W
 cd BuildTool
 dotnet run -- runSql
 ```	
+
+### Application
+Modify Page.cs to show data in grid like tihs:
+```csharp
+using Database.dbo;
+using Framework.Application;
+using Framework.Component;
+
+namespace Application
+{
+    public class PageMain : Page
+    {
+        protected override void InitJson(App app)
+        {
+            new Label(this) { Text = "Hello World!" };
+            app.GridData.LoadDatabase<HelloWorld>("Grid1"); // Load data from database into "Grid1" store.
+            new Grid(this, "Grid1"); // Grid to show data in "Grid1".
+        }
+    }
+}
+```	
+
