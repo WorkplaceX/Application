@@ -10,7 +10,7 @@
         {
             if (UtilApplication.IndexEnumFromText(index) == IndexEnum.Filter)
             {
-                result = "indicatorFilter";
+                result = "gridFilter";
             }
         }
     }
@@ -21,25 +21,29 @@
         {
             if (UtilApplication.IndexEnumFromText(index) == IndexEnum.Filter)
             {
-                result = "indicatorFilter";
+                result = "gridFilter";
             }
             if (UtilApplication.IndexEnumFromText(index) == IndexEnum.Index)
             {
                 if (Row.Number > 0)
                 {
-                    result = "indicatorUp";
+                    result = "gridUp";
                 }
                 else
                 {
                     if (Row.Number < 0)
                     {
-                        result = "indicatorDown";
+                        result = "gridDown";
                     }
                     else
                     {
-                        result = "indicatorEqual";
+                        result = "gridEqual";
                     }
                 }
+            }
+            if (UtilApplication.IndexEnumFromText(index) == IndexEnum.New)
+            {
+                result = "gridNew";
             }
         }
     }
