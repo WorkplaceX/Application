@@ -87,8 +87,9 @@ namespace Application
 
 ### Data Grid
 The grid contains already all functionalities:
+* Sort data
 * Search (Filter) data
-* Modify row
-* Add new record
+* Edit data
+* Add new data record
 
 ![Grid](https://github.com/WorkplaceX/Framework/blob/master/Doc/Grid.png?raw=true)
