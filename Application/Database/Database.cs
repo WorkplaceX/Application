@@ -6,44 +6,36 @@
 
     public partial class HelloWorld_Text
     {
-        protected override void CellCssClass(App app, string gridName, string index, ref string result)
+        protected override void InfoCell(App app, string gridName, string index, InfoCell result)
         {
-            if (UtilApplication.IndexEnumFromText(index) == IndexEnum.Filter)
-            {
-                result = "gridFilter";
-            }
+
         }
     }
 
     public partial class HelloWorld_Number
     {
-        protected override void CellCssClass(App app, string gridName, string index, ref string result)
+        protected override void InfoCell(App app, string gridName, string index, InfoCell result)
         {
-            if (UtilApplication.IndexEnumFromText(index) == IndexEnum.Filter)
-            {
-                result = "gridFilter";
-            }
             if (UtilApplication.IndexEnumFromText(index) == IndexEnum.Index)
             {
                 if (Row.Number > 0)
                 {
-                    result = "gridUp";
+                    result.Css.Add("gridUp");
                 }
                 else
                 {
                     if (Row.Number < 0)
                     {
-                        result = "gridDown";
+                        result.Css.Add("gridDown");
                     }
                     else
                     {
-                        result = "gridEqual";
+                        if (Row.Number == 0)
+                        {
+                            result.Css.Add("gridEqual");
+                        }
                     }
                 }
-            }
-            if (UtilApplication.IndexEnumFromText(index) == IndexEnum.New)
-            {
-                result = "gridNew";
             }
         }
     }
