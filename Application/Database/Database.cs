@@ -1,8 +1,14 @@
 ﻿namespace Database.dbo
 {
-    using Framework.DataAccessLayer;
-    using System;
     using Framework.Application;
+    using Framework.Component;
+    using Framework.DataAccessLayer;
+
+    public partial class HelloWorld
+    {
+        [SqlColumn(null, typeof(HelloWorld_ButtonDelete))]
+        public string ButtonDelete { get; set; }
+    }
 
     public partial class HelloWorld_Text
     {
@@ -37,6 +43,24 @@
                     }
                 }
             }
+        }
+    }
+
+    public partial class HelloWorld_ButtonDelete : Cell<HelloWorld>
+    {
+        protected override void InfoCell(App app, string gridName, string index, InfoCell result)
+        {
+            result.CellEnum = GridCellEnum.Button;
+        }
+
+        protected override void CellValueToText(App app, string gridName, string index, ref string result)
+        {
+            result = "Delete";
+        }
+
+        protected override void CellProcessButtonIsClick(App app, string gridName, string index, string fieldName)
+        {
+            // UtilDataAccessLayer.Delete(Row);
         }
     }
 }
