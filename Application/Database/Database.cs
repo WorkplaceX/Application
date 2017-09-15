@@ -58,10 +58,11 @@
             result = "Delete";
         }
 
-        protected override void CellProcessButtonIsClick(App app, string gridName, string index, string fieldName)
+
+        protected override void CellButtonIsClick(App app, string gridName, string index, Row row, string fieldName, ref bool isReload)
         {
-            UtilDataAccessLayer.Delete(Row);
-            app.GridData.LoadDatabaseReload(gridName);
+            UtilDataAccessLayer.Delete(row);
+            isReload = true;
         }
     }
 }
