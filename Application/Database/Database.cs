@@ -60,7 +60,8 @@
 
         protected override void CellProcessButtonIsClick(App app, string gridName, string index, string fieldName)
         {
-            // UtilDataAccessLayer.Delete(Row);
+            UtilDataAccessLayer.Delete(Row);
+            app.GridData.LoadDatabaseReload(gridName);
         }
     }
 }
