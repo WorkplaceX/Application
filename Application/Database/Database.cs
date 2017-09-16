@@ -12,7 +12,7 @@
 
     public partial class HelloWorld_Text
     {
-        protected override void InfoCell(App app, string gridName, string index, InfoCell result)
+        protected override void InfoCell(App app, string gridName, Index index, InfoCell result)
         {
 
         }
@@ -20,9 +20,9 @@
 
     public partial class HelloWorld_Number
     {
-        protected override void InfoCell(App app, string gridName, string index, InfoCell result)
+        protected override void InfoCell(App app, string gridName, Index index, InfoCell result)
         {
-            if (UtilApplication.IndexEnumFromText(index) == IndexEnum.Index)
+            if (index.Enum == IndexEnum.Index)
             {
                 if (Row.Number > 0)
                 {
@@ -48,18 +48,18 @@
 
     public partial class HelloWorld_ButtonDelete : Cell<HelloWorld>
     {
-        protected override void InfoCell(App app, string gridName, string index, InfoCell result)
+        protected override void InfoCell(App app, string gridName, Index index, InfoCell result)
         {
             result.CellEnum = GridCellEnum.Button;
         }
 
-        protected override void CellValueToText(App app, string gridName, string index, ref string result)
+        protected override void CellValueToText(App app, string gridName, Index index, ref string result)
         {
             result = "Delete";
         }
 
 
-        protected override void CellButtonIsClick(App app, string gridName, string index, Row row, string fieldName, ref bool isReload)
+        protected override void CellButtonIsClick(App app, string gridName, Index index, Row row, string fieldName, ref bool isReload)
         {
             UtilDataAccessLayer.Delete(row);
             isReload = true;
