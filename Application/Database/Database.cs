@@ -50,14 +50,19 @@
     {
         protected override void InfoCell(App app, string gridName, Index index, InfoCell result)
         {
-            result.CellEnum = GridCellEnum.Button;
+            if (index.Enum == IndexEnum.Index)
+            {
+                result.CellEnum = GridCellEnum.Button;
+            }
         }
 
         protected override void CellValueToText(App app, string gridName, Index index, ref string result)
         {
-            result = "Delete";
+            if (index.Enum == IndexEnum.Index)
+            {
+                result = "Delete";
+            }
         }
-
 
         protected override void CellButtonIsClick(App app, string gridName, Index index, Row row, string fieldName, ref bool isReload)
         {
