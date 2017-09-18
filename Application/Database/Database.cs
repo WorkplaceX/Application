@@ -14,7 +14,7 @@
     {
         protected override void InfoCell(App app, string gridName, Index index, InfoCell result)
         {
-            result.CellEnum = GridCellEnum.Html;
+            // result.CellEnum = GridCellEnum.Html;
         }
     }
 
