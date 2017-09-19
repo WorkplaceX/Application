@@ -26,19 +26,19 @@
             {
                 if (Row.Number > 0)
                 {
-                    result.Css.Add("gridUp");
+                    result.CssClass.Add("gridUp");
                 }
                 else
                 {
                     if (Row.Number < 0)
                     {
-                        result.Css.Add("gridDown");
+                        result.CssClass.Add("gridDown");
                     }
                     else
                     {
                         if (Row.Number == 0)
                         {
-                            result.Css.Add("gridEqual");
+                            result.CssClass.Add("gridEqual");
                         }
                     }
                 }
