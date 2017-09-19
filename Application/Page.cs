@@ -16,10 +16,12 @@ namespace Application
             new Literal(div) { TextHtml = "<b>Bold</b>" };
             new GridField(this, null, null, null);
             // Skyscraper
-            var skyscraper = new Div(this) { Css = "backgroundColorBlue" };
-            new Label(skyscraper) { Text = "Skyskraper Label", Css = "backgroundColorGreen" };
-            new GridField(skyscraper, "Grid1", "Text", null) { Css = "backgroundColorGreen" };
-            new GridField(skyscraper, "Grid1", "Number", null) { Css = "backgroundColorGreen" };
+            var skyscraper = new Div(this);
+            new Label(skyscraper) { Text = "Common Values", Css = "gridFieldWithLabelGroup" };
+            new GridFieldWithLabel(skyscraper, "Text", "Grid1", "Text");
+            new GridFieldWithLabel(skyscraper, "Number", "Grid1", "Number");
+            new Label(skyscraper) { Text = "Action", Css = "gridFieldWithLabelGroup" };
+            new GridFieldWithLabel(skyscraper, "Delete", "Grid1", "ButtonDelete");
             // Load
             app.GridData.LoadDatabase<HelloWorld>("Grid1");
         }
