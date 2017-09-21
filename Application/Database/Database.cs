@@ -1,8 +1,43 @@
 ﻿namespace Database.dbo
 {
+    using System.Linq;
     using Framework.Application;
     using Framework.Component;
     using Framework.DataAccessLayer;
+
+    public partial class Attribute
+    {
+        protected override void MasterIsClick(App app, string gridNameMaster, Row rowMaster, ref bool isReload)
+        {
+            if (gridNameMaster == "Grid1")
+            {
+                isReload = true;
+            }
+        }
+
+        protected override IQueryable Where(App app, string gridName)
+        {
+            HelloWorld rowMaster = app.GridData.RowSelected("Grid1") as HelloWorld;
+            if (rowMaster != null)
+            {
+                return UtilDataAccessLayer.Query<Attribute>().Where(item => item.HelloWorldId == rowMaster.Id);
+            }
+            else
+            {
+                return base.Where(app, gridName);
+            }
+        }
+
+        protected override void Insert(App app)
+        {
+            HelloWorld rowMaster = app.GridData.RowSelected("Grid1") as HelloWorld;
+            if (rowMaster != null)
+            {
+                this.HelloWorldId = rowMaster.Id;
+            }
+            base.Insert(app);
+        }
+    }
 
     public partial class HelloWorld
     {

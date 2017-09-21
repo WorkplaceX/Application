@@ -8,6 +8,7 @@ namespace Application
     {
         protected override void InitJson(App app)
         {
+            new Label(this) { Text = "Main", CssClass = "labelGroup" };
             new Grid(this, "Grid1");
             Div div = new Div(this);
             new Label(div) { Text = "Hello World!", CssClass = "floatLeft" };
@@ -17,13 +18,17 @@ namespace Application
             new GridField(this, null, null, null);
             // Skyscraper
             var panel = new Div(this);
-            new Label(panel) { Text = "Common Values", CssClass = "gridFieldWithLabelGroup" };
+            new Label(panel) { Text = "Common Values", CssClass = "labelGroup" };
             new GridFieldWithLabel(panel, "Text", "Grid1", "Text");
             new GridFieldWithLabel(panel, "Number", "Grid1", "Number");
-            new Label(panel) { Text = "Action", CssClass = "gridFieldWithLabelGroup" };
+            new Label(panel) { Text = "Action", CssClass = "labelGroup" };
             new GridFieldWithLabel(panel, "Delete", "Grid1", "ButtonDelete");
+            // Attribute
+            new Label(panel) { Text = "Attribute", CssClass = "labelGroup" };
+            new Grid(this, "GridAttribute");
             // Load
             app.GridData.LoadDatabase<HelloWorld>("Grid1");
+            app.GridData.LoadDatabase<Attribute>("GridAttribute");
         }
     }
 }
