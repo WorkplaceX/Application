@@ -24,11 +24,15 @@ namespace Application
             new Label(panel) { Text = "Action", CssClass = "labelGroup" };
             new GridFieldWithLabel(panel, "Delete", "Grid1", "ButtonDelete");
             // Attribute
-            new Label(panel) { Text = "Attribute", CssClass = "labelGroup" };
+            new Label(this) { Text = "Attribute", CssClass = "labelGroup" };
             new Grid(this, "GridAttribute");
+            // AttributeNote
+            new Label(this) { Text = "Attribute Note", CssClass = "labelGroup" };
+            new Grid(this, "GridAttributeNote");
             // Load
             app.GridData.LoadDatabase<HelloWorld>("Grid1");
             app.GridData.LoadDatabase<Attribute>("GridAttribute");
+            app.GridData.LoadDatabase<AttributeNote>("GridAttributeNote");
         }
     }
 }

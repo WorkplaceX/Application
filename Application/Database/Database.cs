@@ -5,6 +5,40 @@
     using Framework.Component;
     using Framework.DataAccessLayer;
 
+    public partial class AttributeNote
+    {
+        protected override void MasterIsClick(App app, string gridNameMaster, Row rowMaster, ref bool isReload)
+        {
+            if (gridNameMaster == "GridAttribute")
+            {
+                isReload = true;
+            }
+        }
+
+        protected override IQueryable Where(App app, string gridName)
+        {
+            Attribute rowMaster = app.GridData.RowSelected("GridAttribute") as Attribute;
+            if (rowMaster != null)
+            {
+                return UtilDataAccessLayer.Query<AttributeNote>().Where(item => item.AttributeId == rowMaster.Id);
+            }
+            else
+            {
+                return base.Where(app, gridName);
+            }
+        }
+
+        protected override void Insert(App app)
+        {
+            Attribute rowMaster = app.GridData.RowSelected("GridAttribute") as Attribute;
+            if (rowMaster != null)
+            {
+                this.AttributeId = rowMaster.Id;
+            }
+            base.Insert(app);
+        }
+    }
+
     public partial class Attribute
     {
         protected override void MasterIsClick(App app, string gridNameMaster, Row rowMaster, ref bool isReload)
