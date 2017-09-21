@@ -15,7 +15,7 @@ namespace Application
             new Label(div) { Text = "Hello World2!", CssClass = "floatLeft" };
             new Button(div) { Text = "Click", CssClass = "floatLeft" };
             new Literal(div) { TextHtml = "<b>Bold</b>" };
-            new GridField(this, null, null, null);
+            new GridFieldSingle(this);
             // Skyscraper
             var panel = new Div(this);
             new Label(panel) { Text = "Common Values", CssClass = "labelGroup" };
