@@ -31,8 +31,8 @@ namespace Application
             new Grid(this, "GridAttributeNote");
             // Load
             app.GridData.LoadDatabase<HelloWorld>("Grid1");
-            app.GridData.LoadDatabase<Attribute>("GridAttribute");
-            app.GridData.LoadDatabase<AttributeNote>("GridAttributeNote");
+            app.GridData.LoadDatabaseInit<Attribute>("GridAttribute");
+            app.GridData.LoadDatabaseInit<AttributeNote>("GridAttributeNote");
         }
     }
 }

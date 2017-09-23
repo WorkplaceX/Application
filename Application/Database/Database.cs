@@ -17,15 +17,13 @@
 
         protected override IQueryable Where(App app, string gridName)
         {
+            IQueryable result = null;
             Attribute rowMaster = app.GridData.RowSelected("GridAttribute") as Attribute;
             if (rowMaster != null)
             {
-                return UtilDataAccessLayer.Query<AttributeNote>().Where(item => item.AttributeId == rowMaster.Id);
+                result = UtilDataAccessLayer.Query<AttributeNote>().Where(item => item.AttributeId == rowMaster.Id);
             }
-            else
-            {
-                return base.Where(app, gridName);
-            }
+            return result;
         }
 
         protected override void Insert(App app)
@@ -51,15 +49,13 @@
 
         protected override IQueryable Where(App app, string gridName)
         {
+            IQueryable result = null;
             HelloWorld rowMaster = app.GridData.RowSelected("Grid1") as HelloWorld;
             if (rowMaster != null)
             {
-                return UtilDataAccessLayer.Query<Attribute>().Where(item => item.HelloWorldId == rowMaster.Id);
+                result = UtilDataAccessLayer.Query<Attribute>().Where(item => item.HelloWorldId == rowMaster.Id);
             }
-            else
-            {
-                return base.Where(app, gridName);
-            }
+            return result;
         }
 
         protected override void Insert(App app)
@@ -70,6 +66,26 @@
                 this.HelloWorldId = rowMaster.Id;
             }
             base.Insert(app);
+        }
+
+        [SqlColumn(null, typeof(Attribute_Delete))]
+        public string Delete { get; set; }
+    }
+
+    public  class Attribute_Delete : Cell<Attribute>
+    {
+        protected override void InfoCell(App app, string gridName, Index index, InfoCell result)
+        {
+            if (index.Enum == IndexEnum.Index)
+            {
+                result.CellEnum = GridCellEnum.Button;
+            }
+        }
+
+        protected override void CellButtonIsClick(App app, string gridName, Index index, Row row, string fieldName, ref bool isReload)
+        {
+            UtilDataAccessLayer.Delete(row);
+            isReload = true;
         }
     }
 
