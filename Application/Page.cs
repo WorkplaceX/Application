@@ -1,4 +1,5 @@
 ﻿using Database.dbo;
+using Framework;
 using Framework.Application;
 using Framework.Component;
 
@@ -33,6 +34,8 @@ namespace Application
             app.GridData.LoadDatabase<HelloWorld>("Grid1");
             app.GridData.LoadDatabaseInit<Attribute>("GridAttribute");
             app.GridData.LoadDatabaseInit<AttributeNote>("GridAttributeNote");
+            //
+            new Label(this) { Text = "Version=" + UtilFramework.VersionServer };
         }
     }
 }
