@@ -7,18 +7,18 @@
 
     public partial class AttributeNote
     {
-        protected override void MasterIsClick(App app, string gridNameMaster, Row rowMaster, ref bool isReload)
+        protected override void MasterIsClick(App app, GridName gridNameMaster, Row rowMaster, ref bool isReload)
         {
-            if (gridNameMaster == "GridAttribute")
+            if (gridNameMaster.Name == "GridAttribute")
             {
                 isReload = true;
             }
         }
 
-        protected override IQueryable Where(App app, string gridName)
+        protected override IQueryable Where(App app, GridName gridName)
         {
             IQueryable result = null;
-            Attribute rowMaster = app.GridData.RowSelected("GridAttribute") as Attribute;
+            Attribute rowMaster = app.GridData.RowSelected(new GridName("GridAttribute")) as Attribute;
             if (rowMaster != null)
             {
                 result = UtilDataAccessLayer.Query<AttributeNote>().Where(item => item.AttributeId == rowMaster.Id);
@@ -28,7 +28,7 @@
 
         protected override void Insert(App app)
         {
-            Attribute rowMaster = app.GridData.RowSelected("GridAttribute") as Attribute;
+            Attribute rowMaster = app.GridData.RowSelected(new GridName("GridAttribute")) as Attribute;
             if (rowMaster != null)
             {
                 this.AttributeId = rowMaster.Id;
@@ -39,18 +39,18 @@
 
     public partial class Attribute
     {
-        protected override void MasterIsClick(App app, string gridNameMaster, Row rowMaster, ref bool isReload)
+        protected override void MasterIsClick(App app, GridName gridNameMaster, Row rowMaster, ref bool isReload)
         {
-            if (gridNameMaster == "Grid1")
+            if (gridNameMaster.Name == "Grid1")
             {
                 isReload = true;
             }
         }
 
-        protected override IQueryable Where(App app, string gridName)
+        protected override IQueryable Where(App app, GridName gridName)
         {
             IQueryable result = null;
-            HelloWorld rowMaster = app.GridData.RowSelected("Grid1") as HelloWorld;
+            HelloWorld rowMaster = app.GridData.RowSelected(new GridName("Grid1")) as HelloWorld;
             if (rowMaster != null)
             {
                 result = UtilDataAccessLayer.Query<Attribute>().Where(item => item.HelloWorldId == rowMaster.Id);
@@ -60,7 +60,7 @@
 
         protected override void Insert(App app)
         {
-            HelloWorld rowMaster = app.GridData.RowSelected("Grid1") as HelloWorld;
+            HelloWorld rowMaster = app.GridData.RowSelected(new GridName("Grid1")) as HelloWorld;
             if (rowMaster != null)
             {
                 this.HelloWorldId = rowMaster.Id;
@@ -74,7 +74,7 @@
 
     public  class Attribute_Delete : Cell<Attribute>
     {
-        protected override void InfoCell(App app, string gridName, Index index, InfoCell result)
+        protected override void InfoCell(App app, GridName gridName, Index index, InfoCell result)
         {
             if (index.Enum == IndexEnum.Index)
             {
@@ -82,7 +82,7 @@
             }
         }
 
-        protected override void CellButtonIsClick(App app, string gridName, Index index, Row row, string fieldName, ref bool isReload)
+        protected override void CellButtonIsClick(App app, GridName gridName, Index index, Row row, string fieldName, ref bool isReload)
         {
             UtilDataAccessLayer.Delete(row);
             isReload = true;
@@ -97,7 +97,7 @@
 
     public partial class HelloWorld_Text
     {
-        protected override void InfoCell(App app, string gridName, Index index, InfoCell result)
+        protected override void InfoCell(App app, GridName gridName, Index index, InfoCell result)
         {
             // result.CellEnum = GridCellEnum.Html;
         }
@@ -105,7 +105,7 @@
 
     public partial class HelloWorld_Number
     {
-        protected override void InfoCell(App app, string gridName, Index index, InfoCell result)
+        protected override void InfoCell(App app, GridName gridName, Index index, InfoCell result)
         {
             if (index.Enum == IndexEnum.Index)
             {
@@ -133,7 +133,7 @@
 
     public partial class HelloWorld_ButtonDelete : Cell<HelloWorld>
     {
-        protected override void InfoCell(App app, string gridName, Index index, InfoCell result)
+        protected override void InfoCell(App app, GridName gridName, Index index, InfoCell result)
         {
             if (index.Enum == IndexEnum.Index)
             {
@@ -141,7 +141,7 @@
             }
         }
 
-        protected override void CellValueToText(App app, string gridName, Index index, ref string result)
+        protected override void CellValueToText(App app, GridName gridName, Index index, ref string result)
         {
             if (index.Enum == IndexEnum.Index)
             {
@@ -149,7 +149,7 @@
             }
         }
 
-        protected override void CellButtonIsClick(App app, string gridName, Index index, Row row, string fieldName, ref bool isReload)
+        protected override void CellButtonIsClick(App app, GridName gridName, Index index, Row row, string fieldName, ref bool isReload)
         {
             UtilDataAccessLayer.Delete(row);
             isReload = true;
