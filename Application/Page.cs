@@ -9,6 +9,7 @@ namespace Application
     {
         protected override void InitJson(App app)
         {
+            new Grid(this, new GridName("Lookup"));
             new Label(this) { Text = "Main", CssClass = "labelGroup" };
             new Grid(this, HelloWorld.GridName);
             Div div = new Div(this);
@@ -23,7 +24,7 @@ namespace Application
             new GridFieldWithLabel(panel, "Text", HelloWorld.GridName, "Text");
             new GridFieldWithLabel(panel, "Number", HelloWorld.GridName, "Number");
             new Label(panel) { Text = "Action", CssClass = "labelGroup" };
-            //new GridFieldWithLabel(panel, "Delete", "Grid1", "ButtonDelete");
+            new GridFieldWithLabel(panel, "Delete", HelloWorld.GridName, "ButtonDelete");
             // Attribute
             new Label(this) { Text = "Attribute", CssClass = "labelGroup" };
             new Grid(this, new GridName<Attribute>());

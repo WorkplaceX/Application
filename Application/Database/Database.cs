@@ -1,9 +1,12 @@
 ﻿namespace Database.dbo
 {
+    using System;
+    using System.Collections.Generic;
     using System.Linq;
     using Framework.Application;
     using Framework.Component;
     using Framework.DataAccessLayer;
+    using Database.Calculated;
 
     public partial class AttributeNote
     {
@@ -131,6 +134,15 @@
                 }
             }
         }
+
+        protected override void CellLookup(out Type typeRow, out List<Row> rowList)
+        {
+            typeRow = typeof(HelloWorld_NumberLookup);
+            rowList = new List<Row>();
+            rowList.Add(new HelloWorld_NumberLookup() { Number = 100, Text = "One hundered" });
+            rowList.Add(new HelloWorld_NumberLookup() { Number = -200, Text = "Two hundered" });
+            rowList.Add(new HelloWorld_NumberLookup() { Number = 300, Text = "Three hundered" });
+        }
     }
 
     public partial class HelloWorld_ButtonDelete : Cell<HelloWorld>
@@ -156,5 +168,17 @@
             UtilDataAccessLayer.Delete(row);
             isReload = true;
         }
+    }
+}
+
+namespace Database.Calculated
+{
+    using Framework.DataAccessLayer;
+
+    public class HelloWorld_NumberLookup : Row
+    {
+        public int Number { get; set; }
+
+        public string Text { get; set; }
     }
 }
