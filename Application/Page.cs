@@ -10,7 +10,7 @@ namespace Application
         protected override void InitJson(App app)
         {
             new Label(this) { Text = "Main", CssClass = "labelGroup" };
-            new Grid(this, new GridName<HelloWorld>());
+            new Grid(this, HelloWorld.GridName);
             Div div = new Div(this);
             new Label(div) { Text = "Hello World!", CssClass = "floatLeft" };
             new Label(div) { Text = "Hello World2!", CssClass = "floatLeft" };
@@ -31,7 +31,7 @@ namespace Application
             new Label(this) { Text = "Attribute Note", CssClass = "labelGroup" };
             new Grid(this, new GridName<AttributeNote>());
             // Load
-            app.GridData.LoadDatabase(new GridName<HelloWorld>());
+            app.GridData.LoadDatabase(HelloWorld.GridName);
             app.GridData.LoadDatabaseInit(new GridName<Attribute>());
             app.GridData.LoadDatabaseInit(new GridName<AttributeNote>());
         }

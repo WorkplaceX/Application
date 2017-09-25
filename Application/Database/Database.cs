@@ -41,7 +41,7 @@
     {
         protected override void MasterIsClick(App app, GridName gridNameMaster, Row rowMaster, ref bool isReload)
         {
-            if (gridNameMaster == new GridName<HelloWorld>())
+            if (gridNameMaster == HelloWorld.GridName)
             {
                 isReload = true;
             }
@@ -50,7 +50,7 @@
         protected override IQueryable Where(App app, GridName gridName)
         {
             IQueryable result = null;
-            HelloWorld rowMaster = app.GridData.RowSelected(new GridName<HelloWorld>());
+            HelloWorld rowMaster = app.GridData.RowSelected(HelloWorld.GridName);
             if (rowMaster != null)
             {
                 result = UtilDataAccessLayer.Query<Attribute>().Where(item => item.HelloWorldId == rowMaster.Id);
@@ -60,7 +60,7 @@
 
         protected override void Insert(App app)
         {
-            HelloWorld rowMaster = app.GridData.RowSelected(new GridName<HelloWorld>());
+            HelloWorld rowMaster = app.GridData.RowSelected(HelloWorld.GridName);
             if (rowMaster != null)
             {
                 this.HelloWorldId = rowMaster.Id;
@@ -91,6 +91,8 @@
 
     public partial class HelloWorld
     {
+        public static GridName<HelloWorld> GridName = new GridName<HelloWorld>();
+
         [SqlColumn(null, typeof(HelloWorld_ButtonDelete))]
         public string ButtonDelete { get; set; }
     }
