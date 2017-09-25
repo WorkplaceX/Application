@@ -20,8 +20,8 @@ namespace Application
             // Skyscraper
             var panel = new Div(this);
             new Label(panel) { Text = "Common Values", CssClass = "labelGroup" };
-            //new GridFieldWithLabel(panel, "Text", "Grid1", "Text");
-            //new GridFieldWithLabel(panel, "Number", "Grid1", "Number");
+            new GridFieldWithLabel(panel, "Text", HelloWorld.GridName, "Text");
+            new GridFieldWithLabel(panel, "Number", HelloWorld.GridName, "Number");
             new Label(panel) { Text = "Action", CssClass = "labelGroup" };
             //new GridFieldWithLabel(panel, "Delete", "Grid1", "ButtonDelete");
             // Attribute
@@ -34,6 +34,8 @@ namespace Application
             app.GridData.LoadDatabase(HelloWorld.GridName);
             app.GridData.LoadDatabaseInit(new GridName<Attribute>());
             app.GridData.LoadDatabaseInit(new GridName<AttributeNote>());
+            //
+            new Label(this) { Text = "Version=" + UtilFramework.VersionServer };
         }
     }
 }
