@@ -9,7 +9,7 @@
     {
         protected override void MasterIsClick(App app, GridName gridNameMaster, Row rowMaster, ref bool isReload)
         {
-            if (gridNameMaster.Name == "GridAttribute")
+            if (gridNameMaster == new GridName<Attribute>())
             {
                 isReload = true;
             }
@@ -18,7 +18,7 @@
         protected override IQueryable Where(App app, GridName gridName)
         {
             IQueryable result = null;
-            Attribute rowMaster = app.GridData.RowSelected(new GridName("GridAttribute")) as Attribute;
+            Attribute rowMaster = app.GridData.RowSelected(new GridName<Attribute>());
             if (rowMaster != null)
             {
                 result = UtilDataAccessLayer.Query<AttributeNote>().Where(item => item.AttributeId == rowMaster.Id);
@@ -28,7 +28,7 @@
 
         protected override void Insert(App app)
         {
-            Attribute rowMaster = app.GridData.RowSelected(new GridName("GridAttribute")) as Attribute;
+            Attribute rowMaster = app.GridData.RowSelected(new GridName<Attribute>());
             if (rowMaster != null)
             {
                 this.AttributeId = rowMaster.Id;
@@ -41,7 +41,7 @@
     {
         protected override void MasterIsClick(App app, GridName gridNameMaster, Row rowMaster, ref bool isReload)
         {
-            if (gridNameMaster.Name == "Grid1")
+            if (gridNameMaster == new GridName<HelloWorld>())
             {
                 isReload = true;
             }
@@ -50,7 +50,7 @@
         protected override IQueryable Where(App app, GridName gridName)
         {
             IQueryable result = null;
-            HelloWorld rowMaster = app.GridData.RowSelected(new GridName("Grid1")) as HelloWorld;
+            HelloWorld rowMaster = app.GridData.RowSelected(new GridName<HelloWorld>());
             if (rowMaster != null)
             {
                 result = UtilDataAccessLayer.Query<Attribute>().Where(item => item.HelloWorldId == rowMaster.Id);
@@ -60,7 +60,7 @@
 
         protected override void Insert(App app)
         {
-            HelloWorld rowMaster = app.GridData.RowSelected(new GridName("Grid1")) as HelloWorld;
+            HelloWorld rowMaster = app.GridData.RowSelected(new GridName<HelloWorld>());
             if (rowMaster != null)
             {
                 this.HelloWorldId = rowMaster.Id;

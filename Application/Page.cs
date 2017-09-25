@@ -10,7 +10,7 @@ namespace Application
         protected override void InitJson(App app)
         {
             new Label(this) { Text = "Main", CssClass = "labelGroup" };
-            new Grid(this, new GridName("Grid1"));
+            new Grid(this, new GridName<HelloWorld>());
             Div div = new Div(this);
             new Label(div) { Text = "Hello World!", CssClass = "floatLeft" };
             new Label(div) { Text = "Hello World2!", CssClass = "floatLeft" };
@@ -26,20 +26,14 @@ namespace Application
             //new GridFieldWithLabel(panel, "Delete", "Grid1", "ButtonDelete");
             // Attribute
             new Label(this) { Text = "Attribute", CssClass = "labelGroup" };
-            new Grid(this, new GridName("GridAttribute"));
+            new Grid(this, new GridName<Attribute>());
             // AttributeNote
             new Label(this) { Text = "Attribute Note", CssClass = "labelGroup" };
-            new Grid(this, new GridName("GridAttributeNote"));
+            new Grid(this, new GridName<AttributeNote>());
             // Load
-            app.GridData.LoadDatabase<HelloWorld>(new GridName("Grid1"));
-            app.GridData.LoadDatabaseInit<Attribute>(new GridName("GridAttribute"));
-            app.GridData.LoadDatabaseInit<AttributeNote>(new GridName("GridAttributeNote"));
-            //
-            new Label(this) { Text = "Version=" + UtilFramework.VersionServer };
-            var d = new GridName("D");
-            d = new GridName<HelloWorld>();
-            d = new GridName<HelloWorld>("X");
-            d = new GridName<HelloWorld>("Grid", false);
+            app.GridData.LoadDatabase(new GridName<HelloWorld>());
+            app.GridData.LoadDatabaseInit(new GridName<Attribute>());
+            app.GridData.LoadDatabaseInit(new GridName<AttributeNote>());
         }
     }
 }
