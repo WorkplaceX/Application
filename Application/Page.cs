@@ -9,7 +9,6 @@ namespace Application
     {
         protected override void InitJson(App app)
         {
-            new Grid(this, new GridName("Lookup"));
             new Label(this) { Text = "Main", CssClass = "labelGroup" };
             new Grid(this, HelloWorld.GridName);
             Div div = new Div(this);
