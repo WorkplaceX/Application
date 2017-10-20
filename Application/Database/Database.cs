@@ -7,6 +7,7 @@
     using Framework.Component;
     using Framework.DataAccessLayer;
     using Database.Calculated;
+    using Microsoft.EntityFrameworkCore.Query.Internal;
 
     public partial class AttributeNote
     {
@@ -173,12 +174,45 @@
 
 namespace Database.Calculated
 {
+    using System.Linq;
+    using Framework.Application;
     using Framework.DataAccessLayer;
+    using System.Collections.Generic;
 
     public class HelloWorld_NumberLookup : Row
     {
         public int Number { get; set; }
 
         public string Text { get; set; }
+    }
+
+    public class MyTable : Row
+    {
+        public string Description { get; set; }
+
+        public double Value { get; set; }
+
+        protected override IQueryable Where(App app, GridName gridName)
+        {
+            List<MyTable> result = new List<MyTable>();
+            result.Add(new MyTable() { Description = "North", Value = 0 });
+            result.Add(new MyTable() { Description = "East", Value = 90 });
+            result.Add(new MyTable() { Description = "South", Value = 180 });
+            result.Add(new MyTable() { Description = "West", Value = 270 });
+            return result.AsQueryable();
+        }
+
+        protected override void Update(App app, GridName gridName, Index index, Row row, Row rowNew)
+        {
+            base.Update(app, gridName, index, row, rowNew);
+        }
+    }
+
+    public partial class MyTable_Description : Cell<MyTable>
+    {
+        protected override void CellTextParse(App app, GridName gridName, Index index, ref string result)
+        {
+            base.CellTextParse(app, gridName, index, ref result);
+        }
     }
 }

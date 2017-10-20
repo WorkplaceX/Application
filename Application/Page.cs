@@ -1,4 +1,5 @@
-﻿using Database.dbo;
+﻿using Database.Calculated;
+using Database.dbo;
 using Framework;
 using Framework.Application;
 using Framework.Component;
@@ -9,6 +10,9 @@ namespace Application
     {
         protected override void InitJson(App app)
         {
+            new Grid(this, new GridName<MyTable>());
+            app.GridData.LoadDatabase(new GridName<MyTable>());
+            //
             new Label(this) { Text = "Main", CssClass = "labelGroup" };
             new Grid(this, HelloWorld.GridName);
             Div div = new Div(this);
@@ -34,6 +38,8 @@ namespace Application
             app.GridData.LoadDatabase(HelloWorld.GridName);
             app.GridData.LoadDatabaseInit(new GridName<Attribute>());
             app.GridData.LoadDatabaseInit(new GridName<AttributeNote>());
+            //
+
             //
             new Label(this) { Text = "Version=" + UtilFramework.VersionServer };
         }
