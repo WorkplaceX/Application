@@ -10,6 +10,7 @@ namespace Application
     {
         protected override void InitJson(App app)
         {
+            new Label(this) { Text = "In-Memory", CssClass = "labelGroup" };
             new Grid(this, new GridName<MyTable>());
             app.GridData.LoadDatabase(new GridName<MyTable>());
             //

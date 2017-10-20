@@ -7,7 +7,6 @@
     using Framework.Component;
     using Framework.DataAccessLayer;
     using Database.Calculated;
-    using Microsoft.EntityFrameworkCore.Query.Internal;
 
     public partial class AttributeNote
     {
@@ -30,14 +29,14 @@
             return result;
         }
 
-        protected override void Insert(App app)
+        protected override void Insert(App app, GridName gridName, Index index)
         {
             Attribute rowMaster = app.GridData.RowSelected(new GridName<Attribute>());
             if (rowMaster != null)
             {
                 this.AttributeId = rowMaster.Id;
             }
-            base.Insert(app);
+            base.Insert(app, gridName, index);
         }
     }
 
@@ -62,14 +61,14 @@
             return result;
         }
 
-        protected override void Insert(App app)
+        protected override void Insert(App app, GridName gridName, Index index)
         {
             HelloWorld rowMaster = app.GridData.RowSelected(HelloWorld.GridName);
             if (rowMaster != null)
             {
                 this.HelloWorldId = rowMaster.Id;
             }
-            base.Insert(app);
+            base.Insert(app, gridName, index);
         }
 
         [SqlColumn(null, typeof(Attribute_Delete))]
@@ -205,6 +204,11 @@ namespace Database.Calculated
         protected override void Update(App app, GridName gridName, Index index, Row row, Row rowNew)
         {
             base.Update(app, gridName, index, row, rowNew);
+        }
+
+        protected override void Insert(App app, GridName gridName, Index index)
+        {
+            base.Insert(app, gridName, index);
         }
     }
 
