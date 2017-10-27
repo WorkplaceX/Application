@@ -18,7 +18,7 @@
             }
         }
 
-        protected override IQueryable Where(App app, GridName gridName)
+        protected override IQueryable Query(App app, GridName gridName)
         {
             IQueryable result = null;
             Attribute rowMaster = app.GridData.RowSelected(new GridName<Attribute>());
@@ -50,7 +50,7 @@
             }
         }
 
-        protected override IQueryable Where(App app, GridName gridName)
+        protected override IQueryable Query(App app, GridName gridName)
         {
             IQueryable result = null;
             HelloWorld rowMaster = app.GridData.RowSelected(HelloWorld.GridName);
@@ -135,13 +135,15 @@
             }
         }
 
-        protected override void CellLookup(out Type typeRow, out List<Row> rowList)
+        protected override void CellLookup(out IQueryable query)
         {
-            typeRow = typeof(HelloWorld_NumberLookup);
-            rowList = new List<Row>();
-            rowList.Add(new HelloWorld_NumberLookup() { Number = 100, Text = "One hundered" });
-            rowList.Add(new HelloWorld_NumberLookup() { Number = -200, Text = "Two hundered" });
-            rowList.Add(new HelloWorld_NumberLookup() { Number = 300, Text = "Three hundered" });
+            var list = new List<HelloWorld_NumberLookup>();
+            list.Add(new HelloWorld_NumberLookup() { Number = 100, Text = "One hundered" });
+            list.Add(new HelloWorld_NumberLookup() { Number = -200, Text = "Two hundered" });
+            list.Add(new HelloWorld_NumberLookup() { Number = 300, Text = "Three hundered" });
+            query = list.AsQueryable();
+
+            // query = UtilDataAccessLayer.Query<HelloWorld>();
         }
     }
 
@@ -191,7 +193,7 @@ namespace Database.Calculated
 
         public double Value { get; set; }
 
-        protected override IQueryable Where(App app, GridName gridName)
+        protected override IQueryable Query(App app, GridName gridName)
         {
             List<MyTable> result = new List<MyTable>();
             result.Add(new MyTable() { Description = "North", Value = 0 });
