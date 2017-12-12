@@ -1,0 +1,1 @@
+﻿DELETE FrameworkVersion WHERE Name = 'Application' AND Version = 'v0.0'

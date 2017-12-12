@@ -1,0 +1,1 @@
+﻿UPDATE FrameworkVersion SET Version = 'v0.0' WHERE Name = 'Application' AND Version = 'v1.0'
