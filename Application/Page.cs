@@ -12,6 +12,8 @@ namespace Application
             new Label(this) { Text = "Application Start" };
             new Grid(this, new GridName<HelloWorld>());
             app.GridData.LoadDatabase(new GridName<HelloWorld>());
+            new Label(this) { Text = "VersionServer=" + UtilFramework.VersionServer };
+
         }
     }
 }
