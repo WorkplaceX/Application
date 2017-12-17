@@ -1,1 +1,3 @@
-﻿DROP TABLE HelloWorld
+﻿/*
+DROP TABLE HelloWorld
+*/
