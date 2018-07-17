@@ -1,8 +1,0 @@
-﻿/*
-CREATE TABLE HelloWorld
-(
-	Id INT PRIMARY KEY IDENTITY,
-  	Text NVARCHAR(256),
-	Number FLOAT
-)
-*/
