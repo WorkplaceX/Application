@@ -1,3 +1,3 @@
 # Server
 
-ASP.NET Core Application Server
+ASP.NET Core application server.

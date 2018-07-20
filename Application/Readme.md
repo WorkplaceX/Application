@@ -1,3 +1,3 @@
 # Application
 
-Company business logic goes here.
+Business application library. Company business logic goes here.
