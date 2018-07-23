@@ -1,4 +1,5 @@
-﻿dist: trusty
+﻿language: ruby
+dist: trusty
 sudo: required
 
 install: ./Submodule/Framework.Cli/Ci/travis-ci.org/Install.sh
