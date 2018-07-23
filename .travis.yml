@@ -1,3 +1,1 @@
-﻿dotnet: 2.0.0
-
-install: ./Submodule/Framework.Cli/Ci/travis-ci.org/Install.sh
+﻿install: ./Submodule/Framework.Cli/Ci/travis-ci.org/Install.sh
