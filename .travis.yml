@@ -1,1 +1,3 @@
-﻿install: bash ./Submodule/Framework.Cli/Ci/travis-ci.org/Install.sh
+﻿install: ./Submodule/Framework.Cli/Ci/travis-ci.org/Install.sh
+
+script: ./Submodule/Framework.Cli/Ci/travis-ci.org/Build.sh
