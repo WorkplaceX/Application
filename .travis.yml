@@ -1,1 +1,4 @@
-﻿install: bash ./Submodule/Framework.Cli/Ci/travis-ci.org/Install.sh
+﻿dist: trusty
+sudo: required
+
+install: ./Submodule/Framework.Cli/Ci/travis-ci.org/Install.sh
