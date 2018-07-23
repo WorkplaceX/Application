@@ -1,3 +1,1 @@
-﻿language: bash
-
-install: ./Submodule/Framework.Cli/Ci/travis-ci.org/Install.sh
+﻿install: bash ./Submodule/Framework.Cli/Ci/travis-ci.org/Install.sh
