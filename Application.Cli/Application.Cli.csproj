@@ -5,4 +5,8 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Submodule\Framework.Cli\Framework.Cli.csproj" />
+  </ItemGroup>
+
 </Project>
