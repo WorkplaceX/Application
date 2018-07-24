@@ -8,7 +8,6 @@
         static void Main(string[] args)
         {
             UtilCli.Run(args);
-            Console.ReadLine();
         }
     }
 }
