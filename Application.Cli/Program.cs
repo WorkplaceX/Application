@@ -7,7 +7,7 @@
     {
         static void Main(string[] args)
         {
-            UtilCli.Run(args);
+            new AppCli().Run(args);
         }
     }
 }
