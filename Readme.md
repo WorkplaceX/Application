@@ -1,4 +1,7 @@
 # Application Start
+[![Build Status](https://travis-ci.org/WorkplaceX/ApplicationStart.svg?branch=master)](https://travis-ci.org/WorkplaceX/ApplicationStart)
+(ApplicationStart; travis;)
+
 Develop business application with WorkplaceX framework.
 
 ## Command Line Interface (CLI)
