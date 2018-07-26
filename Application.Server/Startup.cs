@@ -27,7 +27,7 @@ namespace Application.Server
 
             app.Run(async (context) =>
             {
-                await context.Response.WriteAsync("Hello World6!");
+                await context.Response.WriteAsync("Hello World7!");
             });
         }
     }
