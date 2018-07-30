@@ -1,2 +1,2 @@
 echo %*
-dotnet run --project "Application.Cli/" -- %*
+dotnet run --no-build --project "Application.Cli/" -- %*
