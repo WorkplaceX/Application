@@ -11,5 +11,11 @@
   <ItemGroup>
     <ProjectReference Include="..\Framework\Framework\Framework.csproj" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <None Update="Framework\**\*">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>  
 
 </Project>

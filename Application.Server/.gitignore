@@ -1,5 +1,5 @@
 /bin/
 /obj/
-/wwwroot/framework/dist/
+/Framework/dist/
 /Properties/PublishProfiles/
 /*.user
