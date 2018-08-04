@@ -1,4 +1,4 @@
-# Application Start
+# Application
 [![Build Status](https://travis-ci.org/WorkplaceX/Application.svg?branch=master)](https://travis-ci.org/WorkplaceX/Application)
 (Application; travis;)
 
@@ -13,7 +13,7 @@ git clone https://github.com/WorkplaceX/Application.git --recursive
 In the root folder type fm for framework cli.
 
 ```cmd
-C:\GitHub\ApplicationStart\fm
+C:\GitHub\Application\fm
 ```
 
 ## .travis.yml
