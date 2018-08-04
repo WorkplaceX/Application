@@ -16,6 +16,8 @@ In the root folder type fm for framework cli.
 cd Application
 fm
 ```
+This will show the framework CLI:
+![Cli](https://raw.githubusercontent.com/WorkplaceX/Framework/master/Doc/Cli.png)
 
 ## .travis.yml
 File is a copy of Framework/Framework.Cli/Ci/travis-ci.org
