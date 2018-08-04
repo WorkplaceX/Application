@@ -1,6 +1,6 @@
 # Application Start
-[![Build Status](https://travis-ci.org/WorkplaceX/ApplicationStart.svg?branch=master)](https://travis-ci.org/WorkplaceX/ApplicationStart)
-(ApplicationStart; travis;)
+[![Build Status](https://travis-ci.org/WorkplaceX/Application.svg?branch=master)](https://travis-ci.org/WorkplaceX/Application)
+(Application; travis;)
 
 Develop business applications with WorkplaceX framework.
 
