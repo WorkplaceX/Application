@@ -6,7 +6,7 @@ Develop business applications with WorkplaceX framework.
 
 ## Clone
 ```cmd
-git clone https://github.com/WorkplaceX/ApplicationStart.git --recursive
+git clone https://github.com/WorkplaceX/Application.git --recursive
 ```
 
 ## Command Line Interface (CLI)
