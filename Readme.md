@@ -13,7 +13,8 @@ git clone https://github.com/WorkplaceX/Application.git --recursive
 In the root folder type fm for framework cli.
 
 ```cmd
-C:\GitHub\Application\fm
+cd Application
+fm
 ```
 
 ## .travis.yml
