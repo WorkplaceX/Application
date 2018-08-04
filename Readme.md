@@ -17,6 +17,7 @@ cd Application
 fm
 ```
 This will show the framework CLI:
+
 ![Cli](https://raw.githubusercontent.com/WorkplaceX/Framework/master/Doc/Cli.png)
 
 ## .travis.yml
