@@ -1,9 +1,0 @@
-{
-  "WebsiteList": [
-    {
-      "DomainName": "default",
-      "FolderNameNpmBuild": "Website/",
-      "FolderNameDist": "Website/dist/"
-    }
-  ]
-}

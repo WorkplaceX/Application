@@ -1,5 +1,6 @@
 ﻿namespace Application.Cli
 {
+    using Framework;
     using Framework.Cli;
     using Microsoft.Extensions.CommandLineUtils;
     using System;
@@ -11,6 +12,16 @@
             new MyCommand(this);
 
             base.RegisterCommand();
+        }
+
+        protected override void InitConfigCli(ConfigCli configCli)
+        {
+            configCli.WebsiteList.Add(new ConfigCliWebsite()
+            {
+                DomainName = "default",
+                FolderNameNpmBuild = "Website/",
+                FolderNameDist = "Website/dist/",
+            });
         }
     }
 

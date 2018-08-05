@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "webpack-dev-server",
-    "webpack": "webpack"
+    "build": "webpack"
   },
   "devDependencies": {
     "file-loader": "^1.1.11",
