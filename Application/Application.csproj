@@ -7,4 +7,9 @@
     <StartupObject />
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Application.Database\Application.Database.csproj" />
+    <ProjectReference Include="..\Framework\Framework\Framework.csproj" />
+  </ItemGroup>
+
 </Project>
