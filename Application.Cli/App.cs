@@ -1,7 +1,7 @@
 ﻿namespace Application.Cli
 {
-    using Framework;
     using Framework.Cli;
+    using Framework.Cli.Config;
     using Microsoft.Extensions.CommandLineUtils;
     using System;
 
