@@ -1,6 +1,7 @@
 ﻿namespace Application
 {
     using Framework.Application;
+    using Framework.ComponentJson;
     using System;
 
     public class AppHelloWorld : App
@@ -9,6 +10,9 @@
         {
             base.Process();
             AppJson.Name = "HelloWorld " + DateTime.Now.ToUniversalTime().ToString();
+            //
+            new Button(AppJson) { Text = "Click" };
+            new Button(AppJson) { Text = "Click2" };
         }
     }
 
