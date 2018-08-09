@@ -1,12 +1,12 @@
 ﻿namespace Application
 {
-    using Database.dbo;
     using Framework.Application;
     using Framework.Json;
     using Framework.Dal;
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using Database.Person;
 
     /// <summary>
     /// Main application.
@@ -38,12 +38,12 @@
             gridRow1.CellList.Add(new GridCell() { Text = "Blue green" });
             gridRow1.CellList.Add(new GridCell() { Text = "2212" });
 
-            List<Row> airportList = new List<Row>();
-            airportList.Add(new Airport() { Id = 1, Code = "ZRH", Text = "Zürich" });
-            airportList.Add(new Airport() { Id = 2, Code = "BSL", Text = "Basel" });
-            airportList.Add(new Airport() { Id = 3, Code = "LAX", Text = "Los Angeles" });
+            List<Row> list = new List<Row>();
 
-            grid.Load(this, airportList);
+            list.Add(new vAdditionalContactInfo() { FirstName = "Max", LastName = "Meyer" });
+            list.Add(new vAdditionalContactInfo() { FirstName = "John", LastName = "Ford" });
+
+            grid.Load(this, list);
         }
 
         protected override void Process()

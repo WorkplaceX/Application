@@ -2,8 +2,5 @@
 
 namespace Database.dbo.Custom
 {
-    public class Airline_Text : dbo.Airline_Text
-    {
 
-    }
 }
