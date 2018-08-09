@@ -9,13 +9,13 @@
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            Framework.Server.Startup.ConfigureServices(services);
+            Framework.Server.StartupFramework.ConfigureServices(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app)
         {
-            Framework.Server.Startup.Configure(app, new AppSelectorHelloWorld());
+            Framework.Server.StartupFramework.Configure(app, new AppSelectorHelloWorld());
         }
     }
 }

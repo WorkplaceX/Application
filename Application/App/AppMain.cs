@@ -6,7 +6,10 @@
     using System.Collections.Generic;
     using System.Linq;
 
-    public class AppHelloWorld : App
+    /// <summary>
+    /// Main application.
+    /// </summary>
+    public class AppMain : App
     {
         protected override void Init()
         {
@@ -59,7 +62,7 @@
     {
         protected override App CreateApp()
         {
-            return new AppHelloWorld();
+            return new AppMain();
         }
     }
 }

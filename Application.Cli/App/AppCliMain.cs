@@ -5,7 +5,10 @@
     using Microsoft.Extensions.CommandLineUtils;
     using System;
 
-    public class AppCli : AppCliBase
+    /// <summary>
+    /// Command line interface application.
+    /// </summary>
+    public class AppCliMain : AppCli
     {
         protected override void RegisterCommand()
         {
@@ -27,7 +30,7 @@
 
     public class MyCommand : CommandBase
     {
-        public MyCommand(AppCliBase appCli) 
+        public MyCommand(AppCli appCli) 
             : base(appCli, "My", "My command")
         {
 
