@@ -1,7 +1,9 @@
 ﻿namespace Application
 {
+    using Database.dbo;
     using Framework.Application;
     using Framework.ComponentJson;
+    using Framework.Dal;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -35,12 +37,19 @@
             gridRow1.CellList = new List<GridCell>();
             gridRow1.CellList.Add(new GridCell() { Text = "Blue green" });
             gridRow1.CellList.Add(new GridCell() { Text = "2212" });
+
+            List<Row> airportList = new List<Row>();
+            airportList.Add(new Airport() { Id = 1, Code = "ZRH", Text = "Zürich" });
+            airportList.Add(new Airport() { Id = 2, Code = "BSL", Text = "Basel" });
+            airportList.Add(new Airport() { Id = 3, Code = "LAX", Text = "Los Angeles" });
+
+            grid.Load(this, airportList);
         }
 
         protected override void Process()
         {
             base.Process();
-            AppJson.Name = "HelloWorld " + DateTime.Now.ToUniversalTime().ToString();
+            AppJson.Name = "HelloWorld " + DateTime.Now.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss.fff");
             //
             foreach (var grid in AppJson.ListAll().OfType<Grid>())
             {
