@@ -2,7 +2,7 @@
 {
     using Database.dbo;
     using Framework.Application;
-    using Framework.ComponentJson;
+    using Framework.Json;
     using Framework.Dal;
     using System;
     using System.Collections.Generic;
