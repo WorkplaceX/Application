@@ -7,6 +7,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using Database.Person;
+    using Microsoft.EntityFrameworkCore;
 
     /// <summary>
     /// Main application.
@@ -20,7 +21,6 @@
             //
             Grid grid = new Grid(AppJson);
             var list = UtilDal.Query<vAdditionalContactInfo>().ToList();
-
             grid.Load(this, list);
         }
 
