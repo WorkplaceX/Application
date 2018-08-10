@@ -52,6 +52,7 @@ namespace Database.dbo
 
         [SqlField("TSQL", typeof(DatabaseLog_TSQL))]
         public string TSQL { get; set; }
+
     }
 
     public class DatabaseLog_DatabaseLogID : Cell<DatabaseLog> { }
@@ -118,6 +119,15 @@ namespace Database.dbo
     public class ErrorLog_ErrorLine : Cell<ErrorLog> { }
 
     public class ErrorLog_ErrorMessage : Cell<ErrorLog> { }
+
+    [SqlTable("dbo", "Wait")]
+    public class Wait : Row
+    {
+        [SqlField("Value", typeof(Wait_Value))]
+        public int? Value { get; set; }
+    }
+
+    public class Wait_Value : Cell<Wait> { }
 }
 
 namespace Database.HumanResources
@@ -161,6 +171,7 @@ namespace Database.HumanResources
         [SqlField("LoginID", typeof(Employee_LoginID))]
         public string LoginID { get; set; }
 
+
         [SqlField("OrganizationLevel", typeof(Employee_OrganizationLevel))]
         public Int16? OrganizationLevel { get; set; }
 
@@ -169,6 +180,8 @@ namespace Database.HumanResources
 
         [SqlField("BirthDate", typeof(Employee_BirthDate))]
         public DateTime BirthDate { get; set; }
+
+
 
         [SqlField("HireDate", typeof(Employee_HireDate))]
         public DateTime HireDate { get; set; }
@@ -296,6 +309,7 @@ namespace Database.HumanResources
         [SqlField("BusinessEntityID", typeof(JobCandidate_BusinessEntityID))]
         public int? BusinessEntityID { get; set; }
 
+
         [SqlField("ModifiedDate", typeof(JobCandidate_ModifiedDate))]
         public DateTime ModifiedDate { get; set; }
     }
@@ -316,6 +330,8 @@ namespace Database.HumanResources
 
         [SqlField("Name", typeof(Shift_Name))]
         public string Name { get; set; }
+
+
 
         [SqlField("ModifiedDate", typeof(Shift_ModifiedDate))]
         public DateTime ModifiedDate { get; set; }
@@ -384,6 +400,7 @@ namespace Database.HumanResources
 
         [SqlField("CountryRegionName", typeof(vEmployee_CountryRegionName))]
         public string CountryRegionName { get; set; }
+
     }
 
     public class vEmployee_BusinessEntityID : Cell<vEmployee> { }
@@ -774,6 +791,7 @@ namespace Database.Person
         [SqlField("PostalCode", typeof(Address_PostalCode))]
         public string PostalCode { get; set; }
 
+
         [SqlField("rowguid", typeof(Address_rowguid))]
         public Guid rowguid { get; set; }
 
@@ -1002,6 +1020,7 @@ namespace Database.Person
         [SqlField("BusinessEntityID", typeof(Person_BusinessEntityID), true)]
         public int BusinessEntityID { get; set; }
 
+
         [SqlField("NameStyle", typeof(Person_NameStyle))]
         public bool NameStyle { get; set; }
 
@@ -1022,6 +1041,8 @@ namespace Database.Person
 
         [SqlField("EmailPromotion", typeof(Person_EmailPromotion))]
         public int EmailPromotion { get; set; }
+
+
 
         [SqlField("rowguid", typeof(Person_rowguid))]
         public Guid rowguid { get; set; }
@@ -1104,6 +1125,7 @@ namespace Database.Person
     {
         [SqlField("StateProvinceID", typeof(StateProvince_StateProvinceID), true)]
         public int StateProvinceID { get; set; }
+
 
         [SqlField("CountryRegionCode", typeof(StateProvince_CountryRegionCode))]
         public string CountryRegionCode { get; set; }
@@ -1235,6 +1257,7 @@ namespace Database.Person
         [SqlField("StateProvinceID", typeof(vStateProvinceCountryRegion_StateProvinceID))]
         public int StateProvinceID { get; set; }
 
+
         [SqlField("IsOnlyStateProvinceFlag", typeof(vStateProvinceCountryRegion_IsOnlyStateProvinceFlag))]
         public bool IsOnlyStateProvinceFlag { get; set; }
 
@@ -1289,6 +1312,7 @@ namespace Database.Production
         [SqlField("EndDate", typeof(BillOfMaterials_EndDate))]
         public DateTime? EndDate { get; set; }
 
+
         [SqlField("BOMLevel", typeof(BillOfMaterials_BOMLevel))]
         public Int16 BOMLevel { get; set; }
 
@@ -1320,6 +1344,7 @@ namespace Database.Production
     [SqlTable("Production", "Culture")]
     public class Culture : Row
     {
+
         [SqlField("Name", typeof(Culture_Name))]
         public string Name { get; set; }
 
@@ -1336,6 +1361,7 @@ namespace Database.Production
     [SqlTable("Production", "Document")]
     public class Document : Row
     {
+
         [SqlField("DocumentLevel", typeof(Document_DocumentLevel))]
         public Int16? DocumentLevel { get; set; }
 
@@ -1353,6 +1379,7 @@ namespace Database.Production
 
         [SqlField("FileExtension", typeof(Document_FileExtension))]
         public string FileExtension { get; set; }
+
 
         [SqlField("ChangeNumber", typeof(Document_ChangeNumber))]
         public int ChangeNumber { get; set; }
@@ -1407,6 +1434,7 @@ namespace Database.Production
         [SqlField("IllustrationID", typeof(Illustration_IllustrationID), true)]
         public int IllustrationID { get; set; }
 
+
         [SqlField("ModifiedDate", typeof(Illustration_ModifiedDate))]
         public DateTime ModifiedDate { get; set; }
     }
@@ -1425,6 +1453,7 @@ namespace Database.Production
 
         [SqlField("Name", typeof(Location_Name))]
         public string Name { get; set; }
+
 
         [SqlField("Availability", typeof(Location_Availability))]
         public Decimal Availability { get; set; }
@@ -1479,11 +1508,16 @@ namespace Database.Production
         [SqlField("Size", typeof(Product_Size))]
         public string Size { get; set; }
 
+
+
         [SqlField("Weight", typeof(Product_Weight))]
         public Decimal? Weight { get; set; }
 
         [SqlField("DaysToManufacture", typeof(Product_DaysToManufacture))]
         public int DaysToManufacture { get; set; }
+
+
+
 
         [SqlField("ProductSubcategoryID", typeof(Product_ProductSubcategoryID))]
         public int? ProductSubcategoryID { get; set; }
@@ -1640,6 +1674,7 @@ namespace Database.Production
         [SqlField("ProductID", typeof(ProductDocument_ProductID), true)]
         public int ProductID { get; set; }
 
+
         [SqlField("ModifiedDate", typeof(ProductDocument_ModifiedDate))]
         public DateTime ModifiedDate { get; set; }
     }
@@ -1727,6 +1762,8 @@ namespace Database.Production
         [SqlField("Name", typeof(ProductModel_Name))]
         public string Name { get; set; }
 
+
+
         [SqlField("rowguid", typeof(ProductModel_rowguid))]
         public Guid rowguid { get; set; }
 
@@ -1773,6 +1810,7 @@ namespace Database.Production
 
         [SqlField("ProductDescriptionID", typeof(ProductModelProductDescriptionCulture_ProductDescriptionID), true)]
         public int ProductDescriptionID { get; set; }
+
 
         [SqlField("ModifiedDate", typeof(ProductModelProductDescriptionCulture_ModifiedDate))]
         public DateTime ModifiedDate { get; set; }
@@ -1954,6 +1992,7 @@ namespace Database.Production
         [SqlField("TransactionDate", typeof(TransactionHistory_TransactionDate))]
         public DateTime TransactionDate { get; set; }
 
+
         [SqlField("Quantity", typeof(TransactionHistory_Quantity))]
         public int Quantity { get; set; }
 
@@ -2000,6 +2039,7 @@ namespace Database.Production
         [SqlField("TransactionDate", typeof(TransactionHistoryArchive_TransactionDate))]
         public DateTime TransactionDate { get; set; }
 
+
         [SqlField("Quantity", typeof(TransactionHistoryArchive_Quantity))]
         public int Quantity { get; set; }
 
@@ -2031,6 +2071,7 @@ namespace Database.Production
     [SqlTable("Production", "UnitMeasure")]
     public class UnitMeasure : Row
     {
+
         [SqlField("Name", typeof(UnitMeasure_Name))]
         public string Name { get; set; }
 
@@ -2055,6 +2096,7 @@ namespace Database.Production
 
         [SqlField("ProductModel", typeof(vProductAndDescription_ProductModel))]
         public string ProductModel { get; set; }
+
 
         [SqlField("Description", typeof(vProductAndDescription_Description))]
         public string Description { get; set; }
@@ -2411,6 +2453,7 @@ namespace Database.Purchasing
 
         [SqlField("OnOrderQty", typeof(ProductVendor_OnOrderQty))]
         public int? OnOrderQty { get; set; }
+
 
         [SqlField("ModifiedDate", typeof(ProductVendor_ModifiedDate))]
         public DateTime ModifiedDate { get; set; }
@@ -2769,6 +2812,7 @@ namespace Database.Sales
         [SqlField("CountryRegionCode", typeof(CountryRegionCurrency_CountryRegionCode), true)]
         public string CountryRegionCode { get; set; }
 
+
         [SqlField("ModifiedDate", typeof(CountryRegionCurrency_ModifiedDate))]
         public DateTime ModifiedDate { get; set; }
     }
@@ -2816,6 +2860,7 @@ namespace Database.Sales
     [SqlTable("Sales", "Currency")]
     public class Currency : Row
     {
+
         [SqlField("Name", typeof(Currency_Name))]
         public string Name { get; set; }
 
@@ -2837,6 +2882,8 @@ namespace Database.Sales
 
         [SqlField("CurrencyRateDate", typeof(CurrencyRate_CurrencyRateDate))]
         public DateTime CurrencyRateDate { get; set; }
+
+
 
         [SqlField("AverageRate", typeof(CurrencyRate_AverageRate))]
         public Decimal AverageRate { get; set; }
@@ -3147,6 +3194,7 @@ namespace Database.Sales
         [SqlField("Bonus", typeof(SalesPerson_Bonus))]
         public Decimal Bonus { get; set; }
 
+
         [SqlField("SalesYTD", typeof(SalesPerson_SalesYTD))]
         public Decimal SalesYTD { get; set; }
 
@@ -3242,6 +3290,7 @@ namespace Database.Sales
 
         [SqlField("TaxType", typeof(SalesTaxRate_TaxType))]
         public Byte TaxType { get; set; }
+
 
         [SqlField("Name", typeof(SalesTaxRate_Name))]
         public string Name { get; set; }
@@ -3398,6 +3447,7 @@ namespace Database.Sales
         [SqlField("Description", typeof(SpecialOffer_Description))]
         public string Description { get; set; }
 
+
         [SqlField("Type", typeof(SpecialOffer_Type))]
         public string Type { get; set; }
 
@@ -3481,6 +3531,7 @@ namespace Database.Sales
         [SqlField("SalesPersonID", typeof(Store_SalesPersonID))]
         public int? SalesPersonID { get; set; }
 
+
         [SqlField("rowguid", typeof(Store_rowguid))]
         public Guid rowguid { get; set; }
 
@@ -3553,6 +3604,7 @@ namespace Database.Sales
 
         [SqlField("CountryRegionName", typeof(vIndividualCustomer_CountryRegionName))]
         public string CountryRegionName { get; set; }
+
     }
 
     public class vIndividualCustomer_BusinessEntityID : Cell<vIndividualCustomer> { }
@@ -3789,14 +3841,6 @@ namespace Database.Sales
         [SqlField("SalesTerritory", typeof(vSalesPersonSalesByFiscalYears_SalesTerritory))]
         public string SalesTerritory { get; set; }
 
-        [SqlField("2002", typeof(vSalesPersonSalesByFiscalYears_2002))]
-        public Decimal? x2002 { get; set; }
-
-        [SqlField("2003", typeof(vSalesPersonSalesByFiscalYears_2003))]
-        public Decimal? x2003 { get; set; }
-
-        [SqlField("2004", typeof(vSalesPersonSalesByFiscalYears_2004))]
-        public Decimal? x2004 { get; set; }
     }
 
     public class vSalesPersonSalesByFiscalYears_SalesPersonID : Cell<vSalesPersonSalesByFiscalYears> { }

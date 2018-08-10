@@ -8,62 +8,33 @@
     using System.Linq;
     using Database.Person;
     using Microsoft.EntityFrameworkCore;
+    using Database.dbo;
+    using System.Threading.Tasks;
+    using System.Linq.Dynamic.Core;
+    using Framework.Server;
 
     /// <summary>
     /// Main application.
     /// </summary>
     public class AppMain : App
     {
-        protected override void Init()
+        protected override async Task InitAsync()
         {
             new Button(AppJson) { Text = "Click" };
             new Button(AppJson) { Text = "Click2" };
 
             Grid grid = new Grid(AppJson);
-            var list = UtilDal.Query<vAdditionalContactInfo>().ToList();
-            grid.Load(this, list);
+            var query = UtilDal.Query<vAdditionalContactInfo>();
 
             var grid2 = new Grid(AppJson);
-            var list2 = UtilDal.Query<Person>().Where(item => item.FirstName == "Kim").ToList();
-            grid2.Load(this, list2);
-        }
+            var query2 = UtilDal.Query<Person>().Where(item => item.FirstName == "Kim");
 
-        private void ProcessSave()
-        {
-            foreach (var grid in AppJson.ListAll().OfType<Grid>())
-            {
-                int gridIndex = grid.Id;
-                for (int rowIndex = 0; rowIndex < grid.RowList.Count; rowIndex++)
-                {
-                    for (int cellIndex = 0; cellIndex < grid.RowList[rowIndex].CellList.Count; cellIndex++)
-                    {
-                        if (grid.RowList[rowIndex].CellList[cellIndex].IsModify)
-                        { 
-}
-                    }
-                }
-            }
+            await Task.WhenAll(grid.LoadAsync(query), grid2.LoadAsync(query2));
         }
 
         protected override void Process()
         {
             AppJson.Name = "HelloWorld " + DateTime.Now.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss.fff");
-
-            ProcessSave();
-
-            foreach (var grid in AppJson.ListAll().OfType<Grid>())
-            {
-                foreach (var row in grid.RowList)
-                {
-                    row.CellList.ForEach(cell => cell.IsModify = false);
-                    if (row.IsClick)
-                    {
-                        grid.RowList.ForEach(item => item.IsSelect = false);
-                        row.IsClick = false;
-                        row.IsSelect = true;
-                    }
-                }
-            }
         }
     }
 
