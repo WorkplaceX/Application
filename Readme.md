@@ -14,7 +14,7 @@ In the root folder type fm for framework cli.
 
 ```cmd
 cd Application
-fm
+.\cli.cmd
 ```
 This will show the framework CLI:
 
