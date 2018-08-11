@@ -23,18 +23,54 @@
             new Button(AppJson) { Text = "Click" };
             new Button(AppJson) { Text = "Click2" };
 
-            Grid grid = new Grid(AppJson);
-            var query = UtilDal.Query<vAdditionalContactInfo>();
+            var grid = GridContactCreate();
+            GridPersonCreate();
 
-            var grid2 = new Grid(AppJson);
-            var query2 = UtilDal.Query<Person>().Where(item => item.FirstName == "Kim");
-
-            await Task.WhenAll(grid.LoadAsync(query), grid2.LoadAsync(query2));
+            await grid.LoadAsync();
         }
 
-        protected override void Process()
+        public Grid GridContactCreate()
+        {
+            return AppJson.Create<Grid>("Contact", (owner, name) => new Grid(owner) { Name = name });
+        }
+
+        public Grid GridPersonCreate()
+        {
+            return AppJson.Create<Grid>("Person", (owner, name) => new Grid(owner) { Name = name });
+        }
+
+        /// <summary>
+        /// Returns query to load data grid.
+        /// </summary>
+        protected override IQueryable GridLoadQuery(Grid grid)
+        {
+            if (grid == GridContactCreate())
+            {
+                return UtilDal.Query<vAdditionalContactInfo>();
+            }
+            if (grid == GridPersonCreate())
+            {
+                string firstName = ((vAdditionalContactInfo)GridContactCreate().Select()).FirstName;
+                return UtilDal.Query<Person>().Where(item => item.FirstName == firstName);
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Override this method to execute action after selected row changed. For example master, detail.
+        /// </summary>
+        protected override async Task GridRowSelectChangeAsync(Grid grid)
+        {
+            if (grid == GridContactCreate())
+            {
+                await GridPersonCreate().LoadAsync();
+            }
+        }
+
+        protected override Task ProcessAsync()
         {
             AppJson.Name = "HelloWorld " + DateTime.Now.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss.fff");
+            return base.ProcessAsync();
         }
     }
 
