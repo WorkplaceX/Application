@@ -23,20 +23,20 @@
             new Button(AppJson) { Text = "Click" };
             new Button(AppJson) { Text = "Click2" };
 
-            var grid = GridContactCreate();
-            GridPersonCreate();
+            var grid = GridContact();
+            GridPerson();
 
             await grid.LoadAsync();
         }
 
-        public Grid GridContactCreate()
+        public Grid GridContact()
         {
-            return AppJson.Create<Grid>("Contact", (owner, name) => new Grid(owner) { Name = name });
+            return AppJson.CreateOrGet<Grid>("Contact");
         }
 
-        public Grid GridPersonCreate()
+        public Grid GridPerson()
         {
-            return AppJson.Create<Grid>("Person", (owner, name) => new Grid(owner) { Name = name });
+            return AppJson.CreateOrGet<Grid>("Person");
         }
 
         /// <summary>
@@ -44,13 +44,13 @@
         /// </summary>
         protected override IQueryable GridLoadQuery(Grid grid)
         {
-            if (grid == GridContactCreate())
+            if (grid == GridContact())
             {
                 return UtilDal.Query<vAdditionalContactInfo>();
             }
-            if (grid == GridPersonCreate())
+            if (grid == GridPerson())
             {
-                string firstName = ((vAdditionalContactInfo)GridContactCreate().Select()).FirstName;
+                string firstName = ((vAdditionalContactInfo)GridContact().RowSelected()).FirstName;
                 return UtilDal.Query<Person>().Where(item => item.FirstName == firstName);
             }
             return null;
@@ -61,9 +61,9 @@
         /// </summary>
         protected override async Task GridRowSelectChangeAsync(Grid grid)
         {
-            if (grid == GridContactCreate())
+            if (grid == GridContact())
             {
-                await GridPersonCreate().LoadAsync();
+                await GridPerson().LoadAsync();
             }
         }
 
