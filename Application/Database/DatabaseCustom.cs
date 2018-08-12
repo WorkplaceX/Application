@@ -1,6 +1,14 @@
 ﻿// Custom implementation of database table and field.
 
-namespace Database.dbo.Custom
+namespace DatabaseCustom.Person
 {
+    public class vAdditionalContactInfo : Database.Person.vAdditionalContactInfo
+    {
 
+    }
+
+    public class Person : Database.Person.Person
+    {
+
+    }
 }
