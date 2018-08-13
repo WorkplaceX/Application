@@ -20,13 +20,20 @@
     {
         protected override async Task InitAsync()
         {
+            await AppJson.PageShowAsync<PageMain>();
             new Button(AppJson) { Text = "Click" };
             new Button(AppJson) { Text = "Click2" };
+            MyButton().Text = "MyClick";
 
             var grid = GridContact();
             GridPerson();
 
             await grid.LoadAsync();
+        }
+
+        public Button MyButton()
+        {
+            return AppJson.CreateOrGet<Button>("MyButton");
         }
 
         public Grid GridContact()
@@ -67,10 +74,56 @@
             }
         }
 
+        protected override Task ButtonClickAsync(Button button)
+        {
+            if (button == MyButton())
+            {
+
+            }
+            return base.ButtonClickAsync(button);
+        }
+
         protected override Task ProcessAsync()
         {
             AppJson.Name = "HelloWorld " + DateTime.Now.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss.fff");
             return base.ProcessAsync();
+        }
+    }
+
+    public class PageMain : Page
+    {
+        public PageMain() : this(null) { }
+
+        public PageMain(ComponentJson owner)
+            : base(owner)
+        {
+
+        }
+
+        protected override Task InitAsync()
+        {
+            ButtonYes().Text = "Yes";
+            ButtonNo().Text = "No";
+            return base.InitAsync();
+        }
+
+        public Button ButtonYes()
+        {
+            return this.CreateOrGet<Button>("Yes");
+        }
+
+        public Button ButtonNo()
+        {
+            return this.CreateOrGet<Button>("No");
+        }
+
+        protected override Task ButtonClickAsync(Button button)
+        {
+            if (button == ButtonYes())
+            {
+
+            }
+            return base.ButtonClickAsync(button);
         }
     }
 
