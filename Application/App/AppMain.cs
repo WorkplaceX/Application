@@ -20,10 +20,10 @@
     {
         protected override async Task InitAsync()
         {
-            await AppJson.PageShowAsync<PageMain>();
+            await AppJson.PageShowAsync<PageMain>("Main");
             new Button(AppJson) { Text = "Click" };
             new Button(AppJson) { Text = "Click2" };
-            MyButton().Text = "MyClick";
+            MyButton();
 
             var grid = GridContact();
             GridPerson();
@@ -33,17 +33,17 @@
 
         public Button MyButton()
         {
-            return AppJson.CreateOrGet<Button>("MyButton");
+            return AppJson.GetOrCreate<Button>("MyButton", (button) => button.Text = "MyClick" );
         }
 
         public Grid GridContact()
         {
-            return AppJson.CreateOrGet<Grid>("Contact");
+            return AppJson.GetOrCreate<Grid>("Contact");
         }
 
         public Grid GridPerson()
         {
-            return AppJson.CreateOrGet<Grid>("Person");
+            return AppJson.GetOrCreate<Grid>("Person");
         }
 
         /// <summary>
@@ -97,24 +97,63 @@
         public PageMain(ComponentJson owner)
             : base(owner)
         {
+            new Html(this) { TextHtml = "Delete item: " };
+            ButtonDelete();
+        }
+
+        public Button ButtonDelete()
+        {
+            return this.GetOrCreate<Button>((button) => button.Text = "Delete");
+        }
+
+        protected override async Task ButtonClickAsync(Button button)
+        {
+            if (button == ButtonDelete())
+            {
+                await this.PageShowAsync<PageMessageBox>();
+            }
+        }
+
+        protected override Task ProcessAsync()
+        {
+            PageMessageBox messageBox = this.Get<PageMessageBox>();
+            if (messageBox?.IsYes != null)
+            {
+                if (messageBox.IsYes == true)
+                {
+                    new Html(this).TextHtml = "Deleted!";
+                }
+                messageBox.Remove();
+            }
+            return base.ProcessAsync();
+        }
+    }
+
+    public class PageMessageBox : Page
+    {
+        public PageMessageBox() : this(null) { }
+
+        public PageMessageBox(ComponentJson owner)
+            : base(owner)
+        {
 
         }
 
         protected override Task InitAsync()
         {
-            ButtonYes().Text = "Yes";
-            ButtonNo().Text = "No";
+            ButtonYes();
+            ButtonNo();
             return base.InitAsync();
         }
 
         public Button ButtonYes()
         {
-            return this.CreateOrGet<Button>("Yes");
+            return this.GetOrCreate<Button>("Yes", (button) => button.Text = "Yes");
         }
 
         public Button ButtonNo()
         {
-            return this.CreateOrGet<Button>("No");
+            return this.GetOrCreate<Button>("No", (button) => button.Text = "No");
         }
 
         protected override Task ButtonClickAsync(Button button)
@@ -122,9 +161,16 @@
             if (button == ButtonYes())
             {
                 new Html(this).TextHtml = "<b>Ok</b>";
+                this.IsYes = true;
+            }
+            if (button == ButtonNo())
+            {
+                this.IsYes = false;
             }
             return base.ButtonClickAsync(button);
         }
+
+        public bool? IsYes;
     }
 
     public class AppSelectorHelloWorld : AppSelector
