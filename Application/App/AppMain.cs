@@ -7,42 +7,24 @@
     using System.Collections.Generic;
     using System.Linq;
     using DatabaseCustom.Person;
-    using Microsoft.EntityFrameworkCore;
-    using Database.dbo;
     using System.Threading.Tasks;
     using System.Linq.Dynamic.Core;
-    using Framework.Server;
 
-    /// <summary>
-    /// Main application.
-    /// </summary>
-    public class AppMain : App
+    public class AppMain : AppJson
     {
-        protected override async Task InitAsync()
-        {
-            await AppJson.PageShowAsync<PageMain>("Main");
-        }
+        public AppMain() : this(null) { }
 
-        protected override Task ProcessAsync()
-        {
-            AppJson.Name = "HelloWorld " + DateTime.Now.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss.fff");
-            return base.ProcessAsync();
-        }
-    }
-
-    public class PageMain : Page
-    {
-        public PageMain() : this(null) { }
-
-        public PageMain(ComponentJson owner)
+        public AppMain(ComponentJson owner)
             : base(owner)
+        {
+
+        }
+
+        protected override async Task InitAsync()
         {
             new Html(this) { TextHtml = "Delete item: " };
             ButtonDelete();
-        }
 
-        protected override async Task InitAsync()
-        {
             var grid = GridContact();
             GridPerson();
 
@@ -106,6 +88,8 @@
                 }
                 messageBox.Remove();
             }
+
+            Name = "HelloWorld " + DateTime.Now.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss.fff");
             return base.ProcessAsync();
         }
     }
@@ -156,9 +140,9 @@
 
     public class AppSelectorHelloWorld : AppSelector
     {
-        protected override App CreateApp()
+        protected override Type TypeAppJson()
         {
-            return new AppMain();
+            return typeof(AppMain);
         }
     }
 }
