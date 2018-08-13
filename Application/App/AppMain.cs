@@ -58,8 +58,16 @@
             }
             if (grid == GridPerson())
             {
-                string firstName = ((vAdditionalContactInfo)GridContact().RowSelected()).FirstName;
-                result = UtilDal.Query<Person>().Where(item => item.FirstName == firstName);
+                var rowSelected = (vAdditionalContactInfo)GridContact().RowSelected();
+                if (rowSelected != null) // Otherwise "insert row" has been selected.
+                {
+                    string firstName = ((vAdditionalContactInfo)GridContact().RowSelected()).FirstName;
+                    result = UtilDal.Query<Person>().Where(item => item.FirstName == firstName);
+                }
+                else
+                {
+                    return UtilDal.QueryEmpty<vAdditionalContactInfo>();
+                }
             }
             return result;
         }
