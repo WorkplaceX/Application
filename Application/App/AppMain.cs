@@ -59,7 +59,7 @@
             if (grid == GridPerson())
             {
                 var rowSelected = (vAdditionalContactInfo)GridContact().RowSelected();
-                if (rowSelected != null) // Otherwise "insert row" has been selected.
+                if (rowSelected != null) // Otherwise "new row" has been selected.
                 {
                     string firstName = ((vAdditionalContactInfo)GridContact().RowSelected()).FirstName;
                     result = UtilDal.Query<Person>().Where(item => item.FirstName == firstName);
