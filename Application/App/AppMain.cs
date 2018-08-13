@@ -9,6 +9,7 @@
     using DatabaseCustom.Person;
     using System.Threading.Tasks;
     using System.Linq.Dynamic.Core;
+    using Database.dbo;
 
     public class AppMain : AppJson
     {
@@ -22,6 +23,8 @@
 
         protected override async Task InitAsync()
         {
+            await this.PageShowAsync<MyPage>();
+
             new Html(this) { TextHtml = "Delete item: " };
             ButtonDelete();
 
@@ -73,13 +76,13 @@
         {
             if (button == ButtonDelete())
             {
-                await this.PageShowAsync<PageMessageBox>();
+                await this.PageShowAsync<MessageBox>();
             }
         }
 
         protected override Task ProcessAsync()
         {
-            PageMessageBox messageBox = this.Get<PageMessageBox>();
+            MessageBox messageBox = this.Get<MessageBox>();
             if (messageBox?.IsYes != null)
             {
                 if (messageBox.IsYes == true)
@@ -94,11 +97,11 @@
         }
     }
 
-    public class PageMessageBox : Page
+    public class MessageBox : Page
     {
-        public PageMessageBox() : this(null) { }
+        public MessageBox() : this(null) { }
 
-        public PageMessageBox(ComponentJson owner)
+        public MessageBox(ComponentJson owner)
             : base(owner)
         {
 
@@ -106,6 +109,7 @@
 
         protected override Task InitAsync()
         {
+            new Html() { TextHtml = "Delete record?" };
             ButtonYes();
             ButtonNo();
             return base.InitAsync();
@@ -136,6 +140,65 @@
         }
 
         public bool? IsYes;
+    }
+
+    public class MyPage : Page
+    {
+        public MyPage() { }
+
+        public MyPage(ComponentJson owner)
+            : base(owner)
+        {
+
+        }
+
+        protected override async Task InitAsync()
+        {
+            await Grid().LoadAsync();
+            ButtonDelete();
+        }
+
+        public Grid Grid()
+        {
+            return this.GetOrCreate<Grid>();
+        }
+
+        public Button ButtonDelete()
+        {
+            return this.GetOrCreate((Button button) => button.Text = "Delete");
+        }
+
+        protected override IQueryable GridLoadQuery(Grid grid)
+        {
+            return UtilDal.Query<My>();
+        }
+
+        protected override Task ButtonClickAsync(Button button)
+        {
+            if (button == ButtonDelete())
+            {
+                this.PageShowAsync<MessageBox>();
+            }
+            return base.ButtonClickAsync(button);
+        }
+
+        protected override async Task ProcessAsync()
+        {
+            var messageBox = this.Get<MessageBox>();
+            if (messageBox?.IsYes == true)
+            {
+                var row = Grid().RowSelected();
+                if (row != null)
+                {
+                    await UtilDal.Delete(row);
+                    await Grid().LoadAsync();
+                }
+            }
+            if (messageBox?.IsYes != null)
+            {
+                this.Get<MessageBox>().Remove();
+            }
+        }
     }
 
     public class AppSelectorHelloWorld : AppSelector

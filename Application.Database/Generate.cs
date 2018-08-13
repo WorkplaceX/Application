@@ -120,14 +120,24 @@ namespace Database.dbo
 
     public class ErrorLog_ErrorMessage : Cell<ErrorLog> { }
 
-    [SqlTable("dbo", "Wait")]
-    public class Wait : Row
+    [SqlTable("dbo", "My")]
+    public class My : Row
     {
-        [SqlField("Value", typeof(Wait_Value))]
-        public int? Value { get; set; }
+        [SqlField("Id", typeof(My_Id), true)]
+        public int Id { get; set; }
+
+        [SqlField("Text", typeof(My_Text))]
+        public string Text { get; set; }
+
+        [SqlField("Number", typeof(My_Number))]
+        public double? Number { get; set; }
     }
 
-    public class Wait_Value : Cell<Wait> { }
+    public class My_Id : Cell<My> { }
+
+    public class My_Text : Cell<My> { }
+
+    public class My_Number : Cell<My> { }
 }
 
 namespace Database.HumanResources
@@ -3840,7 +3850,6 @@ namespace Database.Sales
 
         [SqlField("SalesTerritory", typeof(vSalesPersonSalesByFiscalYears_SalesTerritory))]
         public string SalesTerritory { get; set; }
-
     }
 
     public class vSalesPersonSalesByFiscalYears_SalesPersonID : Cell<vSalesPersonSalesByFiscalYears> { }
@@ -4033,4 +4042,44 @@ namespace Database.Sales
     public class vStoreWithDemographics_Internet : Cell<vStoreWithDemographics> { }
 
     public class vStoreWithDemographics_NumberEmployees : Cell<vStoreWithDemographics> { }
+}
+
+namespace Database.sys
+{
+    using Framework.Dal;
+    using System;
+
+    [SqlTable("sys", "database_firewall_rules")]
+    public class databasefirewallrules : Row
+    {
+        [SqlField("id", typeof(databasefirewallrules_id))]
+        public int id { get; set; }
+
+        [SqlField("name", typeof(databasefirewallrules_name))]
+        public string name { get; set; }
+
+        [SqlField("start_ip_address", typeof(databasefirewallrules_startipaddress))]
+        public string startipaddress { get; set; }
+
+        [SqlField("end_ip_address", typeof(databasefirewallrules_endipaddress))]
+        public string endipaddress { get; set; }
+
+        [SqlField("create_date", typeof(databasefirewallrules_createdate))]
+        public DateTime createdate { get; set; }
+
+        [SqlField("modify_date", typeof(databasefirewallrules_modifydate))]
+        public DateTime modifydate { get; set; }
+    }
+
+    public class databasefirewallrules_id : Cell<databasefirewallrules> { }
+
+    public class databasefirewallrules_name : Cell<databasefirewallrules> { }
+
+    public class databasefirewallrules_startipaddress : Cell<databasefirewallrules> { }
+
+    public class databasefirewallrules_endipaddress : Cell<databasefirewallrules> { }
+
+    public class databasefirewallrules_createdate : Cell<databasefirewallrules> { }
+
+    public class databasefirewallrules_modifydate : Cell<databasefirewallrules> { }
 }
