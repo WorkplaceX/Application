@@ -121,7 +121,7 @@
         {
             if (button == ButtonYes())
             {
-
+                new Html(this).TextHtml = "<b>Ok</b>";
             }
             return base.ButtonClickAsync(button);
         }
