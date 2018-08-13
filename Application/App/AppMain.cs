@@ -21,66 +21,6 @@
         protected override async Task InitAsync()
         {
             await AppJson.PageShowAsync<PageMain>("Main");
-            new Button(AppJson) { Text = "Click" };
-            new Button(AppJson) { Text = "Click2" };
-            MyButton();
-
-            var grid = GridContact();
-            GridPerson();
-
-            await grid.LoadAsync();
-        }
-
-        public Button MyButton()
-        {
-            return AppJson.GetOrCreate<Button>("MyButton", (button) => button.Text = "MyClick" );
-        }
-
-        public Grid GridContact()
-        {
-            return AppJson.GetOrCreate<Grid>("Contact");
-        }
-
-        public Grid GridPerson()
-        {
-            return AppJson.GetOrCreate<Grid>("Person");
-        }
-
-        /// <summary>
-        /// Returns query to load data grid.
-        /// </summary>
-        protected override IQueryable GridLoadQuery(Grid grid)
-        {
-            if (grid == GridContact())
-            {
-                return UtilDal.Query<vAdditionalContactInfo>();
-            }
-            if (grid == GridPerson())
-            {
-                string firstName = ((vAdditionalContactInfo)GridContact().RowSelected()).FirstName;
-                return UtilDal.Query<Person>().Where(item => item.FirstName == firstName);
-            }
-            return null;
-        }
-
-        /// <summary>
-        /// Override this method to execute action after selected row changed. For example master, detail.
-        /// </summary>
-        protected override async Task GridRowSelectChangeAsync(Grid grid)
-        {
-            if (grid == GridContact())
-            {
-                await GridPerson().LoadAsync();
-            }
-        }
-
-        protected override Task ButtonClickAsync(Button button)
-        {
-            if (button == MyButton())
-            {
-
-            }
-            return base.ButtonClickAsync(button);
         }
 
         protected override Task ProcessAsync()
@@ -101,9 +41,50 @@
             ButtonDelete();
         }
 
+        protected override async Task InitAsync()
+        {
+            var grid = GridContact();
+            GridPerson();
+
+            await grid.LoadAsync();
+        }
+
+        public Grid GridContact()
+        {
+            return this.GetOrCreate<Grid>("Contact");
+        }
+
+        public Grid GridPerson()
+        {
+            return this.GetOrCreate<Grid>("Person");
+        }
+
         public Button ButtonDelete()
         {
             return this.GetOrCreate<Button>((button) => button.Text = "Delete");
+        }
+
+        protected override IQueryable GridLoadQuery(Grid grid)
+        {
+            IQueryable result = null;
+            if (grid == GridContact())
+            {
+                result = UtilDal.Query<vAdditionalContactInfo>();
+            }
+            if (grid == GridPerson())
+            {
+                string firstName = ((vAdditionalContactInfo)GridContact().RowSelected()).FirstName;
+                result = UtilDal.Query<Person>().Where(item => item.FirstName == firstName);
+            }
+            return result;
+        }
+
+        protected override async Task GridRowSelectChangeAsync(Grid grid)
+        {
+            if (grid == GridContact())
+            {
+                await GridPerson().LoadAsync();
+            }
         }
 
         protected override async Task ButtonClickAsync(Button button)
