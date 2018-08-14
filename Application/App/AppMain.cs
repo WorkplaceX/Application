@@ -32,7 +32,7 @@
             GridPerson();
 
             await grid.LoadAsync();
-            // await grid.GridLookup().LoadAsync();
+            await grid.GridLookup().LoadAsync();
         }
 
         public Grid GridContact()
@@ -53,6 +53,10 @@
         protected override IQueryable GridLoadQuery(Grid grid)
         {
             IQueryable result = null;
+            if (grid == GridContact().GridLookup())
+            {
+                return UtilDal.Query<My>();
+            }
             if (grid == GridContact())
             {
                 result = UtilDal.Query<vAdditionalContactInfo>();
