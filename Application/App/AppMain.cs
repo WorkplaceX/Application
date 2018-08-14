@@ -32,6 +32,7 @@
             GridPerson();
 
             await grid.LoadAsync();
+            // await grid.GridLookup().LoadAsync();
         }
 
         public Grid GridContact()
