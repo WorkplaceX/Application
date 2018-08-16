@@ -32,7 +32,6 @@
             GridPerson();
 
             await grid.LoadAsync();
-            await grid.GridLookup().LoadAsync();
         }
 
         public Grid GridContact()
@@ -50,13 +49,14 @@
             return this.GetOrCreate<Button>((button) => button.Text = "Delete");
         }
 
-        protected override IQueryable GridLoadQuery(Grid grid)
+        protected override IQueryable GridLookupQuery(Grid grid, Row row, string fieldName, string text)
+        {
+            return UtilDal.Query<My>().Where(item => item.Text.StartsWith(text));
+        }
+
+        protected override IQueryable GridQuery(Grid grid)
         {
             IQueryable result = null;
-            if (grid == GridContact().GridLookup())
-            {
-                return UtilDal.Query<My>();
-            }
             if (grid == GridContact())
             {
                 result = UtilDal.Query<vAdditionalContactInfo>();
@@ -77,7 +77,7 @@
             return result;
         }
 
-        protected override async Task GridRowSelectChangeAsync(Grid grid)
+        protected override async Task GridSelectedAsync(Grid grid)
         {
             if (grid == GridContact())
             {
@@ -181,7 +181,7 @@
             return this.GetOrCreate((Button button) => button.Text = "Delete");
         }
 
-        protected override IQueryable GridLoadQuery(Grid grid)
+        protected override IQueryable GridQuery(Grid grid)
         {
             return UtilDal.Query<My>();
         }
