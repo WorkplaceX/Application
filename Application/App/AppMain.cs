@@ -54,6 +54,11 @@
             return UtilDal.Query<My>().Where(item => item.Text.StartsWith(text));
         }
 
+        protected override string GridLookupSelected(Grid grid, Row row, string fieldName, Row rowLookupSelected)
+        {
+            return ((My)rowLookupSelected).Text;
+        }
+
         protected override IQueryable GridQuery(Grid grid)
         {
             IQueryable result = null;
@@ -77,7 +82,7 @@
             return result;
         }
 
-        protected override async Task GridSelectedAsync(Grid grid)
+        protected override async Task GridRowSelectedAsync(Grid grid)
         {
             if (grid == GridContact())
             {
