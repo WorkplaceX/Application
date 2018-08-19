@@ -10,7 +10,7 @@ git clone https://github.com/WorkplaceX/Application.git --recursive
 ```
 
 ## Command Line Interface (CLI)
-In the root folder type fm for framework cli.
+In the root folder type cli for framework cli.
 
 ```cmd
 cd Application
@@ -19,6 +19,18 @@ cd Application
 This will show the framework CLI:
 
 ![Cli](https://raw.githubusercontent.com/WorkplaceX/Framework/master/Doc/Cli.png)
+
+## ConnectionString
+Set ConnectionString with cli:
+```cmd
+.\cli.cmd config ConnectionString="Data Source=localhost; Initial Catalog=Application; Integrated Security=True;"
+```
+
+## Generate
+Transform database schema to C# code. Creates one object for every table and view and column.
+```cmd
+.\cli.cmd generate
+```
 
 ## .travis.yml
 File is a copy of Framework/Framework.Cli/Ci/travis-ci.org
