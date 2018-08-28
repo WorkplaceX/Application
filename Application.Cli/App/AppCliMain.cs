@@ -1,5 +1,6 @@
 ﻿namespace Application.Cli
 {
+    using Database.dbo;
     using Framework.Cli.Command;
     using Framework.Cli.Config;
     using Microsoft.Extensions.CommandLineUtils;
@@ -10,6 +11,12 @@
     /// </summary>
     public class AppCliMain : AppCli
     {
+        public AppCliMain() : 
+            base(typeof(AWBuildVersion).Assembly, typeof(AppMain).Assembly)
+        {
+
+        }
+
         protected override void RegisterCommand()
         {
             new MyCommand(this);
