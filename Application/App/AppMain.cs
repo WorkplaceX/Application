@@ -51,12 +51,12 @@
 
         protected override IQueryable GridLookupQuery(Grid grid, Row row, string fieldName, string text)
         {
-            return UtilDal.Query<My>().Where(item => item.Text.StartsWith(text));
+            return UtilDal.Query<HelloWorld>().Where(item => item.Text.StartsWith(text));
         }
 
         protected override string GridLookupSelected(Grid grid, Row row, string fieldName, Row rowLookupSelected)
         {
-            return ((My)rowLookupSelected).Text;
+            return ((HelloWorld)rowLookupSelected).Text;
         }
 
         protected override IQueryable GridQuery(Grid grid)
@@ -188,7 +188,7 @@
 
         protected override IQueryable GridQuery(Grid grid)
         {
-            return UtilDal.Query<My>();
+            return UtilDal.Query<HelloWorld>();
         }
 
         protected override Task ButtonClickAsync(Button button)
