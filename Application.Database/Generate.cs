@@ -8,16 +8,16 @@ namespace Database.dbo
     [SqlTable("dbo", "AWBuildVersion")]
     public class AWBuildVersion : Row
     {
-        [SqlField("SystemInformationID", typeof(AWBuildVersion_SystemInformationID), true)]
+        [SqlField("SystemInformationID", typeof(AWBuildVersion_SystemInformationID), true, FrameworkTypeEnum.Tinyint)]
         public Byte SystemInformationID { get; set; }
 
-        [SqlField("Database Version", typeof(AWBuildVersion_DatabaseVersion))]
+        [SqlField("Database Version", typeof(AWBuildVersion_DatabaseVersion), FrameworkTypeEnum.Nvarcahr)]
         public string DatabaseVersion { get; set; }
 
-        [SqlField("VersionDate", typeof(AWBuildVersion_VersionDate))]
+        [SqlField("VersionDate", typeof(AWBuildVersion_VersionDate), FrameworkTypeEnum.Datetime)]
         public DateTime VersionDate { get; set; }
 
-        [SqlField("ModifiedDate", typeof(AWBuildVersion_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(AWBuildVersion_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -32,25 +32,25 @@ namespace Database.dbo
     [SqlTable("dbo", "DatabaseLog")]
     public class DatabaseLog : Row
     {
-        [SqlField("DatabaseLogID", typeof(DatabaseLog_DatabaseLogID), true)]
+        [SqlField("DatabaseLogID", typeof(DatabaseLog_DatabaseLogID), true, FrameworkTypeEnum.Int)]
         public int DatabaseLogID { get; set; }
 
-        [SqlField("PostTime", typeof(DatabaseLog_PostTime))]
+        [SqlField("PostTime", typeof(DatabaseLog_PostTime), FrameworkTypeEnum.Datetime)]
         public DateTime PostTime { get; set; }
 
-        [SqlField("DatabaseUser", typeof(DatabaseLog_DatabaseUser))]
+        [SqlField("DatabaseUser", typeof(DatabaseLog_DatabaseUser), FrameworkTypeEnum.Nvarcahr)]
         public string DatabaseUser { get; set; }
 
-        [SqlField("Event", typeof(DatabaseLog_Event))]
+        [SqlField("Event", typeof(DatabaseLog_Event), FrameworkTypeEnum.Nvarcahr)]
         public string Event { get; set; }
 
-        [SqlField("Schema", typeof(DatabaseLog_Schema))]
+        [SqlField("Schema", typeof(DatabaseLog_Schema), FrameworkTypeEnum.Nvarcahr)]
         public string Schema { get; set; }
 
-        [SqlField("Object", typeof(DatabaseLog_Object))]
+        [SqlField("Object", typeof(DatabaseLog_Object), FrameworkTypeEnum.Nvarcahr)]
         public string Object { get; set; }
 
-        [SqlField("TSQL", typeof(DatabaseLog_TSQL))]
+        [SqlField("TSQL", typeof(DatabaseLog_TSQL), FrameworkTypeEnum.Nvarcahr)]
         public string TSQL { get; set; }
 
     }
@@ -74,31 +74,31 @@ namespace Database.dbo
     [SqlTable("dbo", "ErrorLog")]
     public class ErrorLog : Row
     {
-        [SqlField("ErrorLogID", typeof(ErrorLog_ErrorLogID), true)]
+        [SqlField("ErrorLogID", typeof(ErrorLog_ErrorLogID), true, FrameworkTypeEnum.Int)]
         public int ErrorLogID { get; set; }
 
-        [SqlField("ErrorTime", typeof(ErrorLog_ErrorTime))]
+        [SqlField("ErrorTime", typeof(ErrorLog_ErrorTime), FrameworkTypeEnum.Datetime)]
         public DateTime ErrorTime { get; set; }
 
-        [SqlField("UserName", typeof(ErrorLog_UserName))]
+        [SqlField("UserName", typeof(ErrorLog_UserName), FrameworkTypeEnum.Nvarcahr)]
         public string UserName { get; set; }
 
-        [SqlField("ErrorNumber", typeof(ErrorLog_ErrorNumber))]
+        [SqlField("ErrorNumber", typeof(ErrorLog_ErrorNumber), FrameworkTypeEnum.Int)]
         public int ErrorNumber { get; set; }
 
-        [SqlField("ErrorSeverity", typeof(ErrorLog_ErrorSeverity))]
+        [SqlField("ErrorSeverity", typeof(ErrorLog_ErrorSeverity), FrameworkTypeEnum.Int)]
         public int? ErrorSeverity { get; set; }
 
-        [SqlField("ErrorState", typeof(ErrorLog_ErrorState))]
+        [SqlField("ErrorState", typeof(ErrorLog_ErrorState), FrameworkTypeEnum.Int)]
         public int? ErrorState { get; set; }
 
-        [SqlField("ErrorProcedure", typeof(ErrorLog_ErrorProcedure))]
+        [SqlField("ErrorProcedure", typeof(ErrorLog_ErrorProcedure), FrameworkTypeEnum.Nvarcahr)]
         public string ErrorProcedure { get; set; }
 
-        [SqlField("ErrorLine", typeof(ErrorLog_ErrorLine))]
+        [SqlField("ErrorLine", typeof(ErrorLog_ErrorLine), FrameworkTypeEnum.Int)]
         public int? ErrorLine { get; set; }
 
-        [SqlField("ErrorMessage", typeof(ErrorLog_ErrorMessage))]
+        [SqlField("ErrorMessage", typeof(ErrorLog_ErrorMessage), FrameworkTypeEnum.Nvarcahr)]
         public string ErrorMessage { get; set; }
     }
 
@@ -123,13 +123,13 @@ namespace Database.dbo
     [SqlTable("dbo", "HelloWorld")]
     public class HelloWorld : Row
     {
-        [SqlField("Id", typeof(HelloWorld_Id), true)]
+        [SqlField("Id", typeof(HelloWorld_Id), true, FrameworkTypeEnum.Int)]
         public int Id { get; set; }
 
-        [SqlField("Text", typeof(HelloWorld_Text))]
+        [SqlField("Text", typeof(HelloWorld_Text), FrameworkTypeEnum.Nvarcahr)]
         public string Text { get; set; }
 
-        [SqlField("Number", typeof(HelloWorld_Number))]
+        [SqlField("Number", typeof(HelloWorld_Number), FrameworkTypeEnum.Float)]
         public double? Number { get; set; }
     }
 
@@ -142,7 +142,7 @@ namespace Database.dbo
     [SqlTable("dbo", "Wait")]
     public class Wait : Row
     {
-        [SqlField("Value", typeof(Wait_Value))]
+        [SqlField("Value", typeof(Wait_Value), FrameworkTypeEnum.Int)]
         public int? Value { get; set; }
     }
 
@@ -157,16 +157,16 @@ namespace Database.HumanResources
     [SqlTable("HumanResources", "Department")]
     public class Department : Row
     {
-        [SqlField("DepartmentID", typeof(Department_DepartmentID), true)]
+        [SqlField("DepartmentID", typeof(Department_DepartmentID), true, FrameworkTypeEnum.Smallint)]
         public Int16 DepartmentID { get; set; }
 
-        [SqlField("Name", typeof(Department_Name))]
+        [SqlField("Name", typeof(Department_Name), FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
 
-        [SqlField("GroupName", typeof(Department_GroupName))]
+        [SqlField("GroupName", typeof(Department_GroupName), FrameworkTypeEnum.Nvarcahr)]
         public string GroupName { get; set; }
 
-        [SqlField("ModifiedDate", typeof(Department_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(Department_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -181,46 +181,46 @@ namespace Database.HumanResources
     [SqlTable("HumanResources", "Employee")]
     public class Employee : Row
     {
-        [SqlField("BusinessEntityID", typeof(Employee_BusinessEntityID), true)]
+        [SqlField("BusinessEntityID", typeof(Employee_BusinessEntityID), true, FrameworkTypeEnum.Int)]
         public int BusinessEntityID { get; set; }
 
-        [SqlField("NationalIDNumber", typeof(Employee_NationalIDNumber))]
+        [SqlField("NationalIDNumber", typeof(Employee_NationalIDNumber), FrameworkTypeEnum.Nvarcahr)]
         public string NationalIDNumber { get; set; }
 
-        [SqlField("LoginID", typeof(Employee_LoginID))]
+        [SqlField("LoginID", typeof(Employee_LoginID), FrameworkTypeEnum.Nvarcahr)]
         public string LoginID { get; set; }
 
 
-        [SqlField("OrganizationLevel", typeof(Employee_OrganizationLevel))]
+        [SqlField("OrganizationLevel", typeof(Employee_OrganizationLevel), FrameworkTypeEnum.Smallint)]
         public Int16? OrganizationLevel { get; set; }
 
-        [SqlField("JobTitle", typeof(Employee_JobTitle))]
+        [SqlField("JobTitle", typeof(Employee_JobTitle), FrameworkTypeEnum.Nvarcahr)]
         public string JobTitle { get; set; }
 
-        [SqlField("BirthDate", typeof(Employee_BirthDate))]
+        [SqlField("BirthDate", typeof(Employee_BirthDate), FrameworkTypeEnum.Date)]
         public DateTime BirthDate { get; set; }
 
 
 
-        [SqlField("HireDate", typeof(Employee_HireDate))]
+        [SqlField("HireDate", typeof(Employee_HireDate), FrameworkTypeEnum.Date)]
         public DateTime HireDate { get; set; }
 
-        [SqlField("SalariedFlag", typeof(Employee_SalariedFlag))]
+        [SqlField("SalariedFlag", typeof(Employee_SalariedFlag), FrameworkTypeEnum.Bit)]
         public bool SalariedFlag { get; set; }
 
-        [SqlField("VacationHours", typeof(Employee_VacationHours))]
+        [SqlField("VacationHours", typeof(Employee_VacationHours), FrameworkTypeEnum.Smallint)]
         public Int16 VacationHours { get; set; }
 
-        [SqlField("SickLeaveHours", typeof(Employee_SickLeaveHours))]
+        [SqlField("SickLeaveHours", typeof(Employee_SickLeaveHours), FrameworkTypeEnum.Smallint)]
         public Int16 SickLeaveHours { get; set; }
 
-        [SqlField("CurrentFlag", typeof(Employee_CurrentFlag))]
+        [SqlField("CurrentFlag", typeof(Employee_CurrentFlag), FrameworkTypeEnum.Bit)]
         public bool CurrentFlag { get; set; }
 
-        [SqlField("rowguid", typeof(Employee_rowguid))]
+        [SqlField("rowguid", typeof(Employee_rowguid), FrameworkTypeEnum.Uniqueidentifier)]
         public Guid rowguid { get; set; }
 
-        [SqlField("ModifiedDate", typeof(Employee_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(Employee_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -259,22 +259,22 @@ namespace Database.HumanResources
     [SqlTable("HumanResources", "EmployeeDepartmentHistory")]
     public class EmployeeDepartmentHistory : Row
     {
-        [SqlField("BusinessEntityID", typeof(EmployeeDepartmentHistory_BusinessEntityID), true)]
+        [SqlField("BusinessEntityID", typeof(EmployeeDepartmentHistory_BusinessEntityID), true, FrameworkTypeEnum.Int)]
         public int BusinessEntityID { get; set; }
 
-        [SqlField("DepartmentID", typeof(EmployeeDepartmentHistory_DepartmentID), true)]
+        [SqlField("DepartmentID", typeof(EmployeeDepartmentHistory_DepartmentID), true, FrameworkTypeEnum.Smallint)]
         public Int16 DepartmentID { get; set; }
 
-        [SqlField("ShiftID", typeof(EmployeeDepartmentHistory_ShiftID), true)]
+        [SqlField("ShiftID", typeof(EmployeeDepartmentHistory_ShiftID), true, FrameworkTypeEnum.Tinyint)]
         public Byte ShiftID { get; set; }
 
-        [SqlField("StartDate", typeof(EmployeeDepartmentHistory_StartDate), true)]
+        [SqlField("StartDate", typeof(EmployeeDepartmentHistory_StartDate), true, FrameworkTypeEnum.Date)]
         public DateTime StartDate { get; set; }
 
-        [SqlField("EndDate", typeof(EmployeeDepartmentHistory_EndDate))]
+        [SqlField("EndDate", typeof(EmployeeDepartmentHistory_EndDate), FrameworkTypeEnum.Date)]
         public DateTime? EndDate { get; set; }
 
-        [SqlField("ModifiedDate", typeof(EmployeeDepartmentHistory_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(EmployeeDepartmentHistory_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -293,19 +293,19 @@ namespace Database.HumanResources
     [SqlTable("HumanResources", "EmployeePayHistory")]
     public class EmployeePayHistory : Row
     {
-        [SqlField("BusinessEntityID", typeof(EmployeePayHistory_BusinessEntityID), true)]
+        [SqlField("BusinessEntityID", typeof(EmployeePayHistory_BusinessEntityID), true, FrameworkTypeEnum.Int)]
         public int BusinessEntityID { get; set; }
 
-        [SqlField("RateChangeDate", typeof(EmployeePayHistory_RateChangeDate), true)]
+        [SqlField("RateChangeDate", typeof(EmployeePayHistory_RateChangeDate), true, FrameworkTypeEnum.Datetime)]
         public DateTime RateChangeDate { get; set; }
 
-        [SqlField("Rate", typeof(EmployeePayHistory_Rate))]
+        [SqlField("Rate", typeof(EmployeePayHistory_Rate), FrameworkTypeEnum.Money)]
         public Decimal Rate { get; set; }
 
-        [SqlField("PayFrequency", typeof(EmployeePayHistory_PayFrequency))]
+        [SqlField("PayFrequency", typeof(EmployeePayHistory_PayFrequency), FrameworkTypeEnum.Tinyint)]
         public Byte PayFrequency { get; set; }
 
-        [SqlField("ModifiedDate", typeof(EmployeePayHistory_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(EmployeePayHistory_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -322,14 +322,14 @@ namespace Database.HumanResources
     [SqlTable("HumanResources", "JobCandidate")]
     public class JobCandidate : Row
     {
-        [SqlField("JobCandidateID", typeof(JobCandidate_JobCandidateID), true)]
+        [SqlField("JobCandidateID", typeof(JobCandidate_JobCandidateID), true, FrameworkTypeEnum.Int)]
         public int JobCandidateID { get; set; }
 
-        [SqlField("BusinessEntityID", typeof(JobCandidate_BusinessEntityID))]
+        [SqlField("BusinessEntityID", typeof(JobCandidate_BusinessEntityID), FrameworkTypeEnum.Int)]
         public int? BusinessEntityID { get; set; }
 
 
-        [SqlField("ModifiedDate", typeof(JobCandidate_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(JobCandidate_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -344,15 +344,15 @@ namespace Database.HumanResources
     [SqlTable("HumanResources", "Shift")]
     public class Shift : Row
     {
-        [SqlField("ShiftID", typeof(Shift_ShiftID), true)]
+        [SqlField("ShiftID", typeof(Shift_ShiftID), true, FrameworkTypeEnum.Tinyint)]
         public Byte ShiftID { get; set; }
 
-        [SqlField("Name", typeof(Shift_Name))]
+        [SqlField("Name", typeof(Shift_Name), FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
 
 
 
-        [SqlField("ModifiedDate", typeof(Shift_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(Shift_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -369,55 +369,55 @@ namespace Database.HumanResources
     [SqlTable("HumanResources", "vEmployee")]
     public class vEmployee : Row
     {
-        [SqlField("BusinessEntityID", typeof(vEmployee_BusinessEntityID))]
+        [SqlField("BusinessEntityID", typeof(vEmployee_BusinessEntityID), FrameworkTypeEnum.Int)]
         public int BusinessEntityID { get; set; }
 
-        [SqlField("Title", typeof(vEmployee_Title))]
+        [SqlField("Title", typeof(vEmployee_Title), FrameworkTypeEnum.Nvarcahr)]
         public string Title { get; set; }
 
-        [SqlField("FirstName", typeof(vEmployee_FirstName))]
+        [SqlField("FirstName", typeof(vEmployee_FirstName), FrameworkTypeEnum.Nvarcahr)]
         public string FirstName { get; set; }
 
-        [SqlField("MiddleName", typeof(vEmployee_MiddleName))]
+        [SqlField("MiddleName", typeof(vEmployee_MiddleName), FrameworkTypeEnum.Nvarcahr)]
         public string MiddleName { get; set; }
 
-        [SqlField("LastName", typeof(vEmployee_LastName))]
+        [SqlField("LastName", typeof(vEmployee_LastName), FrameworkTypeEnum.Nvarcahr)]
         public string LastName { get; set; }
 
-        [SqlField("Suffix", typeof(vEmployee_Suffix))]
+        [SqlField("Suffix", typeof(vEmployee_Suffix), FrameworkTypeEnum.Nvarcahr)]
         public string Suffix { get; set; }
 
-        [SqlField("JobTitle", typeof(vEmployee_JobTitle))]
+        [SqlField("JobTitle", typeof(vEmployee_JobTitle), FrameworkTypeEnum.Nvarcahr)]
         public string JobTitle { get; set; }
 
-        [SqlField("PhoneNumber", typeof(vEmployee_PhoneNumber))]
+        [SqlField("PhoneNumber", typeof(vEmployee_PhoneNumber), FrameworkTypeEnum.Nvarcahr)]
         public string PhoneNumber { get; set; }
 
-        [SqlField("PhoneNumberType", typeof(vEmployee_PhoneNumberType))]
+        [SqlField("PhoneNumberType", typeof(vEmployee_PhoneNumberType), FrameworkTypeEnum.Nvarcahr)]
         public string PhoneNumberType { get; set; }
 
-        [SqlField("EmailAddress", typeof(vEmployee_EmailAddress))]
+        [SqlField("EmailAddress", typeof(vEmployee_EmailAddress), FrameworkTypeEnum.Nvarcahr)]
         public string EmailAddress { get; set; }
 
-        [SqlField("EmailPromotion", typeof(vEmployee_EmailPromotion))]
+        [SqlField("EmailPromotion", typeof(vEmployee_EmailPromotion), FrameworkTypeEnum.Int)]
         public int EmailPromotion { get; set; }
 
-        [SqlField("AddressLine1", typeof(vEmployee_AddressLine1))]
+        [SqlField("AddressLine1", typeof(vEmployee_AddressLine1), FrameworkTypeEnum.Nvarcahr)]
         public string AddressLine1 { get; set; }
 
-        [SqlField("AddressLine2", typeof(vEmployee_AddressLine2))]
+        [SqlField("AddressLine2", typeof(vEmployee_AddressLine2), FrameworkTypeEnum.Nvarcahr)]
         public string AddressLine2 { get; set; }
 
-        [SqlField("City", typeof(vEmployee_City))]
+        [SqlField("City", typeof(vEmployee_City), FrameworkTypeEnum.Nvarcahr)]
         public string City { get; set; }
 
-        [SqlField("StateProvinceName", typeof(vEmployee_StateProvinceName))]
+        [SqlField("StateProvinceName", typeof(vEmployee_StateProvinceName), FrameworkTypeEnum.Nvarcahr)]
         public string StateProvinceName { get; set; }
 
-        [SqlField("PostalCode", typeof(vEmployee_PostalCode))]
+        [SqlField("PostalCode", typeof(vEmployee_PostalCode), FrameworkTypeEnum.Nvarcahr)]
         public string PostalCode { get; set; }
 
-        [SqlField("CountryRegionName", typeof(vEmployee_CountryRegionName))]
+        [SqlField("CountryRegionName", typeof(vEmployee_CountryRegionName), FrameworkTypeEnum.Nvarcahr)]
         public string CountryRegionName { get; set; }
 
     }
@@ -461,34 +461,34 @@ namespace Database.HumanResources
     [SqlTable("HumanResources", "vEmployeeDepartment")]
     public class vEmployeeDepartment : Row
     {
-        [SqlField("BusinessEntityID", typeof(vEmployeeDepartment_BusinessEntityID))]
+        [SqlField("BusinessEntityID", typeof(vEmployeeDepartment_BusinessEntityID), FrameworkTypeEnum.Int)]
         public int BusinessEntityID { get; set; }
 
-        [SqlField("Title", typeof(vEmployeeDepartment_Title))]
+        [SqlField("Title", typeof(vEmployeeDepartment_Title), FrameworkTypeEnum.Nvarcahr)]
         public string Title { get; set; }
 
-        [SqlField("FirstName", typeof(vEmployeeDepartment_FirstName))]
+        [SqlField("FirstName", typeof(vEmployeeDepartment_FirstName), FrameworkTypeEnum.Nvarcahr)]
         public string FirstName { get; set; }
 
-        [SqlField("MiddleName", typeof(vEmployeeDepartment_MiddleName))]
+        [SqlField("MiddleName", typeof(vEmployeeDepartment_MiddleName), FrameworkTypeEnum.Nvarcahr)]
         public string MiddleName { get; set; }
 
-        [SqlField("LastName", typeof(vEmployeeDepartment_LastName))]
+        [SqlField("LastName", typeof(vEmployeeDepartment_LastName), FrameworkTypeEnum.Nvarcahr)]
         public string LastName { get; set; }
 
-        [SqlField("Suffix", typeof(vEmployeeDepartment_Suffix))]
+        [SqlField("Suffix", typeof(vEmployeeDepartment_Suffix), FrameworkTypeEnum.Nvarcahr)]
         public string Suffix { get; set; }
 
-        [SqlField("JobTitle", typeof(vEmployeeDepartment_JobTitle))]
+        [SqlField("JobTitle", typeof(vEmployeeDepartment_JobTitle), FrameworkTypeEnum.Nvarcahr)]
         public string JobTitle { get; set; }
 
-        [SqlField("Department", typeof(vEmployeeDepartment_Department))]
+        [SqlField("Department", typeof(vEmployeeDepartment_Department), FrameworkTypeEnum.Nvarcahr)]
         public string Department { get; set; }
 
-        [SqlField("GroupName", typeof(vEmployeeDepartment_GroupName))]
+        [SqlField("GroupName", typeof(vEmployeeDepartment_GroupName), FrameworkTypeEnum.Nvarcahr)]
         public string GroupName { get; set; }
 
-        [SqlField("StartDate", typeof(vEmployeeDepartment_StartDate))]
+        [SqlField("StartDate", typeof(vEmployeeDepartment_StartDate), FrameworkTypeEnum.Date)]
         public DateTime StartDate { get; set; }
     }
 
@@ -515,37 +515,37 @@ namespace Database.HumanResources
     [SqlTable("HumanResources", "vEmployeeDepartmentHistory")]
     public class vEmployeeDepartmentHistory : Row
     {
-        [SqlField("BusinessEntityID", typeof(vEmployeeDepartmentHistory_BusinessEntityID))]
+        [SqlField("BusinessEntityID", typeof(vEmployeeDepartmentHistory_BusinessEntityID), FrameworkTypeEnum.Int)]
         public int BusinessEntityID { get; set; }
 
-        [SqlField("Title", typeof(vEmployeeDepartmentHistory_Title))]
+        [SqlField("Title", typeof(vEmployeeDepartmentHistory_Title), FrameworkTypeEnum.Nvarcahr)]
         public string Title { get; set; }
 
-        [SqlField("FirstName", typeof(vEmployeeDepartmentHistory_FirstName))]
+        [SqlField("FirstName", typeof(vEmployeeDepartmentHistory_FirstName), FrameworkTypeEnum.Nvarcahr)]
         public string FirstName { get; set; }
 
-        [SqlField("MiddleName", typeof(vEmployeeDepartmentHistory_MiddleName))]
+        [SqlField("MiddleName", typeof(vEmployeeDepartmentHistory_MiddleName), FrameworkTypeEnum.Nvarcahr)]
         public string MiddleName { get; set; }
 
-        [SqlField("LastName", typeof(vEmployeeDepartmentHistory_LastName))]
+        [SqlField("LastName", typeof(vEmployeeDepartmentHistory_LastName), FrameworkTypeEnum.Nvarcahr)]
         public string LastName { get; set; }
 
-        [SqlField("Suffix", typeof(vEmployeeDepartmentHistory_Suffix))]
+        [SqlField("Suffix", typeof(vEmployeeDepartmentHistory_Suffix), FrameworkTypeEnum.Nvarcahr)]
         public string Suffix { get; set; }
 
-        [SqlField("Shift", typeof(vEmployeeDepartmentHistory_Shift))]
+        [SqlField("Shift", typeof(vEmployeeDepartmentHistory_Shift), FrameworkTypeEnum.Nvarcahr)]
         public string Shift { get; set; }
 
-        [SqlField("Department", typeof(vEmployeeDepartmentHistory_Department))]
+        [SqlField("Department", typeof(vEmployeeDepartmentHistory_Department), FrameworkTypeEnum.Nvarcahr)]
         public string Department { get; set; }
 
-        [SqlField("GroupName", typeof(vEmployeeDepartmentHistory_GroupName))]
+        [SqlField("GroupName", typeof(vEmployeeDepartmentHistory_GroupName), FrameworkTypeEnum.Nvarcahr)]
         public string GroupName { get; set; }
 
-        [SqlField("StartDate", typeof(vEmployeeDepartmentHistory_StartDate))]
+        [SqlField("StartDate", typeof(vEmployeeDepartmentHistory_StartDate), FrameworkTypeEnum.Date)]
         public DateTime StartDate { get; set; }
 
-        [SqlField("EndDate", typeof(vEmployeeDepartmentHistory_EndDate))]
+        [SqlField("EndDate", typeof(vEmployeeDepartmentHistory_EndDate), FrameworkTypeEnum.Date)]
         public DateTime? EndDate { get; set; }
     }
 
@@ -574,52 +574,52 @@ namespace Database.HumanResources
     [SqlTable("HumanResources", "vJobCandidate")]
     public class vJobCandidate : Row
     {
-        [SqlField("JobCandidateID", typeof(vJobCandidate_JobCandidateID))]
+        [SqlField("JobCandidateID", typeof(vJobCandidate_JobCandidateID), FrameworkTypeEnum.Int)]
         public int JobCandidateID { get; set; }
 
-        [SqlField("BusinessEntityID", typeof(vJobCandidate_BusinessEntityID))]
+        [SqlField("BusinessEntityID", typeof(vJobCandidate_BusinessEntityID), FrameworkTypeEnum.Int)]
         public int? BusinessEntityID { get; set; }
 
-        [SqlField("Name.Prefix", typeof(vJobCandidate_NamePrefix))]
+        [SqlField("Name.Prefix", typeof(vJobCandidate_NamePrefix), FrameworkTypeEnum.Nvarcahr)]
         public string NamePrefix { get; set; }
 
-        [SqlField("Name.First", typeof(vJobCandidate_NameFirst))]
+        [SqlField("Name.First", typeof(vJobCandidate_NameFirst), FrameworkTypeEnum.Nvarcahr)]
         public string NameFirst { get; set; }
 
-        [SqlField("Name.Middle", typeof(vJobCandidate_NameMiddle))]
+        [SqlField("Name.Middle", typeof(vJobCandidate_NameMiddle), FrameworkTypeEnum.Nvarcahr)]
         public string NameMiddle { get; set; }
 
-        [SqlField("Name.Last", typeof(vJobCandidate_NameLast))]
+        [SqlField("Name.Last", typeof(vJobCandidate_NameLast), FrameworkTypeEnum.Nvarcahr)]
         public string NameLast { get; set; }
 
-        [SqlField("Name.Suffix", typeof(vJobCandidate_NameSuffix))]
+        [SqlField("Name.Suffix", typeof(vJobCandidate_NameSuffix), FrameworkTypeEnum.Nvarcahr)]
         public string NameSuffix { get; set; }
 
-        [SqlField("Skills", typeof(vJobCandidate_Skills))]
+        [SqlField("Skills", typeof(vJobCandidate_Skills), FrameworkTypeEnum.Nvarcahr)]
         public string Skills { get; set; }
 
-        [SqlField("Addr.Type", typeof(vJobCandidate_AddrType))]
+        [SqlField("Addr.Type", typeof(vJobCandidate_AddrType), FrameworkTypeEnum.Nvarcahr)]
         public string AddrType { get; set; }
 
-        [SqlField("Addr.Loc.CountryRegion", typeof(vJobCandidate_AddrLocCountryRegion))]
+        [SqlField("Addr.Loc.CountryRegion", typeof(vJobCandidate_AddrLocCountryRegion), FrameworkTypeEnum.Nvarcahr)]
         public string AddrLocCountryRegion { get; set; }
 
-        [SqlField("Addr.Loc.State", typeof(vJobCandidate_AddrLocState))]
+        [SqlField("Addr.Loc.State", typeof(vJobCandidate_AddrLocState), FrameworkTypeEnum.Nvarcahr)]
         public string AddrLocState { get; set; }
 
-        [SqlField("Addr.Loc.City", typeof(vJobCandidate_AddrLocCity))]
+        [SqlField("Addr.Loc.City", typeof(vJobCandidate_AddrLocCity), FrameworkTypeEnum.Nvarcahr)]
         public string AddrLocCity { get; set; }
 
-        [SqlField("Addr.PostalCode", typeof(vJobCandidate_AddrPostalCode))]
+        [SqlField("Addr.PostalCode", typeof(vJobCandidate_AddrPostalCode), FrameworkTypeEnum.Nvarcahr)]
         public string AddrPostalCode { get; set; }
 
-        [SqlField("EMail", typeof(vJobCandidate_EMail))]
+        [SqlField("EMail", typeof(vJobCandidate_EMail), FrameworkTypeEnum.Nvarcahr)]
         public string EMail { get; set; }
 
-        [SqlField("WebSite", typeof(vJobCandidate_WebSite))]
+        [SqlField("WebSite", typeof(vJobCandidate_WebSite), FrameworkTypeEnum.Nvarcahr)]
         public string WebSite { get; set; }
 
-        [SqlField("ModifiedDate", typeof(vJobCandidate_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(vJobCandidate_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -658,43 +658,43 @@ namespace Database.HumanResources
     [SqlTable("HumanResources", "vJobCandidateEducation")]
     public class vJobCandidateEducation : Row
     {
-        [SqlField("JobCandidateID", typeof(vJobCandidateEducation_JobCandidateID))]
+        [SqlField("JobCandidateID", typeof(vJobCandidateEducation_JobCandidateID), FrameworkTypeEnum.Int)]
         public int JobCandidateID { get; set; }
 
-        [SqlField("Edu.Level", typeof(vJobCandidateEducation_EduLevel))]
+        [SqlField("Edu.Level", typeof(vJobCandidateEducation_EduLevel), FrameworkTypeEnum.Nvarcahr)]
         public string EduLevel { get; set; }
 
-        [SqlField("Edu.StartDate", typeof(vJobCandidateEducation_EduStartDate))]
+        [SqlField("Edu.StartDate", typeof(vJobCandidateEducation_EduStartDate), FrameworkTypeEnum.Datetime)]
         public DateTime? EduStartDate { get; set; }
 
-        [SqlField("Edu.EndDate", typeof(vJobCandidateEducation_EduEndDate))]
+        [SqlField("Edu.EndDate", typeof(vJobCandidateEducation_EduEndDate), FrameworkTypeEnum.Datetime)]
         public DateTime? EduEndDate { get; set; }
 
-        [SqlField("Edu.Degree", typeof(vJobCandidateEducation_EduDegree))]
+        [SqlField("Edu.Degree", typeof(vJobCandidateEducation_EduDegree), FrameworkTypeEnum.Nvarcahr)]
         public string EduDegree { get; set; }
 
-        [SqlField("Edu.Major", typeof(vJobCandidateEducation_EduMajor))]
+        [SqlField("Edu.Major", typeof(vJobCandidateEducation_EduMajor), FrameworkTypeEnum.Nvarcahr)]
         public string EduMajor { get; set; }
 
-        [SqlField("Edu.Minor", typeof(vJobCandidateEducation_EduMinor))]
+        [SqlField("Edu.Minor", typeof(vJobCandidateEducation_EduMinor), FrameworkTypeEnum.Nvarcahr)]
         public string EduMinor { get; set; }
 
-        [SqlField("Edu.GPA", typeof(vJobCandidateEducation_EduGPA))]
+        [SqlField("Edu.GPA", typeof(vJobCandidateEducation_EduGPA), FrameworkTypeEnum.Nvarcahr)]
         public string EduGPA { get; set; }
 
-        [SqlField("Edu.GPAScale", typeof(vJobCandidateEducation_EduGPAScale))]
+        [SqlField("Edu.GPAScale", typeof(vJobCandidateEducation_EduGPAScale), FrameworkTypeEnum.Nvarcahr)]
         public string EduGPAScale { get; set; }
 
-        [SqlField("Edu.School", typeof(vJobCandidateEducation_EduSchool))]
+        [SqlField("Edu.School", typeof(vJobCandidateEducation_EduSchool), FrameworkTypeEnum.Nvarcahr)]
         public string EduSchool { get; set; }
 
-        [SqlField("Edu.Loc.CountryRegion", typeof(vJobCandidateEducation_EduLocCountryRegion))]
+        [SqlField("Edu.Loc.CountryRegion", typeof(vJobCandidateEducation_EduLocCountryRegion), FrameworkTypeEnum.Nvarcahr)]
         public string EduLocCountryRegion { get; set; }
 
-        [SqlField("Edu.Loc.State", typeof(vJobCandidateEducation_EduLocState))]
+        [SqlField("Edu.Loc.State", typeof(vJobCandidateEducation_EduLocState), FrameworkTypeEnum.Nvarcahr)]
         public string EduLocState { get; set; }
 
-        [SqlField("Edu.Loc.City", typeof(vJobCandidateEducation_EduLocCity))]
+        [SqlField("Edu.Loc.City", typeof(vJobCandidateEducation_EduLocCity), FrameworkTypeEnum.Nvarcahr)]
         public string EduLocCity { get; set; }
     }
 
@@ -727,37 +727,37 @@ namespace Database.HumanResources
     [SqlTable("HumanResources", "vJobCandidateEmployment")]
     public class vJobCandidateEmployment : Row
     {
-        [SqlField("JobCandidateID", typeof(vJobCandidateEmployment_JobCandidateID))]
+        [SqlField("JobCandidateID", typeof(vJobCandidateEmployment_JobCandidateID), FrameworkTypeEnum.Int)]
         public int JobCandidateID { get; set; }
 
-        [SqlField("Emp.StartDate", typeof(vJobCandidateEmployment_EmpStartDate))]
+        [SqlField("Emp.StartDate", typeof(vJobCandidateEmployment_EmpStartDate), FrameworkTypeEnum.Datetime)]
         public DateTime? EmpStartDate { get; set; }
 
-        [SqlField("Emp.EndDate", typeof(vJobCandidateEmployment_EmpEndDate))]
+        [SqlField("Emp.EndDate", typeof(vJobCandidateEmployment_EmpEndDate), FrameworkTypeEnum.Datetime)]
         public DateTime? EmpEndDate { get; set; }
 
-        [SqlField("Emp.OrgName", typeof(vJobCandidateEmployment_EmpOrgName))]
+        [SqlField("Emp.OrgName", typeof(vJobCandidateEmployment_EmpOrgName), FrameworkTypeEnum.Nvarcahr)]
         public string EmpOrgName { get; set; }
 
-        [SqlField("Emp.JobTitle", typeof(vJobCandidateEmployment_EmpJobTitle))]
+        [SqlField("Emp.JobTitle", typeof(vJobCandidateEmployment_EmpJobTitle), FrameworkTypeEnum.Nvarcahr)]
         public string EmpJobTitle { get; set; }
 
-        [SqlField("Emp.Responsibility", typeof(vJobCandidateEmployment_EmpResponsibility))]
+        [SqlField("Emp.Responsibility", typeof(vJobCandidateEmployment_EmpResponsibility), FrameworkTypeEnum.Nvarcahr)]
         public string EmpResponsibility { get; set; }
 
-        [SqlField("Emp.FunctionCategory", typeof(vJobCandidateEmployment_EmpFunctionCategory))]
+        [SqlField("Emp.FunctionCategory", typeof(vJobCandidateEmployment_EmpFunctionCategory), FrameworkTypeEnum.Nvarcahr)]
         public string EmpFunctionCategory { get; set; }
 
-        [SqlField("Emp.IndustryCategory", typeof(vJobCandidateEmployment_EmpIndustryCategory))]
+        [SqlField("Emp.IndustryCategory", typeof(vJobCandidateEmployment_EmpIndustryCategory), FrameworkTypeEnum.Nvarcahr)]
         public string EmpIndustryCategory { get; set; }
 
-        [SqlField("Emp.Loc.CountryRegion", typeof(vJobCandidateEmployment_EmpLocCountryRegion))]
+        [SqlField("Emp.Loc.CountryRegion", typeof(vJobCandidateEmployment_EmpLocCountryRegion), FrameworkTypeEnum.Nvarcahr)]
         public string EmpLocCountryRegion { get; set; }
 
-        [SqlField("Emp.Loc.State", typeof(vJobCandidateEmployment_EmpLocState))]
+        [SqlField("Emp.Loc.State", typeof(vJobCandidateEmployment_EmpLocState), FrameworkTypeEnum.Nvarcahr)]
         public string EmpLocState { get; set; }
 
-        [SqlField("Emp.Loc.City", typeof(vJobCandidateEmployment_EmpLocCity))]
+        [SqlField("Emp.Loc.City", typeof(vJobCandidateEmployment_EmpLocCity), FrameworkTypeEnum.Nvarcahr)]
         public string EmpLocCity { get; set; }
     }
 
@@ -792,29 +792,29 @@ namespace Database.Person
     [SqlTable("Person", "Address")]
     public class Address : Row
     {
-        [SqlField("AddressID", typeof(Address_AddressID), true)]
+        [SqlField("AddressID", typeof(Address_AddressID), true, FrameworkTypeEnum.Int)]
         public int AddressID { get; set; }
 
-        [SqlField("AddressLine1", typeof(Address_AddressLine1))]
+        [SqlField("AddressLine1", typeof(Address_AddressLine1), FrameworkTypeEnum.Nvarcahr)]
         public string AddressLine1 { get; set; }
 
-        [SqlField("AddressLine2", typeof(Address_AddressLine2))]
+        [SqlField("AddressLine2", typeof(Address_AddressLine2), FrameworkTypeEnum.Nvarcahr)]
         public string AddressLine2 { get; set; }
 
-        [SqlField("City", typeof(Address_City))]
+        [SqlField("City", typeof(Address_City), FrameworkTypeEnum.Nvarcahr)]
         public string City { get; set; }
 
-        [SqlField("StateProvinceID", typeof(Address_StateProvinceID))]
+        [SqlField("StateProvinceID", typeof(Address_StateProvinceID), FrameworkTypeEnum.Int)]
         public int StateProvinceID { get; set; }
 
-        [SqlField("PostalCode", typeof(Address_PostalCode))]
+        [SqlField("PostalCode", typeof(Address_PostalCode), FrameworkTypeEnum.Nvarcahr)]
         public string PostalCode { get; set; }
 
 
-        [SqlField("rowguid", typeof(Address_rowguid))]
+        [SqlField("rowguid", typeof(Address_rowguid), FrameworkTypeEnum.Uniqueidentifier)]
         public Guid rowguid { get; set; }
 
-        [SqlField("ModifiedDate", typeof(Address_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(Address_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -839,16 +839,16 @@ namespace Database.Person
     [SqlTable("Person", "AddressType")]
     public class AddressType : Row
     {
-        [SqlField("AddressTypeID", typeof(AddressType_AddressTypeID), true)]
+        [SqlField("AddressTypeID", typeof(AddressType_AddressTypeID), true, FrameworkTypeEnum.Int)]
         public int AddressTypeID { get; set; }
 
-        [SqlField("Name", typeof(AddressType_Name))]
+        [SqlField("Name", typeof(AddressType_Name), FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
 
-        [SqlField("rowguid", typeof(AddressType_rowguid))]
+        [SqlField("rowguid", typeof(AddressType_rowguid), FrameworkTypeEnum.Uniqueidentifier)]
         public Guid rowguid { get; set; }
 
-        [SqlField("ModifiedDate", typeof(AddressType_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(AddressType_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -863,13 +863,13 @@ namespace Database.Person
     [SqlTable("Person", "BusinessEntity")]
     public class BusinessEntity : Row
     {
-        [SqlField("BusinessEntityID", typeof(BusinessEntity_BusinessEntityID), true)]
+        [SqlField("BusinessEntityID", typeof(BusinessEntity_BusinessEntityID), true, FrameworkTypeEnum.Int)]
         public int BusinessEntityID { get; set; }
 
-        [SqlField("rowguid", typeof(BusinessEntity_rowguid))]
+        [SqlField("rowguid", typeof(BusinessEntity_rowguid), FrameworkTypeEnum.Uniqueidentifier)]
         public Guid rowguid { get; set; }
 
-        [SqlField("ModifiedDate", typeof(BusinessEntity_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(BusinessEntity_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -882,19 +882,19 @@ namespace Database.Person
     [SqlTable("Person", "BusinessEntityAddress")]
     public class BusinessEntityAddress : Row
     {
-        [SqlField("BusinessEntityID", typeof(BusinessEntityAddress_BusinessEntityID), true)]
+        [SqlField("BusinessEntityID", typeof(BusinessEntityAddress_BusinessEntityID), true, FrameworkTypeEnum.Int)]
         public int BusinessEntityID { get; set; }
 
-        [SqlField("AddressID", typeof(BusinessEntityAddress_AddressID), true)]
+        [SqlField("AddressID", typeof(BusinessEntityAddress_AddressID), true, FrameworkTypeEnum.Int)]
         public int AddressID { get; set; }
 
-        [SqlField("AddressTypeID", typeof(BusinessEntityAddress_AddressTypeID), true)]
+        [SqlField("AddressTypeID", typeof(BusinessEntityAddress_AddressTypeID), true, FrameworkTypeEnum.Int)]
         public int AddressTypeID { get; set; }
 
-        [SqlField("rowguid", typeof(BusinessEntityAddress_rowguid))]
+        [SqlField("rowguid", typeof(BusinessEntityAddress_rowguid), FrameworkTypeEnum.Uniqueidentifier)]
         public Guid rowguid { get; set; }
 
-        [SqlField("ModifiedDate", typeof(BusinessEntityAddress_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(BusinessEntityAddress_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -911,19 +911,19 @@ namespace Database.Person
     [SqlTable("Person", "BusinessEntityContact")]
     public class BusinessEntityContact : Row
     {
-        [SqlField("BusinessEntityID", typeof(BusinessEntityContact_BusinessEntityID), true)]
+        [SqlField("BusinessEntityID", typeof(BusinessEntityContact_BusinessEntityID), true, FrameworkTypeEnum.Int)]
         public int BusinessEntityID { get; set; }
 
-        [SqlField("PersonID", typeof(BusinessEntityContact_PersonID), true)]
+        [SqlField("PersonID", typeof(BusinessEntityContact_PersonID), true, FrameworkTypeEnum.Int)]
         public int PersonID { get; set; }
 
-        [SqlField("ContactTypeID", typeof(BusinessEntityContact_ContactTypeID), true)]
+        [SqlField("ContactTypeID", typeof(BusinessEntityContact_ContactTypeID), true, FrameworkTypeEnum.Int)]
         public int ContactTypeID { get; set; }
 
-        [SqlField("rowguid", typeof(BusinessEntityContact_rowguid))]
+        [SqlField("rowguid", typeof(BusinessEntityContact_rowguid), FrameworkTypeEnum.Uniqueidentifier)]
         public Guid rowguid { get; set; }
 
-        [SqlField("ModifiedDate", typeof(BusinessEntityContact_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(BusinessEntityContact_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -940,13 +940,13 @@ namespace Database.Person
     [SqlTable("Person", "ContactType")]
     public class ContactType : Row
     {
-        [SqlField("ContactTypeID", typeof(ContactType_ContactTypeID), true)]
+        [SqlField("ContactTypeID", typeof(ContactType_ContactTypeID), true, FrameworkTypeEnum.Int)]
         public int ContactTypeID { get; set; }
 
-        [SqlField("Name", typeof(ContactType_Name))]
+        [SqlField("Name", typeof(ContactType_Name), FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
 
-        [SqlField("ModifiedDate", typeof(ContactType_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(ContactType_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -959,13 +959,13 @@ namespace Database.Person
     [SqlTable("Person", "CountryRegion")]
     public class CountryRegion : Row
     {
-        [SqlField("CountryRegionCode", typeof(CountryRegion_CountryRegionCode), true)]
+        [SqlField("CountryRegionCode", typeof(CountryRegion_CountryRegionCode), true, FrameworkTypeEnum.Nvarcahr)]
         public string CountryRegionCode { get; set; }
 
-        [SqlField("Name", typeof(CountryRegion_Name))]
+        [SqlField("Name", typeof(CountryRegion_Name), FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
 
-        [SqlField("ModifiedDate", typeof(CountryRegion_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(CountryRegion_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -978,19 +978,19 @@ namespace Database.Person
     [SqlTable("Person", "EmailAddress")]
     public class EmailAddress : Row
     {
-        [SqlField("BusinessEntityID", typeof(EmailAddress_BusinessEntityID), true)]
+        [SqlField("BusinessEntityID", typeof(EmailAddress_BusinessEntityID), true, FrameworkTypeEnum.Int)]
         public int BusinessEntityID { get; set; }
 
-        [SqlField("EmailAddressID", typeof(EmailAddress_EmailAddressID), true)]
+        [SqlField("EmailAddressID", typeof(EmailAddress_EmailAddressID), true, FrameworkTypeEnum.Int)]
         public int EmailAddressID { get; set; }
 
-        [SqlField("EmailAddress", typeof(EmailAddress_EmailAddress2))]
+        [SqlField("EmailAddress", typeof(EmailAddress_EmailAddress2), FrameworkTypeEnum.Nvarcahr)]
         public string EmailAddress2 { get; set; }
 
-        [SqlField("rowguid", typeof(EmailAddress_rowguid))]
+        [SqlField("rowguid", typeof(EmailAddress_rowguid), FrameworkTypeEnum.Uniqueidentifier)]
         public Guid rowguid { get; set; }
 
-        [SqlField("ModifiedDate", typeof(EmailAddress_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(EmailAddress_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -1007,19 +1007,19 @@ namespace Database.Person
     [SqlTable("Person", "Password")]
     public class Password : Row
     {
-        [SqlField("BusinessEntityID", typeof(Password_BusinessEntityID), true)]
+        [SqlField("BusinessEntityID", typeof(Password_BusinessEntityID), true, FrameworkTypeEnum.Int)]
         public int BusinessEntityID { get; set; }
 
-        [SqlField("PasswordHash", typeof(Password_PasswordHash))]
+        [SqlField("PasswordHash", typeof(Password_PasswordHash), FrameworkTypeEnum.Varchar)]
         public string PasswordHash { get; set; }
 
-        [SqlField("PasswordSalt", typeof(Password_PasswordSalt))]
+        [SqlField("PasswordSalt", typeof(Password_PasswordSalt), FrameworkTypeEnum.Varchar)]
         public string PasswordSalt { get; set; }
 
-        [SqlField("rowguid", typeof(Password_rowguid))]
+        [SqlField("rowguid", typeof(Password_rowguid), FrameworkTypeEnum.Uniqueidentifier)]
         public Guid rowguid { get; set; }
 
-        [SqlField("ModifiedDate", typeof(Password_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(Password_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -1036,37 +1036,37 @@ namespace Database.Person
     [SqlTable("Person", "Person")]
     public class Person : Row
     {
-        [SqlField("BusinessEntityID", typeof(Person_BusinessEntityID), true)]
+        [SqlField("BusinessEntityID", typeof(Person_BusinessEntityID), true, FrameworkTypeEnum.Int)]
         public int BusinessEntityID { get; set; }
 
 
-        [SqlField("NameStyle", typeof(Person_NameStyle))]
+        [SqlField("NameStyle", typeof(Person_NameStyle), FrameworkTypeEnum.Bit)]
         public bool NameStyle { get; set; }
 
-        [SqlField("Title", typeof(Person_Title))]
+        [SqlField("Title", typeof(Person_Title), FrameworkTypeEnum.Nvarcahr)]
         public string Title { get; set; }
 
-        [SqlField("FirstName", typeof(Person_FirstName))]
+        [SqlField("FirstName", typeof(Person_FirstName), FrameworkTypeEnum.Nvarcahr)]
         public string FirstName { get; set; }
 
-        [SqlField("MiddleName", typeof(Person_MiddleName))]
+        [SqlField("MiddleName", typeof(Person_MiddleName), FrameworkTypeEnum.Nvarcahr)]
         public string MiddleName { get; set; }
 
-        [SqlField("LastName", typeof(Person_LastName))]
+        [SqlField("LastName", typeof(Person_LastName), FrameworkTypeEnum.Nvarcahr)]
         public string LastName { get; set; }
 
-        [SqlField("Suffix", typeof(Person_Suffix))]
+        [SqlField("Suffix", typeof(Person_Suffix), FrameworkTypeEnum.Nvarcahr)]
         public string Suffix { get; set; }
 
-        [SqlField("EmailPromotion", typeof(Person_EmailPromotion))]
+        [SqlField("EmailPromotion", typeof(Person_EmailPromotion), FrameworkTypeEnum.Int)]
         public int EmailPromotion { get; set; }
 
 
 
-        [SqlField("rowguid", typeof(Person_rowguid))]
+        [SqlField("rowguid", typeof(Person_rowguid), FrameworkTypeEnum.Uniqueidentifier)]
         public Guid rowguid { get; set; }
 
-        [SqlField("ModifiedDate", typeof(Person_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(Person_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -1099,16 +1099,16 @@ namespace Database.Person
     [SqlTable("Person", "PersonPhone")]
     public class PersonPhone : Row
     {
-        [SqlField("BusinessEntityID", typeof(PersonPhone_BusinessEntityID), true)]
+        [SqlField("BusinessEntityID", typeof(PersonPhone_BusinessEntityID), true, FrameworkTypeEnum.Int)]
         public int BusinessEntityID { get; set; }
 
-        [SqlField("PhoneNumber", typeof(PersonPhone_PhoneNumber), true)]
+        [SqlField("PhoneNumber", typeof(PersonPhone_PhoneNumber), true, FrameworkTypeEnum.Nvarcahr)]
         public string PhoneNumber { get; set; }
 
-        [SqlField("PhoneNumberTypeID", typeof(PersonPhone_PhoneNumberTypeID), true)]
+        [SqlField("PhoneNumberTypeID", typeof(PersonPhone_PhoneNumberTypeID), true, FrameworkTypeEnum.Int)]
         public int PhoneNumberTypeID { get; set; }
 
-        [SqlField("ModifiedDate", typeof(PersonPhone_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(PersonPhone_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -1123,13 +1123,13 @@ namespace Database.Person
     [SqlTable("Person", "PhoneNumberType")]
     public class PhoneNumberType : Row
     {
-        [SqlField("PhoneNumberTypeID", typeof(PhoneNumberType_PhoneNumberTypeID), true)]
+        [SqlField("PhoneNumberTypeID", typeof(PhoneNumberType_PhoneNumberTypeID), true, FrameworkTypeEnum.Int)]
         public int PhoneNumberTypeID { get; set; }
 
-        [SqlField("Name", typeof(PhoneNumberType_Name))]
+        [SqlField("Name", typeof(PhoneNumberType_Name), FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
 
-        [SqlField("ModifiedDate", typeof(PhoneNumberType_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(PhoneNumberType_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -1142,26 +1142,26 @@ namespace Database.Person
     [SqlTable("Person", "StateProvince")]
     public class StateProvince : Row
     {
-        [SqlField("StateProvinceID", typeof(StateProvince_StateProvinceID), true)]
+        [SqlField("StateProvinceID", typeof(StateProvince_StateProvinceID), true, FrameworkTypeEnum.Int)]
         public int StateProvinceID { get; set; }
 
 
-        [SqlField("CountryRegionCode", typeof(StateProvince_CountryRegionCode))]
+        [SqlField("CountryRegionCode", typeof(StateProvince_CountryRegionCode), FrameworkTypeEnum.Nvarcahr)]
         public string CountryRegionCode { get; set; }
 
-        [SqlField("IsOnlyStateProvinceFlag", typeof(StateProvince_IsOnlyStateProvinceFlag))]
+        [SqlField("IsOnlyStateProvinceFlag", typeof(StateProvince_IsOnlyStateProvinceFlag), FrameworkTypeEnum.Bit)]
         public bool IsOnlyStateProvinceFlag { get; set; }
 
-        [SqlField("Name", typeof(StateProvince_Name))]
+        [SqlField("Name", typeof(StateProvince_Name), FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
 
-        [SqlField("TerritoryID", typeof(StateProvince_TerritoryID))]
+        [SqlField("TerritoryID", typeof(StateProvince_TerritoryID), FrameworkTypeEnum.Int)]
         public int TerritoryID { get; set; }
 
-        [SqlField("rowguid", typeof(StateProvince_rowguid))]
+        [SqlField("rowguid", typeof(StateProvince_rowguid), FrameworkTypeEnum.Uniqueidentifier)]
         public Guid rowguid { get; set; }
 
-        [SqlField("ModifiedDate", typeof(StateProvince_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(StateProvince_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -1184,55 +1184,55 @@ namespace Database.Person
     [SqlTable("Person", "vAdditionalContactInfo")]
     public class vAdditionalContactInfo : Row
     {
-        [SqlField("BusinessEntityID", typeof(vAdditionalContactInfo_BusinessEntityID))]
+        [SqlField("BusinessEntityID", typeof(vAdditionalContactInfo_BusinessEntityID), FrameworkTypeEnum.Int)]
         public int BusinessEntityID { get; set; }
 
-        [SqlField("FirstName", typeof(vAdditionalContactInfo_FirstName))]
+        [SqlField("FirstName", typeof(vAdditionalContactInfo_FirstName), FrameworkTypeEnum.Nvarcahr)]
         public string FirstName { get; set; }
 
-        [SqlField("MiddleName", typeof(vAdditionalContactInfo_MiddleName))]
+        [SqlField("MiddleName", typeof(vAdditionalContactInfo_MiddleName), FrameworkTypeEnum.Nvarcahr)]
         public string MiddleName { get; set; }
 
-        [SqlField("LastName", typeof(vAdditionalContactInfo_LastName))]
+        [SqlField("LastName", typeof(vAdditionalContactInfo_LastName), FrameworkTypeEnum.Nvarcahr)]
         public string LastName { get; set; }
 
-        [SqlField("TelephoneNumber", typeof(vAdditionalContactInfo_TelephoneNumber))]
+        [SqlField("TelephoneNumber", typeof(vAdditionalContactInfo_TelephoneNumber), FrameworkTypeEnum.Nvarcahr)]
         public string TelephoneNumber { get; set; }
 
-        [SqlField("TelephoneSpecialInstructions", typeof(vAdditionalContactInfo_TelephoneSpecialInstructions))]
+        [SqlField("TelephoneSpecialInstructions", typeof(vAdditionalContactInfo_TelephoneSpecialInstructions), FrameworkTypeEnum.Nvarcahr)]
         public string TelephoneSpecialInstructions { get; set; }
 
-        [SqlField("Street", typeof(vAdditionalContactInfo_Street))]
+        [SqlField("Street", typeof(vAdditionalContactInfo_Street), FrameworkTypeEnum.Nvarcahr)]
         public string Street { get; set; }
 
-        [SqlField("City", typeof(vAdditionalContactInfo_City))]
+        [SqlField("City", typeof(vAdditionalContactInfo_City), FrameworkTypeEnum.Nvarcahr)]
         public string City { get; set; }
 
-        [SqlField("StateProvince", typeof(vAdditionalContactInfo_StateProvince))]
+        [SqlField("StateProvince", typeof(vAdditionalContactInfo_StateProvince), FrameworkTypeEnum.Nvarcahr)]
         public string StateProvince { get; set; }
 
-        [SqlField("PostalCode", typeof(vAdditionalContactInfo_PostalCode))]
+        [SqlField("PostalCode", typeof(vAdditionalContactInfo_PostalCode), FrameworkTypeEnum.Nvarcahr)]
         public string PostalCode { get; set; }
 
-        [SqlField("CountryRegion", typeof(vAdditionalContactInfo_CountryRegion))]
+        [SqlField("CountryRegion", typeof(vAdditionalContactInfo_CountryRegion), FrameworkTypeEnum.Nvarcahr)]
         public string CountryRegion { get; set; }
 
-        [SqlField("HomeAddressSpecialInstructions", typeof(vAdditionalContactInfo_HomeAddressSpecialInstructions))]
+        [SqlField("HomeAddressSpecialInstructions", typeof(vAdditionalContactInfo_HomeAddressSpecialInstructions), FrameworkTypeEnum.Nvarcahr)]
         public string HomeAddressSpecialInstructions { get; set; }
 
-        [SqlField("EMailAddress", typeof(vAdditionalContactInfo_EMailAddress))]
+        [SqlField("EMailAddress", typeof(vAdditionalContactInfo_EMailAddress), FrameworkTypeEnum.Nvarcahr)]
         public string EMailAddress { get; set; }
 
-        [SqlField("EMailSpecialInstructions", typeof(vAdditionalContactInfo_EMailSpecialInstructions))]
+        [SqlField("EMailSpecialInstructions", typeof(vAdditionalContactInfo_EMailSpecialInstructions), FrameworkTypeEnum.Nvarcahr)]
         public string EMailSpecialInstructions { get; set; }
 
-        [SqlField("EMailTelephoneNumber", typeof(vAdditionalContactInfo_EMailTelephoneNumber))]
+        [SqlField("EMailTelephoneNumber", typeof(vAdditionalContactInfo_EMailTelephoneNumber), FrameworkTypeEnum.Nvarcahr)]
         public string EMailTelephoneNumber { get; set; }
 
-        [SqlField("rowguid", typeof(vAdditionalContactInfo_rowguid))]
+        [SqlField("rowguid", typeof(vAdditionalContactInfo_rowguid), FrameworkTypeEnum.Uniqueidentifier)]
         public Guid rowguid { get; set; }
 
-        [SqlField("ModifiedDate", typeof(vAdditionalContactInfo_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(vAdditionalContactInfo_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -1273,23 +1273,23 @@ namespace Database.Person
     [SqlTable("Person", "vStateProvinceCountryRegion")]
     public class vStateProvinceCountryRegion : Row
     {
-        [SqlField("StateProvinceID", typeof(vStateProvinceCountryRegion_StateProvinceID))]
+        [SqlField("StateProvinceID", typeof(vStateProvinceCountryRegion_StateProvinceID), FrameworkTypeEnum.Int)]
         public int StateProvinceID { get; set; }
 
 
-        [SqlField("IsOnlyStateProvinceFlag", typeof(vStateProvinceCountryRegion_IsOnlyStateProvinceFlag))]
+        [SqlField("IsOnlyStateProvinceFlag", typeof(vStateProvinceCountryRegion_IsOnlyStateProvinceFlag), FrameworkTypeEnum.Bit)]
         public bool IsOnlyStateProvinceFlag { get; set; }
 
-        [SqlField("StateProvinceName", typeof(vStateProvinceCountryRegion_StateProvinceName))]
+        [SqlField("StateProvinceName", typeof(vStateProvinceCountryRegion_StateProvinceName), FrameworkTypeEnum.Nvarcahr)]
         public string StateProvinceName { get; set; }
 
-        [SqlField("TerritoryID", typeof(vStateProvinceCountryRegion_TerritoryID))]
+        [SqlField("TerritoryID", typeof(vStateProvinceCountryRegion_TerritoryID), FrameworkTypeEnum.Int)]
         public int TerritoryID { get; set; }
 
-        [SqlField("CountryRegionCode", typeof(vStateProvinceCountryRegion_CountryRegionCode))]
+        [SqlField("CountryRegionCode", typeof(vStateProvinceCountryRegion_CountryRegionCode), FrameworkTypeEnum.Nvarcahr)]
         public string CountryRegionCode { get; set; }
 
-        [SqlField("CountryRegionName", typeof(vStateProvinceCountryRegion_CountryRegionName))]
+        [SqlField("CountryRegionName", typeof(vStateProvinceCountryRegion_CountryRegionName), FrameworkTypeEnum.Nvarcahr)]
         public string CountryRegionName { get; set; }
     }
 
@@ -1316,29 +1316,29 @@ namespace Database.Production
     [SqlTable("Production", "BillOfMaterials")]
     public class BillOfMaterials : Row
     {
-        [SqlField("BillOfMaterialsID", typeof(BillOfMaterials_BillOfMaterialsID), true)]
+        [SqlField("BillOfMaterialsID", typeof(BillOfMaterials_BillOfMaterialsID), true, FrameworkTypeEnum.Int)]
         public int BillOfMaterialsID { get; set; }
 
-        [SqlField("ProductAssemblyID", typeof(BillOfMaterials_ProductAssemblyID))]
+        [SqlField("ProductAssemblyID", typeof(BillOfMaterials_ProductAssemblyID), FrameworkTypeEnum.Int)]
         public int? ProductAssemblyID { get; set; }
 
-        [SqlField("ComponentID", typeof(BillOfMaterials_ComponentID))]
+        [SqlField("ComponentID", typeof(BillOfMaterials_ComponentID), FrameworkTypeEnum.Int)]
         public int ComponentID { get; set; }
 
-        [SqlField("StartDate", typeof(BillOfMaterials_StartDate))]
+        [SqlField("StartDate", typeof(BillOfMaterials_StartDate), FrameworkTypeEnum.Datetime)]
         public DateTime StartDate { get; set; }
 
-        [SqlField("EndDate", typeof(BillOfMaterials_EndDate))]
+        [SqlField("EndDate", typeof(BillOfMaterials_EndDate), FrameworkTypeEnum.Datetime)]
         public DateTime? EndDate { get; set; }
 
 
-        [SqlField("BOMLevel", typeof(BillOfMaterials_BOMLevel))]
+        [SqlField("BOMLevel", typeof(BillOfMaterials_BOMLevel), FrameworkTypeEnum.Smallint)]
         public Int16 BOMLevel { get; set; }
 
-        [SqlField("PerAssemblyQty", typeof(BillOfMaterials_PerAssemblyQty))]
+        [SqlField("PerAssemblyQty", typeof(BillOfMaterials_PerAssemblyQty), FrameworkTypeEnum.Decimal)]
         public Decimal PerAssemblyQty { get; set; }
 
-        [SqlField("ModifiedDate", typeof(BillOfMaterials_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(BillOfMaterials_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -1364,10 +1364,10 @@ namespace Database.Production
     public class Culture : Row
     {
 
-        [SqlField("Name", typeof(Culture_Name))]
+        [SqlField("Name", typeof(Culture_Name), FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
 
-        [SqlField("ModifiedDate", typeof(Culture_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(Culture_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -1381,41 +1381,41 @@ namespace Database.Production
     public class Document : Row
     {
 
-        [SqlField("DocumentLevel", typeof(Document_DocumentLevel))]
+        [SqlField("DocumentLevel", typeof(Document_DocumentLevel), FrameworkTypeEnum.Smallint)]
         public Int16? DocumentLevel { get; set; }
 
-        [SqlField("Title", typeof(Document_Title))]
+        [SqlField("Title", typeof(Document_Title), FrameworkTypeEnum.Nvarcahr)]
         public string Title { get; set; }
 
-        [SqlField("Owner", typeof(Document_Owner))]
+        [SqlField("Owner", typeof(Document_Owner), FrameworkTypeEnum.Int)]
         public int Owner { get; set; }
 
-        [SqlField("FolderFlag", typeof(Document_FolderFlag))]
+        [SqlField("FolderFlag", typeof(Document_FolderFlag), FrameworkTypeEnum.Bit)]
         public bool FolderFlag { get; set; }
 
-        [SqlField("FileName", typeof(Document_FileName))]
+        [SqlField("FileName", typeof(Document_FileName), FrameworkTypeEnum.Nvarcahr)]
         public string FileName { get; set; }
 
-        [SqlField("FileExtension", typeof(Document_FileExtension))]
+        [SqlField("FileExtension", typeof(Document_FileExtension), FrameworkTypeEnum.Nvarcahr)]
         public string FileExtension { get; set; }
 
 
-        [SqlField("ChangeNumber", typeof(Document_ChangeNumber))]
+        [SqlField("ChangeNumber", typeof(Document_ChangeNumber), FrameworkTypeEnum.Int)]
         public int ChangeNumber { get; set; }
 
-        [SqlField("Status", typeof(Document_Status))]
+        [SqlField("Status", typeof(Document_Status), FrameworkTypeEnum.Tinyint)]
         public Byte Status { get; set; }
 
-        [SqlField("DocumentSummary", typeof(Document_DocumentSummary))]
+        [SqlField("DocumentSummary", typeof(Document_DocumentSummary), FrameworkTypeEnum.Nvarcahr)]
         public string DocumentSummary { get; set; }
 
-        [SqlField("Document", typeof(Document_Document2))]
+        [SqlField("Document", typeof(Document_Document2), FrameworkTypeEnum.Varbinary)]
         public byte[] Document2 { get; set; }
 
-        [SqlField("rowguid", typeof(Document_rowguid))]
+        [SqlField("rowguid", typeof(Document_rowguid), FrameworkTypeEnum.Uniqueidentifier)]
         public Guid rowguid { get; set; }
 
-        [SqlField("ModifiedDate", typeof(Document_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(Document_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -1450,11 +1450,11 @@ namespace Database.Production
     [SqlTable("Production", "Illustration")]
     public class Illustration : Row
     {
-        [SqlField("IllustrationID", typeof(Illustration_IllustrationID), true)]
+        [SqlField("IllustrationID", typeof(Illustration_IllustrationID), true, FrameworkTypeEnum.Int)]
         public int IllustrationID { get; set; }
 
 
-        [SqlField("ModifiedDate", typeof(Illustration_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(Illustration_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -1467,17 +1467,17 @@ namespace Database.Production
     [SqlTable("Production", "Location")]
     public class Location : Row
     {
-        [SqlField("LocationID", typeof(Location_LocationID), true)]
+        [SqlField("LocationID", typeof(Location_LocationID), true, FrameworkTypeEnum.Smallint)]
         public Int16 LocationID { get; set; }
 
-        [SqlField("Name", typeof(Location_Name))]
+        [SqlField("Name", typeof(Location_Name), FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
 
 
-        [SqlField("Availability", typeof(Location_Availability))]
+        [SqlField("Availability", typeof(Location_Availability), FrameworkTypeEnum.Decimal)]
         public Decimal Availability { get; set; }
 
-        [SqlField("ModifiedDate", typeof(Location_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(Location_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -1494,69 +1494,69 @@ namespace Database.Production
     [SqlTable("Production", "Product")]
     public class Product : Row
     {
-        [SqlField("ProductID", typeof(Product_ProductID), true)]
+        [SqlField("ProductID", typeof(Product_ProductID), true, FrameworkTypeEnum.Int)]
         public int ProductID { get; set; }
 
-        [SqlField("Name", typeof(Product_Name))]
+        [SqlField("Name", typeof(Product_Name), FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
 
-        [SqlField("ProductNumber", typeof(Product_ProductNumber))]
+        [SqlField("ProductNumber", typeof(Product_ProductNumber), FrameworkTypeEnum.Nvarcahr)]
         public string ProductNumber { get; set; }
 
-        [SqlField("MakeFlag", typeof(Product_MakeFlag))]
+        [SqlField("MakeFlag", typeof(Product_MakeFlag), FrameworkTypeEnum.Bit)]
         public bool MakeFlag { get; set; }
 
-        [SqlField("FinishedGoodsFlag", typeof(Product_FinishedGoodsFlag))]
+        [SqlField("FinishedGoodsFlag", typeof(Product_FinishedGoodsFlag), FrameworkTypeEnum.Bit)]
         public bool FinishedGoodsFlag { get; set; }
 
-        [SqlField("Color", typeof(Product_Color))]
+        [SqlField("Color", typeof(Product_Color), FrameworkTypeEnum.Nvarcahr)]
         public string Color { get; set; }
 
-        [SqlField("SafetyStockLevel", typeof(Product_SafetyStockLevel))]
+        [SqlField("SafetyStockLevel", typeof(Product_SafetyStockLevel), FrameworkTypeEnum.Smallint)]
         public Int16 SafetyStockLevel { get; set; }
 
-        [SqlField("ReorderPoint", typeof(Product_ReorderPoint))]
+        [SqlField("ReorderPoint", typeof(Product_ReorderPoint), FrameworkTypeEnum.Smallint)]
         public Int16 ReorderPoint { get; set; }
 
-        [SqlField("StandardCost", typeof(Product_StandardCost))]
+        [SqlField("StandardCost", typeof(Product_StandardCost), FrameworkTypeEnum.Money)]
         public Decimal StandardCost { get; set; }
 
-        [SqlField("ListPrice", typeof(Product_ListPrice))]
+        [SqlField("ListPrice", typeof(Product_ListPrice), FrameworkTypeEnum.Money)]
         public Decimal ListPrice { get; set; }
 
-        [SqlField("Size", typeof(Product_Size))]
+        [SqlField("Size", typeof(Product_Size), FrameworkTypeEnum.Nvarcahr)]
         public string Size { get; set; }
 
 
 
-        [SqlField("Weight", typeof(Product_Weight))]
+        [SqlField("Weight", typeof(Product_Weight), FrameworkTypeEnum.Decimal)]
         public Decimal? Weight { get; set; }
 
-        [SqlField("DaysToManufacture", typeof(Product_DaysToManufacture))]
+        [SqlField("DaysToManufacture", typeof(Product_DaysToManufacture), FrameworkTypeEnum.Int)]
         public int DaysToManufacture { get; set; }
 
 
 
 
-        [SqlField("ProductSubcategoryID", typeof(Product_ProductSubcategoryID))]
+        [SqlField("ProductSubcategoryID", typeof(Product_ProductSubcategoryID), FrameworkTypeEnum.Int)]
         public int? ProductSubcategoryID { get; set; }
 
-        [SqlField("ProductModelID", typeof(Product_ProductModelID))]
+        [SqlField("ProductModelID", typeof(Product_ProductModelID), FrameworkTypeEnum.Int)]
         public int? ProductModelID { get; set; }
 
-        [SqlField("SellStartDate", typeof(Product_SellStartDate))]
+        [SqlField("SellStartDate", typeof(Product_SellStartDate), FrameworkTypeEnum.Datetime)]
         public DateTime SellStartDate { get; set; }
 
-        [SqlField("SellEndDate", typeof(Product_SellEndDate))]
+        [SqlField("SellEndDate", typeof(Product_SellEndDate), FrameworkTypeEnum.Datetime)]
         public DateTime? SellEndDate { get; set; }
 
-        [SqlField("DiscontinuedDate", typeof(Product_DiscontinuedDate))]
+        [SqlField("DiscontinuedDate", typeof(Product_DiscontinuedDate), FrameworkTypeEnum.Datetime)]
         public DateTime? DiscontinuedDate { get; set; }
 
-        [SqlField("rowguid", typeof(Product_rowguid))]
+        [SqlField("rowguid", typeof(Product_rowguid), FrameworkTypeEnum.Uniqueidentifier)]
         public Guid rowguid { get; set; }
 
-        [SqlField("ModifiedDate", typeof(Product_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(Product_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -1613,16 +1613,16 @@ namespace Database.Production
     [SqlTable("Production", "ProductCategory")]
     public class ProductCategory : Row
     {
-        [SqlField("ProductCategoryID", typeof(ProductCategory_ProductCategoryID), true)]
+        [SqlField("ProductCategoryID", typeof(ProductCategory_ProductCategoryID), true, FrameworkTypeEnum.Int)]
         public int ProductCategoryID { get; set; }
 
-        [SqlField("Name", typeof(ProductCategory_Name))]
+        [SqlField("Name", typeof(ProductCategory_Name), FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
 
-        [SqlField("rowguid", typeof(ProductCategory_rowguid))]
+        [SqlField("rowguid", typeof(ProductCategory_rowguid), FrameworkTypeEnum.Uniqueidentifier)]
         public Guid rowguid { get; set; }
 
-        [SqlField("ModifiedDate", typeof(ProductCategory_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(ProductCategory_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -1637,19 +1637,19 @@ namespace Database.Production
     [SqlTable("Production", "ProductCostHistory")]
     public class ProductCostHistory : Row
     {
-        [SqlField("ProductID", typeof(ProductCostHistory_ProductID), true)]
+        [SqlField("ProductID", typeof(ProductCostHistory_ProductID), true, FrameworkTypeEnum.Int)]
         public int ProductID { get; set; }
 
-        [SqlField("StartDate", typeof(ProductCostHistory_StartDate), true)]
+        [SqlField("StartDate", typeof(ProductCostHistory_StartDate), true, FrameworkTypeEnum.Datetime)]
         public DateTime StartDate { get; set; }
 
-        [SqlField("EndDate", typeof(ProductCostHistory_EndDate))]
+        [SqlField("EndDate", typeof(ProductCostHistory_EndDate), FrameworkTypeEnum.Datetime)]
         public DateTime? EndDate { get; set; }
 
-        [SqlField("StandardCost", typeof(ProductCostHistory_StandardCost))]
+        [SqlField("StandardCost", typeof(ProductCostHistory_StandardCost), FrameworkTypeEnum.Money)]
         public Decimal StandardCost { get; set; }
 
-        [SqlField("ModifiedDate", typeof(ProductCostHistory_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(ProductCostHistory_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -1666,16 +1666,16 @@ namespace Database.Production
     [SqlTable("Production", "ProductDescription")]
     public class ProductDescription : Row
     {
-        [SqlField("ProductDescriptionID", typeof(ProductDescription_ProductDescriptionID), true)]
+        [SqlField("ProductDescriptionID", typeof(ProductDescription_ProductDescriptionID), true, FrameworkTypeEnum.Int)]
         public int ProductDescriptionID { get; set; }
 
-        [SqlField("Description", typeof(ProductDescription_Description))]
+        [SqlField("Description", typeof(ProductDescription_Description), FrameworkTypeEnum.Nvarcahr)]
         public string Description { get; set; }
 
-        [SqlField("rowguid", typeof(ProductDescription_rowguid))]
+        [SqlField("rowguid", typeof(ProductDescription_rowguid), FrameworkTypeEnum.Uniqueidentifier)]
         public Guid rowguid { get; set; }
 
-        [SqlField("ModifiedDate", typeof(ProductDescription_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(ProductDescription_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -1690,11 +1690,11 @@ namespace Database.Production
     [SqlTable("Production", "ProductDocument")]
     public class ProductDocument : Row
     {
-        [SqlField("ProductID", typeof(ProductDocument_ProductID), true)]
+        [SqlField("ProductID", typeof(ProductDocument_ProductID), true, FrameworkTypeEnum.Int)]
         public int ProductID { get; set; }
 
 
-        [SqlField("ModifiedDate", typeof(ProductDocument_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(ProductDocument_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -1707,25 +1707,25 @@ namespace Database.Production
     [SqlTable("Production", "ProductInventory")]
     public class ProductInventory : Row
     {
-        [SqlField("ProductID", typeof(ProductInventory_ProductID), true)]
+        [SqlField("ProductID", typeof(ProductInventory_ProductID), true, FrameworkTypeEnum.Int)]
         public int ProductID { get; set; }
 
-        [SqlField("LocationID", typeof(ProductInventory_LocationID), true)]
+        [SqlField("LocationID", typeof(ProductInventory_LocationID), true, FrameworkTypeEnum.Smallint)]
         public Int16 LocationID { get; set; }
 
-        [SqlField("Shelf", typeof(ProductInventory_Shelf))]
+        [SqlField("Shelf", typeof(ProductInventory_Shelf), FrameworkTypeEnum.Nvarcahr)]
         public string Shelf { get; set; }
 
-        [SqlField("Bin", typeof(ProductInventory_Bin))]
+        [SqlField("Bin", typeof(ProductInventory_Bin), FrameworkTypeEnum.Tinyint)]
         public Byte Bin { get; set; }
 
-        [SqlField("Quantity", typeof(ProductInventory_Quantity))]
+        [SqlField("Quantity", typeof(ProductInventory_Quantity), FrameworkTypeEnum.Smallint)]
         public Int16 Quantity { get; set; }
 
-        [SqlField("rowguid", typeof(ProductInventory_rowguid))]
+        [SqlField("rowguid", typeof(ProductInventory_rowguid), FrameworkTypeEnum.Uniqueidentifier)]
         public Guid rowguid { get; set; }
 
-        [SqlField("ModifiedDate", typeof(ProductInventory_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(ProductInventory_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -1746,19 +1746,19 @@ namespace Database.Production
     [SqlTable("Production", "ProductListPriceHistory")]
     public class ProductListPriceHistory : Row
     {
-        [SqlField("ProductID", typeof(ProductListPriceHistory_ProductID), true)]
+        [SqlField("ProductID", typeof(ProductListPriceHistory_ProductID), true, FrameworkTypeEnum.Int)]
         public int ProductID { get; set; }
 
-        [SqlField("StartDate", typeof(ProductListPriceHistory_StartDate), true)]
+        [SqlField("StartDate", typeof(ProductListPriceHistory_StartDate), true, FrameworkTypeEnum.Datetime)]
         public DateTime StartDate { get; set; }
 
-        [SqlField("EndDate", typeof(ProductListPriceHistory_EndDate))]
+        [SqlField("EndDate", typeof(ProductListPriceHistory_EndDate), FrameworkTypeEnum.Datetime)]
         public DateTime? EndDate { get; set; }
 
-        [SqlField("ListPrice", typeof(ProductListPriceHistory_ListPrice))]
+        [SqlField("ListPrice", typeof(ProductListPriceHistory_ListPrice), FrameworkTypeEnum.Money)]
         public Decimal ListPrice { get; set; }
 
-        [SqlField("ModifiedDate", typeof(ProductListPriceHistory_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(ProductListPriceHistory_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -1775,18 +1775,18 @@ namespace Database.Production
     [SqlTable("Production", "ProductModel")]
     public class ProductModel : Row
     {
-        [SqlField("ProductModelID", typeof(ProductModel_ProductModelID), true)]
+        [SqlField("ProductModelID", typeof(ProductModel_ProductModelID), true, FrameworkTypeEnum.Int)]
         public int ProductModelID { get; set; }
 
-        [SqlField("Name", typeof(ProductModel_Name))]
+        [SqlField("Name", typeof(ProductModel_Name), FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
 
 
 
-        [SqlField("rowguid", typeof(ProductModel_rowguid))]
+        [SqlField("rowguid", typeof(ProductModel_rowguid), FrameworkTypeEnum.Uniqueidentifier)]
         public Guid rowguid { get; set; }
 
-        [SqlField("ModifiedDate", typeof(ProductModel_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(ProductModel_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -1805,13 +1805,13 @@ namespace Database.Production
     [SqlTable("Production", "ProductModelIllustration")]
     public class ProductModelIllustration : Row
     {
-        [SqlField("ProductModelID", typeof(ProductModelIllustration_ProductModelID), true)]
+        [SqlField("ProductModelID", typeof(ProductModelIllustration_ProductModelID), true, FrameworkTypeEnum.Int)]
         public int ProductModelID { get; set; }
 
-        [SqlField("IllustrationID", typeof(ProductModelIllustration_IllustrationID), true)]
+        [SqlField("IllustrationID", typeof(ProductModelIllustration_IllustrationID), true, FrameworkTypeEnum.Int)]
         public int IllustrationID { get; set; }
 
-        [SqlField("ModifiedDate", typeof(ProductModelIllustration_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(ProductModelIllustration_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -1824,14 +1824,14 @@ namespace Database.Production
     [SqlTable("Production", "ProductModelProductDescriptionCulture")]
     public class ProductModelProductDescriptionCulture : Row
     {
-        [SqlField("ProductModelID", typeof(ProductModelProductDescriptionCulture_ProductModelID), true)]
+        [SqlField("ProductModelID", typeof(ProductModelProductDescriptionCulture_ProductModelID), true, FrameworkTypeEnum.Int)]
         public int ProductModelID { get; set; }
 
-        [SqlField("ProductDescriptionID", typeof(ProductModelProductDescriptionCulture_ProductDescriptionID), true)]
+        [SqlField("ProductDescriptionID", typeof(ProductModelProductDescriptionCulture_ProductDescriptionID), true, FrameworkTypeEnum.Int)]
         public int ProductDescriptionID { get; set; }
 
 
-        [SqlField("ModifiedDate", typeof(ProductModelProductDescriptionCulture_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(ProductModelProductDescriptionCulture_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -1846,22 +1846,22 @@ namespace Database.Production
     [SqlTable("Production", "ProductPhoto")]
     public class ProductPhoto : Row
     {
-        [SqlField("ProductPhotoID", typeof(ProductPhoto_ProductPhotoID), true)]
+        [SqlField("ProductPhotoID", typeof(ProductPhoto_ProductPhotoID), true, FrameworkTypeEnum.Int)]
         public int ProductPhotoID { get; set; }
 
-        [SqlField("ThumbNailPhoto", typeof(ProductPhoto_ThumbNailPhoto))]
+        [SqlField("ThumbNailPhoto", typeof(ProductPhoto_ThumbNailPhoto), FrameworkTypeEnum.Varbinary)]
         public byte[] ThumbNailPhoto { get; set; }
 
-        [SqlField("ThumbnailPhotoFileName", typeof(ProductPhoto_ThumbnailPhotoFileName))]
+        [SqlField("ThumbnailPhotoFileName", typeof(ProductPhoto_ThumbnailPhotoFileName), FrameworkTypeEnum.Nvarcahr)]
         public string ThumbnailPhotoFileName { get; set; }
 
-        [SqlField("LargePhoto", typeof(ProductPhoto_LargePhoto))]
+        [SqlField("LargePhoto", typeof(ProductPhoto_LargePhoto), FrameworkTypeEnum.Varbinary)]
         public byte[] LargePhoto { get; set; }
 
-        [SqlField("LargePhotoFileName", typeof(ProductPhoto_LargePhotoFileName))]
+        [SqlField("LargePhotoFileName", typeof(ProductPhoto_LargePhotoFileName), FrameworkTypeEnum.Nvarcahr)]
         public string LargePhotoFileName { get; set; }
 
-        [SqlField("ModifiedDate", typeof(ProductPhoto_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(ProductPhoto_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -1880,16 +1880,16 @@ namespace Database.Production
     [SqlTable("Production", "ProductProductPhoto")]
     public class ProductProductPhoto : Row
     {
-        [SqlField("ProductID", typeof(ProductProductPhoto_ProductID), true)]
+        [SqlField("ProductID", typeof(ProductProductPhoto_ProductID), true, FrameworkTypeEnum.Int)]
         public int ProductID { get; set; }
 
-        [SqlField("ProductPhotoID", typeof(ProductProductPhoto_ProductPhotoID), true)]
+        [SqlField("ProductPhotoID", typeof(ProductProductPhoto_ProductPhotoID), true, FrameworkTypeEnum.Int)]
         public int ProductPhotoID { get; set; }
 
-        [SqlField("Primary", typeof(ProductProductPhoto_Primary))]
+        [SqlField("Primary", typeof(ProductProductPhoto_Primary), FrameworkTypeEnum.Bit)]
         public bool Primary { get; set; }
 
-        [SqlField("ModifiedDate", typeof(ProductProductPhoto_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(ProductProductPhoto_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -1904,28 +1904,28 @@ namespace Database.Production
     [SqlTable("Production", "ProductReview")]
     public class ProductReview : Row
     {
-        [SqlField("ProductReviewID", typeof(ProductReview_ProductReviewID), true)]
+        [SqlField("ProductReviewID", typeof(ProductReview_ProductReviewID), true, FrameworkTypeEnum.Int)]
         public int ProductReviewID { get; set; }
 
-        [SqlField("ProductID", typeof(ProductReview_ProductID))]
+        [SqlField("ProductID", typeof(ProductReview_ProductID), FrameworkTypeEnum.Int)]
         public int ProductID { get; set; }
 
-        [SqlField("ReviewerName", typeof(ProductReview_ReviewerName))]
+        [SqlField("ReviewerName", typeof(ProductReview_ReviewerName), FrameworkTypeEnum.Nvarcahr)]
         public string ReviewerName { get; set; }
 
-        [SqlField("ReviewDate", typeof(ProductReview_ReviewDate))]
+        [SqlField("ReviewDate", typeof(ProductReview_ReviewDate), FrameworkTypeEnum.Datetime)]
         public DateTime ReviewDate { get; set; }
 
-        [SqlField("EmailAddress", typeof(ProductReview_EmailAddress))]
+        [SqlField("EmailAddress", typeof(ProductReview_EmailAddress), FrameworkTypeEnum.Nvarcahr)]
         public string EmailAddress { get; set; }
 
-        [SqlField("Rating", typeof(ProductReview_Rating))]
+        [SqlField("Rating", typeof(ProductReview_Rating), FrameworkTypeEnum.Int)]
         public int Rating { get; set; }
 
-        [SqlField("Comments", typeof(ProductReview_Comments))]
+        [SqlField("Comments", typeof(ProductReview_Comments), FrameworkTypeEnum.Nvarcahr)]
         public string Comments { get; set; }
 
-        [SqlField("ModifiedDate", typeof(ProductReview_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(ProductReview_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -1948,19 +1948,19 @@ namespace Database.Production
     [SqlTable("Production", "ProductSubcategory")]
     public class ProductSubcategory : Row
     {
-        [SqlField("ProductSubcategoryID", typeof(ProductSubcategory_ProductSubcategoryID), true)]
+        [SqlField("ProductSubcategoryID", typeof(ProductSubcategory_ProductSubcategoryID), true, FrameworkTypeEnum.Int)]
         public int ProductSubcategoryID { get; set; }
 
-        [SqlField("ProductCategoryID", typeof(ProductSubcategory_ProductCategoryID))]
+        [SqlField("ProductCategoryID", typeof(ProductSubcategory_ProductCategoryID), FrameworkTypeEnum.Int)]
         public int ProductCategoryID { get; set; }
 
-        [SqlField("Name", typeof(ProductSubcategory_Name))]
+        [SqlField("Name", typeof(ProductSubcategory_Name), FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
 
-        [SqlField("rowguid", typeof(ProductSubcategory_rowguid))]
+        [SqlField("rowguid", typeof(ProductSubcategory_rowguid), FrameworkTypeEnum.Uniqueidentifier)]
         public Guid rowguid { get; set; }
 
-        [SqlField("ModifiedDate", typeof(ProductSubcategory_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(ProductSubcategory_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -1977,13 +1977,13 @@ namespace Database.Production
     [SqlTable("Production", "ScrapReason")]
     public class ScrapReason : Row
     {
-        [SqlField("ScrapReasonID", typeof(ScrapReason_ScrapReasonID), true)]
+        [SqlField("ScrapReasonID", typeof(ScrapReason_ScrapReasonID), true, FrameworkTypeEnum.Smallint)]
         public Int16 ScrapReasonID { get; set; }
 
-        [SqlField("Name", typeof(ScrapReason_Name))]
+        [SqlField("Name", typeof(ScrapReason_Name), FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
 
-        [SqlField("ModifiedDate", typeof(ScrapReason_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(ScrapReason_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -1996,29 +1996,29 @@ namespace Database.Production
     [SqlTable("Production", "TransactionHistory")]
     public class TransactionHistory : Row
     {
-        [SqlField("TransactionID", typeof(TransactionHistory_TransactionID), true)]
+        [SqlField("TransactionID", typeof(TransactionHistory_TransactionID), true, FrameworkTypeEnum.Int)]
         public int TransactionID { get; set; }
 
-        [SqlField("ProductID", typeof(TransactionHistory_ProductID))]
+        [SqlField("ProductID", typeof(TransactionHistory_ProductID), FrameworkTypeEnum.Int)]
         public int ProductID { get; set; }
 
-        [SqlField("ReferenceOrderID", typeof(TransactionHistory_ReferenceOrderID))]
+        [SqlField("ReferenceOrderID", typeof(TransactionHistory_ReferenceOrderID), FrameworkTypeEnum.Int)]
         public int ReferenceOrderID { get; set; }
 
-        [SqlField("ReferenceOrderLineID", typeof(TransactionHistory_ReferenceOrderLineID))]
+        [SqlField("ReferenceOrderLineID", typeof(TransactionHistory_ReferenceOrderLineID), FrameworkTypeEnum.Int)]
         public int ReferenceOrderLineID { get; set; }
 
-        [SqlField("TransactionDate", typeof(TransactionHistory_TransactionDate))]
+        [SqlField("TransactionDate", typeof(TransactionHistory_TransactionDate), FrameworkTypeEnum.Datetime)]
         public DateTime TransactionDate { get; set; }
 
 
-        [SqlField("Quantity", typeof(TransactionHistory_Quantity))]
+        [SqlField("Quantity", typeof(TransactionHistory_Quantity), FrameworkTypeEnum.Int)]
         public int Quantity { get; set; }
 
-        [SqlField("ActualCost", typeof(TransactionHistory_ActualCost))]
+        [SqlField("ActualCost", typeof(TransactionHistory_ActualCost), FrameworkTypeEnum.Money)]
         public Decimal ActualCost { get; set; }
 
-        [SqlField("ModifiedDate", typeof(TransactionHistory_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(TransactionHistory_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -2043,29 +2043,29 @@ namespace Database.Production
     [SqlTable("Production", "TransactionHistoryArchive")]
     public class TransactionHistoryArchive : Row
     {
-        [SqlField("TransactionID", typeof(TransactionHistoryArchive_TransactionID), true)]
+        [SqlField("TransactionID", typeof(TransactionHistoryArchive_TransactionID), true, FrameworkTypeEnum.Int)]
         public int TransactionID { get; set; }
 
-        [SqlField("ProductID", typeof(TransactionHistoryArchive_ProductID))]
+        [SqlField("ProductID", typeof(TransactionHistoryArchive_ProductID), FrameworkTypeEnum.Int)]
         public int ProductID { get; set; }
 
-        [SqlField("ReferenceOrderID", typeof(TransactionHistoryArchive_ReferenceOrderID))]
+        [SqlField("ReferenceOrderID", typeof(TransactionHistoryArchive_ReferenceOrderID), FrameworkTypeEnum.Int)]
         public int ReferenceOrderID { get; set; }
 
-        [SqlField("ReferenceOrderLineID", typeof(TransactionHistoryArchive_ReferenceOrderLineID))]
+        [SqlField("ReferenceOrderLineID", typeof(TransactionHistoryArchive_ReferenceOrderLineID), FrameworkTypeEnum.Int)]
         public int ReferenceOrderLineID { get; set; }
 
-        [SqlField("TransactionDate", typeof(TransactionHistoryArchive_TransactionDate))]
+        [SqlField("TransactionDate", typeof(TransactionHistoryArchive_TransactionDate), FrameworkTypeEnum.Datetime)]
         public DateTime TransactionDate { get; set; }
 
 
-        [SqlField("Quantity", typeof(TransactionHistoryArchive_Quantity))]
+        [SqlField("Quantity", typeof(TransactionHistoryArchive_Quantity), FrameworkTypeEnum.Int)]
         public int Quantity { get; set; }
 
-        [SqlField("ActualCost", typeof(TransactionHistoryArchive_ActualCost))]
+        [SqlField("ActualCost", typeof(TransactionHistoryArchive_ActualCost), FrameworkTypeEnum.Money)]
         public Decimal ActualCost { get; set; }
 
-        [SqlField("ModifiedDate", typeof(TransactionHistoryArchive_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(TransactionHistoryArchive_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -2091,10 +2091,10 @@ namespace Database.Production
     public class UnitMeasure : Row
     {
 
-        [SqlField("Name", typeof(UnitMeasure_Name))]
+        [SqlField("Name", typeof(UnitMeasure_Name), FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
 
-        [SqlField("ModifiedDate", typeof(UnitMeasure_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(UnitMeasure_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -2107,17 +2107,17 @@ namespace Database.Production
     [SqlTable("Production", "vProductAndDescription")]
     public class vProductAndDescription : Row
     {
-        [SqlField("ProductID", typeof(vProductAndDescription_ProductID))]
+        [SqlField("ProductID", typeof(vProductAndDescription_ProductID), FrameworkTypeEnum.Int)]
         public int ProductID { get; set; }
 
-        [SqlField("Name", typeof(vProductAndDescription_Name))]
+        [SqlField("Name", typeof(vProductAndDescription_Name), FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
 
-        [SqlField("ProductModel", typeof(vProductAndDescription_ProductModel))]
+        [SqlField("ProductModel", typeof(vProductAndDescription_ProductModel), FrameworkTypeEnum.Nvarcahr)]
         public string ProductModel { get; set; }
 
 
-        [SqlField("Description", typeof(vProductAndDescription_Description))]
+        [SqlField("Description", typeof(vProductAndDescription_Description), FrameworkTypeEnum.Nvarcahr)]
         public string Description { get; set; }
     }
 
@@ -2134,79 +2134,79 @@ namespace Database.Production
     [SqlTable("Production", "vProductModelCatalogDescription")]
     public class vProductModelCatalogDescription : Row
     {
-        [SqlField("ProductModelID", typeof(vProductModelCatalogDescription_ProductModelID))]
+        [SqlField("ProductModelID", typeof(vProductModelCatalogDescription_ProductModelID), FrameworkTypeEnum.Int)]
         public int ProductModelID { get; set; }
 
-        [SqlField("Name", typeof(vProductModelCatalogDescription_Name))]
+        [SqlField("Name", typeof(vProductModelCatalogDescription_Name), FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
 
-        [SqlField("Summary", typeof(vProductModelCatalogDescription_Summary))]
+        [SqlField("Summary", typeof(vProductModelCatalogDescription_Summary), FrameworkTypeEnum.Nvarcahr)]
         public string Summary { get; set; }
 
-        [SqlField("Manufacturer", typeof(vProductModelCatalogDescription_Manufacturer))]
+        [SqlField("Manufacturer", typeof(vProductModelCatalogDescription_Manufacturer), FrameworkTypeEnum.Nvarcahr)]
         public string Manufacturer { get; set; }
 
-        [SqlField("Copyright", typeof(vProductModelCatalogDescription_Copyright))]
+        [SqlField("Copyright", typeof(vProductModelCatalogDescription_Copyright), FrameworkTypeEnum.Nvarcahr)]
         public string Copyright { get; set; }
 
-        [SqlField("ProductURL", typeof(vProductModelCatalogDescription_ProductURL))]
+        [SqlField("ProductURL", typeof(vProductModelCatalogDescription_ProductURL), FrameworkTypeEnum.Nvarcahr)]
         public string ProductURL { get; set; }
 
-        [SqlField("WarrantyPeriod", typeof(vProductModelCatalogDescription_WarrantyPeriod))]
+        [SqlField("WarrantyPeriod", typeof(vProductModelCatalogDescription_WarrantyPeriod), FrameworkTypeEnum.Nvarcahr)]
         public string WarrantyPeriod { get; set; }
 
-        [SqlField("WarrantyDescription", typeof(vProductModelCatalogDescription_WarrantyDescription))]
+        [SqlField("WarrantyDescription", typeof(vProductModelCatalogDescription_WarrantyDescription), FrameworkTypeEnum.Nvarcahr)]
         public string WarrantyDescription { get; set; }
 
-        [SqlField("NoOfYears", typeof(vProductModelCatalogDescription_NoOfYears))]
+        [SqlField("NoOfYears", typeof(vProductModelCatalogDescription_NoOfYears), FrameworkTypeEnum.Nvarcahr)]
         public string NoOfYears { get; set; }
 
-        [SqlField("MaintenanceDescription", typeof(vProductModelCatalogDescription_MaintenanceDescription))]
+        [SqlField("MaintenanceDescription", typeof(vProductModelCatalogDescription_MaintenanceDescription), FrameworkTypeEnum.Nvarcahr)]
         public string MaintenanceDescription { get; set; }
 
-        [SqlField("Wheel", typeof(vProductModelCatalogDescription_Wheel))]
+        [SqlField("Wheel", typeof(vProductModelCatalogDescription_Wheel), FrameworkTypeEnum.Nvarcahr)]
         public string Wheel { get; set; }
 
-        [SqlField("Saddle", typeof(vProductModelCatalogDescription_Saddle))]
+        [SqlField("Saddle", typeof(vProductModelCatalogDescription_Saddle), FrameworkTypeEnum.Nvarcahr)]
         public string Saddle { get; set; }
 
-        [SqlField("Pedal", typeof(vProductModelCatalogDescription_Pedal))]
+        [SqlField("Pedal", typeof(vProductModelCatalogDescription_Pedal), FrameworkTypeEnum.Nvarcahr)]
         public string Pedal { get; set; }
 
-        [SqlField("BikeFrame", typeof(vProductModelCatalogDescription_BikeFrame))]
+        [SqlField("BikeFrame", typeof(vProductModelCatalogDescription_BikeFrame), FrameworkTypeEnum.Nvarcahr)]
         public string BikeFrame { get; set; }
 
-        [SqlField("Crankset", typeof(vProductModelCatalogDescription_Crankset))]
+        [SqlField("Crankset", typeof(vProductModelCatalogDescription_Crankset), FrameworkTypeEnum.Nvarcahr)]
         public string Crankset { get; set; }
 
-        [SqlField("PictureAngle", typeof(vProductModelCatalogDescription_PictureAngle))]
+        [SqlField("PictureAngle", typeof(vProductModelCatalogDescription_PictureAngle), FrameworkTypeEnum.Nvarcahr)]
         public string PictureAngle { get; set; }
 
-        [SqlField("PictureSize", typeof(vProductModelCatalogDescription_PictureSize))]
+        [SqlField("PictureSize", typeof(vProductModelCatalogDescription_PictureSize), FrameworkTypeEnum.Nvarcahr)]
         public string PictureSize { get; set; }
 
-        [SqlField("ProductPhotoID", typeof(vProductModelCatalogDescription_ProductPhotoID))]
+        [SqlField("ProductPhotoID", typeof(vProductModelCatalogDescription_ProductPhotoID), FrameworkTypeEnum.Nvarcahr)]
         public string ProductPhotoID { get; set; }
 
-        [SqlField("Material", typeof(vProductModelCatalogDescription_Material))]
+        [SqlField("Material", typeof(vProductModelCatalogDescription_Material), FrameworkTypeEnum.Nvarcahr)]
         public string Material { get; set; }
 
-        [SqlField("Color", typeof(vProductModelCatalogDescription_Color))]
+        [SqlField("Color", typeof(vProductModelCatalogDescription_Color), FrameworkTypeEnum.Nvarcahr)]
         public string Color { get; set; }
 
-        [SqlField("ProductLine", typeof(vProductModelCatalogDescription_ProductLine))]
+        [SqlField("ProductLine", typeof(vProductModelCatalogDescription_ProductLine), FrameworkTypeEnum.Nvarcahr)]
         public string ProductLine { get; set; }
 
-        [SqlField("Style", typeof(vProductModelCatalogDescription_Style))]
+        [SqlField("Style", typeof(vProductModelCatalogDescription_Style), FrameworkTypeEnum.Nvarcahr)]
         public string Style { get; set; }
 
-        [SqlField("RiderExperience", typeof(vProductModelCatalogDescription_RiderExperience))]
+        [SqlField("RiderExperience", typeof(vProductModelCatalogDescription_RiderExperience), FrameworkTypeEnum.Nvarcahr)]
         public string RiderExperience { get; set; }
 
-        [SqlField("rowguid", typeof(vProductModelCatalogDescription_rowguid))]
+        [SqlField("rowguid", typeof(vProductModelCatalogDescription_rowguid), FrameworkTypeEnum.Uniqueidentifier)]
         public Guid rowguid { get; set; }
 
-        [SqlField("ModifiedDate", typeof(vProductModelCatalogDescription_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(vProductModelCatalogDescription_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -2263,37 +2263,37 @@ namespace Database.Production
     [SqlTable("Production", "vProductModelInstructions")]
     public class vProductModelInstructions : Row
     {
-        [SqlField("ProductModelID", typeof(vProductModelInstructions_ProductModelID))]
+        [SqlField("ProductModelID", typeof(vProductModelInstructions_ProductModelID), FrameworkTypeEnum.Int)]
         public int ProductModelID { get; set; }
 
-        [SqlField("Name", typeof(vProductModelInstructions_Name))]
+        [SqlField("Name", typeof(vProductModelInstructions_Name), FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
 
-        [SqlField("Instructions", typeof(vProductModelInstructions_Instructions))]
+        [SqlField("Instructions", typeof(vProductModelInstructions_Instructions), FrameworkTypeEnum.Nvarcahr)]
         public string Instructions { get; set; }
 
-        [SqlField("LocationID", typeof(vProductModelInstructions_LocationID))]
+        [SqlField("LocationID", typeof(vProductModelInstructions_LocationID), FrameworkTypeEnum.Int)]
         public int? LocationID { get; set; }
 
-        [SqlField("SetupHours", typeof(vProductModelInstructions_SetupHours))]
+        [SqlField("SetupHours", typeof(vProductModelInstructions_SetupHours), FrameworkTypeEnum.Decimal)]
         public Decimal? SetupHours { get; set; }
 
-        [SqlField("MachineHours", typeof(vProductModelInstructions_MachineHours))]
+        [SqlField("MachineHours", typeof(vProductModelInstructions_MachineHours), FrameworkTypeEnum.Decimal)]
         public Decimal? MachineHours { get; set; }
 
-        [SqlField("LaborHours", typeof(vProductModelInstructions_LaborHours))]
+        [SqlField("LaborHours", typeof(vProductModelInstructions_LaborHours), FrameworkTypeEnum.Decimal)]
         public Decimal? LaborHours { get; set; }
 
-        [SqlField("LotSize", typeof(vProductModelInstructions_LotSize))]
+        [SqlField("LotSize", typeof(vProductModelInstructions_LotSize), FrameworkTypeEnum.Int)]
         public int? LotSize { get; set; }
 
-        [SqlField("Step", typeof(vProductModelInstructions_Step))]
+        [SqlField("Step", typeof(vProductModelInstructions_Step), FrameworkTypeEnum.Nvarcahr)]
         public string Step { get; set; }
 
-        [SqlField("rowguid", typeof(vProductModelInstructions_rowguid))]
+        [SqlField("rowguid", typeof(vProductModelInstructions_rowguid), FrameworkTypeEnum.Uniqueidentifier)]
         public Guid rowguid { get; set; }
 
-        [SqlField("ModifiedDate", typeof(vProductModelInstructions_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(vProductModelInstructions_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -2322,34 +2322,34 @@ namespace Database.Production
     [SqlTable("Production", "WorkOrder")]
     public class WorkOrder : Row
     {
-        [SqlField("WorkOrderID", typeof(WorkOrder_WorkOrderID), true)]
+        [SqlField("WorkOrderID", typeof(WorkOrder_WorkOrderID), true, FrameworkTypeEnum.Int)]
         public int WorkOrderID { get; set; }
 
-        [SqlField("ProductID", typeof(WorkOrder_ProductID))]
+        [SqlField("ProductID", typeof(WorkOrder_ProductID), FrameworkTypeEnum.Int)]
         public int ProductID { get; set; }
 
-        [SqlField("OrderQty", typeof(WorkOrder_OrderQty))]
+        [SqlField("OrderQty", typeof(WorkOrder_OrderQty), FrameworkTypeEnum.Int)]
         public int OrderQty { get; set; }
 
-        [SqlField("StockedQty", typeof(WorkOrder_StockedQty))]
+        [SqlField("StockedQty", typeof(WorkOrder_StockedQty), FrameworkTypeEnum.Int)]
         public int StockedQty { get; set; }
 
-        [SqlField("ScrappedQty", typeof(WorkOrder_ScrappedQty))]
+        [SqlField("ScrappedQty", typeof(WorkOrder_ScrappedQty), FrameworkTypeEnum.Smallint)]
         public Int16 ScrappedQty { get; set; }
 
-        [SqlField("StartDate", typeof(WorkOrder_StartDate))]
+        [SqlField("StartDate", typeof(WorkOrder_StartDate), FrameworkTypeEnum.Datetime)]
         public DateTime StartDate { get; set; }
 
-        [SqlField("EndDate", typeof(WorkOrder_EndDate))]
+        [SqlField("EndDate", typeof(WorkOrder_EndDate), FrameworkTypeEnum.Datetime)]
         public DateTime? EndDate { get; set; }
 
-        [SqlField("DueDate", typeof(WorkOrder_DueDate))]
+        [SqlField("DueDate", typeof(WorkOrder_DueDate), FrameworkTypeEnum.Datetime)]
         public DateTime DueDate { get; set; }
 
-        [SqlField("ScrapReasonID", typeof(WorkOrder_ScrapReasonID))]
+        [SqlField("ScrapReasonID", typeof(WorkOrder_ScrapReasonID), FrameworkTypeEnum.Smallint)]
         public Int16? ScrapReasonID { get; set; }
 
-        [SqlField("ModifiedDate", typeof(WorkOrder_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(WorkOrder_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -2376,40 +2376,40 @@ namespace Database.Production
     [SqlTable("Production", "WorkOrderRouting")]
     public class WorkOrderRouting : Row
     {
-        [SqlField("WorkOrderID", typeof(WorkOrderRouting_WorkOrderID), true)]
+        [SqlField("WorkOrderID", typeof(WorkOrderRouting_WorkOrderID), true, FrameworkTypeEnum.Int)]
         public int WorkOrderID { get; set; }
 
-        [SqlField("ProductID", typeof(WorkOrderRouting_ProductID), true)]
+        [SqlField("ProductID", typeof(WorkOrderRouting_ProductID), true, FrameworkTypeEnum.Int)]
         public int ProductID { get; set; }
 
-        [SqlField("OperationSequence", typeof(WorkOrderRouting_OperationSequence), true)]
+        [SqlField("OperationSequence", typeof(WorkOrderRouting_OperationSequence), true, FrameworkTypeEnum.Smallint)]
         public Int16 OperationSequence { get; set; }
 
-        [SqlField("LocationID", typeof(WorkOrderRouting_LocationID))]
+        [SqlField("LocationID", typeof(WorkOrderRouting_LocationID), FrameworkTypeEnum.Smallint)]
         public Int16 LocationID { get; set; }
 
-        [SqlField("ScheduledStartDate", typeof(WorkOrderRouting_ScheduledStartDate))]
+        [SqlField("ScheduledStartDate", typeof(WorkOrderRouting_ScheduledStartDate), FrameworkTypeEnum.Datetime)]
         public DateTime ScheduledStartDate { get; set; }
 
-        [SqlField("ScheduledEndDate", typeof(WorkOrderRouting_ScheduledEndDate))]
+        [SqlField("ScheduledEndDate", typeof(WorkOrderRouting_ScheduledEndDate), FrameworkTypeEnum.Datetime)]
         public DateTime ScheduledEndDate { get; set; }
 
-        [SqlField("ActualStartDate", typeof(WorkOrderRouting_ActualStartDate))]
+        [SqlField("ActualStartDate", typeof(WorkOrderRouting_ActualStartDate), FrameworkTypeEnum.Datetime)]
         public DateTime? ActualStartDate { get; set; }
 
-        [SqlField("ActualEndDate", typeof(WorkOrderRouting_ActualEndDate))]
+        [SqlField("ActualEndDate", typeof(WorkOrderRouting_ActualEndDate), FrameworkTypeEnum.Datetime)]
         public DateTime? ActualEndDate { get; set; }
 
-        [SqlField("ActualResourceHrs", typeof(WorkOrderRouting_ActualResourceHrs))]
+        [SqlField("ActualResourceHrs", typeof(WorkOrderRouting_ActualResourceHrs), FrameworkTypeEnum.Decimal)]
         public Decimal? ActualResourceHrs { get; set; }
 
-        [SqlField("PlannedCost", typeof(WorkOrderRouting_PlannedCost))]
+        [SqlField("PlannedCost", typeof(WorkOrderRouting_PlannedCost), FrameworkTypeEnum.Money)]
         public Decimal PlannedCost { get; set; }
 
-        [SqlField("ActualCost", typeof(WorkOrderRouting_ActualCost))]
+        [SqlField("ActualCost", typeof(WorkOrderRouting_ActualCost), FrameworkTypeEnum.Money)]
         public Decimal? ActualCost { get; set; }
 
-        [SqlField("ModifiedDate", typeof(WorkOrderRouting_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(WorkOrderRouting_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -2446,35 +2446,35 @@ namespace Database.Purchasing
     [SqlTable("Purchasing", "ProductVendor")]
     public class ProductVendor : Row
     {
-        [SqlField("ProductID", typeof(ProductVendor_ProductID), true)]
+        [SqlField("ProductID", typeof(ProductVendor_ProductID), true, FrameworkTypeEnum.Int)]
         public int ProductID { get; set; }
 
-        [SqlField("BusinessEntityID", typeof(ProductVendor_BusinessEntityID), true)]
+        [SqlField("BusinessEntityID", typeof(ProductVendor_BusinessEntityID), true, FrameworkTypeEnum.Int)]
         public int BusinessEntityID { get; set; }
 
-        [SqlField("AverageLeadTime", typeof(ProductVendor_AverageLeadTime))]
+        [SqlField("AverageLeadTime", typeof(ProductVendor_AverageLeadTime), FrameworkTypeEnum.Int)]
         public int AverageLeadTime { get; set; }
 
-        [SqlField("StandardPrice", typeof(ProductVendor_StandardPrice))]
+        [SqlField("StandardPrice", typeof(ProductVendor_StandardPrice), FrameworkTypeEnum.Money)]
         public Decimal StandardPrice { get; set; }
 
-        [SqlField("LastReceiptCost", typeof(ProductVendor_LastReceiptCost))]
+        [SqlField("LastReceiptCost", typeof(ProductVendor_LastReceiptCost), FrameworkTypeEnum.Money)]
         public Decimal? LastReceiptCost { get; set; }
 
-        [SqlField("LastReceiptDate", typeof(ProductVendor_LastReceiptDate))]
+        [SqlField("LastReceiptDate", typeof(ProductVendor_LastReceiptDate), FrameworkTypeEnum.Datetime)]
         public DateTime? LastReceiptDate { get; set; }
 
-        [SqlField("MinOrderQty", typeof(ProductVendor_MinOrderQty))]
+        [SqlField("MinOrderQty", typeof(ProductVendor_MinOrderQty), FrameworkTypeEnum.Int)]
         public int MinOrderQty { get; set; }
 
-        [SqlField("MaxOrderQty", typeof(ProductVendor_MaxOrderQty))]
+        [SqlField("MaxOrderQty", typeof(ProductVendor_MaxOrderQty), FrameworkTypeEnum.Int)]
         public int MaxOrderQty { get; set; }
 
-        [SqlField("OnOrderQty", typeof(ProductVendor_OnOrderQty))]
+        [SqlField("OnOrderQty", typeof(ProductVendor_OnOrderQty), FrameworkTypeEnum.Int)]
         public int? OnOrderQty { get; set; }
 
 
-        [SqlField("ModifiedDate", typeof(ProductVendor_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(ProductVendor_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -2503,37 +2503,37 @@ namespace Database.Purchasing
     [SqlTable("Purchasing", "PurchaseOrderDetail")]
     public class PurchaseOrderDetail : Row
     {
-        [SqlField("PurchaseOrderID", typeof(PurchaseOrderDetail_PurchaseOrderID), true)]
+        [SqlField("PurchaseOrderID", typeof(PurchaseOrderDetail_PurchaseOrderID), true, FrameworkTypeEnum.Int)]
         public int PurchaseOrderID { get; set; }
 
-        [SqlField("PurchaseOrderDetailID", typeof(PurchaseOrderDetail_PurchaseOrderDetailID), true)]
+        [SqlField("PurchaseOrderDetailID", typeof(PurchaseOrderDetail_PurchaseOrderDetailID), true, FrameworkTypeEnum.Int)]
         public int PurchaseOrderDetailID { get; set; }
 
-        [SqlField("DueDate", typeof(PurchaseOrderDetail_DueDate))]
+        [SqlField("DueDate", typeof(PurchaseOrderDetail_DueDate), FrameworkTypeEnum.Datetime)]
         public DateTime DueDate { get; set; }
 
-        [SqlField("OrderQty", typeof(PurchaseOrderDetail_OrderQty))]
+        [SqlField("OrderQty", typeof(PurchaseOrderDetail_OrderQty), FrameworkTypeEnum.Smallint)]
         public Int16 OrderQty { get; set; }
 
-        [SqlField("ProductID", typeof(PurchaseOrderDetail_ProductID))]
+        [SqlField("ProductID", typeof(PurchaseOrderDetail_ProductID), FrameworkTypeEnum.Int)]
         public int ProductID { get; set; }
 
-        [SqlField("UnitPrice", typeof(PurchaseOrderDetail_UnitPrice))]
+        [SqlField("UnitPrice", typeof(PurchaseOrderDetail_UnitPrice), FrameworkTypeEnum.Money)]
         public Decimal UnitPrice { get; set; }
 
-        [SqlField("LineTotal", typeof(PurchaseOrderDetail_LineTotal))]
+        [SqlField("LineTotal", typeof(PurchaseOrderDetail_LineTotal), FrameworkTypeEnum.Money)]
         public Decimal LineTotal { get; set; }
 
-        [SqlField("ReceivedQty", typeof(PurchaseOrderDetail_ReceivedQty))]
+        [SqlField("ReceivedQty", typeof(PurchaseOrderDetail_ReceivedQty), FrameworkTypeEnum.Decimal)]
         public Decimal ReceivedQty { get; set; }
 
-        [SqlField("RejectedQty", typeof(PurchaseOrderDetail_RejectedQty))]
+        [SqlField("RejectedQty", typeof(PurchaseOrderDetail_RejectedQty), FrameworkTypeEnum.Decimal)]
         public Decimal RejectedQty { get; set; }
 
-        [SqlField("StockedQty", typeof(PurchaseOrderDetail_StockedQty))]
+        [SqlField("StockedQty", typeof(PurchaseOrderDetail_StockedQty), FrameworkTypeEnum.Decimal)]
         public Decimal StockedQty { get; set; }
 
-        [SqlField("ModifiedDate", typeof(PurchaseOrderDetail_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(PurchaseOrderDetail_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -2562,43 +2562,43 @@ namespace Database.Purchasing
     [SqlTable("Purchasing", "PurchaseOrderHeader")]
     public class PurchaseOrderHeader : Row
     {
-        [SqlField("PurchaseOrderID", typeof(PurchaseOrderHeader_PurchaseOrderID), true)]
+        [SqlField("PurchaseOrderID", typeof(PurchaseOrderHeader_PurchaseOrderID), true, FrameworkTypeEnum.Int)]
         public int PurchaseOrderID { get; set; }
 
-        [SqlField("RevisionNumber", typeof(PurchaseOrderHeader_RevisionNumber))]
+        [SqlField("RevisionNumber", typeof(PurchaseOrderHeader_RevisionNumber), FrameworkTypeEnum.Tinyint)]
         public Byte RevisionNumber { get; set; }
 
-        [SqlField("Status", typeof(PurchaseOrderHeader_Status))]
+        [SqlField("Status", typeof(PurchaseOrderHeader_Status), FrameworkTypeEnum.Tinyint)]
         public Byte Status { get; set; }
 
-        [SqlField("EmployeeID", typeof(PurchaseOrderHeader_EmployeeID))]
+        [SqlField("EmployeeID", typeof(PurchaseOrderHeader_EmployeeID), FrameworkTypeEnum.Int)]
         public int EmployeeID { get; set; }
 
-        [SqlField("VendorID", typeof(PurchaseOrderHeader_VendorID))]
+        [SqlField("VendorID", typeof(PurchaseOrderHeader_VendorID), FrameworkTypeEnum.Int)]
         public int VendorID { get; set; }
 
-        [SqlField("ShipMethodID", typeof(PurchaseOrderHeader_ShipMethodID))]
+        [SqlField("ShipMethodID", typeof(PurchaseOrderHeader_ShipMethodID), FrameworkTypeEnum.Int)]
         public int ShipMethodID { get; set; }
 
-        [SqlField("OrderDate", typeof(PurchaseOrderHeader_OrderDate))]
+        [SqlField("OrderDate", typeof(PurchaseOrderHeader_OrderDate), FrameworkTypeEnum.Datetime)]
         public DateTime OrderDate { get; set; }
 
-        [SqlField("ShipDate", typeof(PurchaseOrderHeader_ShipDate))]
+        [SqlField("ShipDate", typeof(PurchaseOrderHeader_ShipDate), FrameworkTypeEnum.Datetime)]
         public DateTime? ShipDate { get; set; }
 
-        [SqlField("SubTotal", typeof(PurchaseOrderHeader_SubTotal))]
+        [SqlField("SubTotal", typeof(PurchaseOrderHeader_SubTotal), FrameworkTypeEnum.Money)]
         public Decimal SubTotal { get; set; }
 
-        [SqlField("TaxAmt", typeof(PurchaseOrderHeader_TaxAmt))]
+        [SqlField("TaxAmt", typeof(PurchaseOrderHeader_TaxAmt), FrameworkTypeEnum.Money)]
         public Decimal TaxAmt { get; set; }
 
-        [SqlField("Freight", typeof(PurchaseOrderHeader_Freight))]
+        [SqlField("Freight", typeof(PurchaseOrderHeader_Freight), FrameworkTypeEnum.Money)]
         public Decimal Freight { get; set; }
 
-        [SqlField("TotalDue", typeof(PurchaseOrderHeader_TotalDue))]
+        [SqlField("TotalDue", typeof(PurchaseOrderHeader_TotalDue), FrameworkTypeEnum.Money)]
         public Decimal TotalDue { get; set; }
 
-        [SqlField("ModifiedDate", typeof(PurchaseOrderHeader_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(PurchaseOrderHeader_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -2631,22 +2631,22 @@ namespace Database.Purchasing
     [SqlTable("Purchasing", "ShipMethod")]
     public class ShipMethod : Row
     {
-        [SqlField("ShipMethodID", typeof(ShipMethod_ShipMethodID), true)]
+        [SqlField("ShipMethodID", typeof(ShipMethod_ShipMethodID), true, FrameworkTypeEnum.Int)]
         public int ShipMethodID { get; set; }
 
-        [SqlField("Name", typeof(ShipMethod_Name))]
+        [SqlField("Name", typeof(ShipMethod_Name), FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
 
-        [SqlField("ShipBase", typeof(ShipMethod_ShipBase))]
+        [SqlField("ShipBase", typeof(ShipMethod_ShipBase), FrameworkTypeEnum.Money)]
         public Decimal ShipBase { get; set; }
 
-        [SqlField("ShipRate", typeof(ShipMethod_ShipRate))]
+        [SqlField("ShipRate", typeof(ShipMethod_ShipRate), FrameworkTypeEnum.Money)]
         public Decimal ShipRate { get; set; }
 
-        [SqlField("rowguid", typeof(ShipMethod_rowguid))]
+        [SqlField("rowguid", typeof(ShipMethod_rowguid), FrameworkTypeEnum.Uniqueidentifier)]
         public Guid rowguid { get; set; }
 
-        [SqlField("ModifiedDate", typeof(ShipMethod_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(ShipMethod_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -2665,28 +2665,28 @@ namespace Database.Purchasing
     [SqlTable("Purchasing", "Vendor")]
     public class Vendor : Row
     {
-        [SqlField("BusinessEntityID", typeof(Vendor_BusinessEntityID), true)]
+        [SqlField("BusinessEntityID", typeof(Vendor_BusinessEntityID), true, FrameworkTypeEnum.Int)]
         public int BusinessEntityID { get; set; }
 
-        [SqlField("AccountNumber", typeof(Vendor_AccountNumber))]
+        [SqlField("AccountNumber", typeof(Vendor_AccountNumber), FrameworkTypeEnum.Nvarcahr)]
         public string AccountNumber { get; set; }
 
-        [SqlField("Name", typeof(Vendor_Name))]
+        [SqlField("Name", typeof(Vendor_Name), FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
 
-        [SqlField("CreditRating", typeof(Vendor_CreditRating))]
+        [SqlField("CreditRating", typeof(Vendor_CreditRating), FrameworkTypeEnum.Tinyint)]
         public Byte CreditRating { get; set; }
 
-        [SqlField("PreferredVendorStatus", typeof(Vendor_PreferredVendorStatus))]
+        [SqlField("PreferredVendorStatus", typeof(Vendor_PreferredVendorStatus), FrameworkTypeEnum.Bit)]
         public bool PreferredVendorStatus { get; set; }
 
-        [SqlField("ActiveFlag", typeof(Vendor_ActiveFlag))]
+        [SqlField("ActiveFlag", typeof(Vendor_ActiveFlag), FrameworkTypeEnum.Bit)]
         public bool ActiveFlag { get; set; }
 
-        [SqlField("PurchasingWebServiceURL", typeof(Vendor_PurchasingWebServiceURL))]
+        [SqlField("PurchasingWebServiceURL", typeof(Vendor_PurchasingWebServiceURL), FrameworkTypeEnum.Nvarcahr)]
         public string PurchasingWebServiceURL { get; set; }
 
-        [SqlField("ModifiedDate", typeof(Vendor_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(Vendor_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -2709,31 +2709,31 @@ namespace Database.Purchasing
     [SqlTable("Purchasing", "vVendorWithAddresses")]
     public class vVendorWithAddresses : Row
     {
-        [SqlField("BusinessEntityID", typeof(vVendorWithAddresses_BusinessEntityID))]
+        [SqlField("BusinessEntityID", typeof(vVendorWithAddresses_BusinessEntityID), FrameworkTypeEnum.Int)]
         public int BusinessEntityID { get; set; }
 
-        [SqlField("Name", typeof(vVendorWithAddresses_Name))]
+        [SqlField("Name", typeof(vVendorWithAddresses_Name), FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
 
-        [SqlField("AddressType", typeof(vVendorWithAddresses_AddressType))]
+        [SqlField("AddressType", typeof(vVendorWithAddresses_AddressType), FrameworkTypeEnum.Nvarcahr)]
         public string AddressType { get; set; }
 
-        [SqlField("AddressLine1", typeof(vVendorWithAddresses_AddressLine1))]
+        [SqlField("AddressLine1", typeof(vVendorWithAddresses_AddressLine1), FrameworkTypeEnum.Nvarcahr)]
         public string AddressLine1 { get; set; }
 
-        [SqlField("AddressLine2", typeof(vVendorWithAddresses_AddressLine2))]
+        [SqlField("AddressLine2", typeof(vVendorWithAddresses_AddressLine2), FrameworkTypeEnum.Nvarcahr)]
         public string AddressLine2 { get; set; }
 
-        [SqlField("City", typeof(vVendorWithAddresses_City))]
+        [SqlField("City", typeof(vVendorWithAddresses_City), FrameworkTypeEnum.Nvarcahr)]
         public string City { get; set; }
 
-        [SqlField("StateProvinceName", typeof(vVendorWithAddresses_StateProvinceName))]
+        [SqlField("StateProvinceName", typeof(vVendorWithAddresses_StateProvinceName), FrameworkTypeEnum.Nvarcahr)]
         public string StateProvinceName { get; set; }
 
-        [SqlField("PostalCode", typeof(vVendorWithAddresses_PostalCode))]
+        [SqlField("PostalCode", typeof(vVendorWithAddresses_PostalCode), FrameworkTypeEnum.Nvarcahr)]
         public string PostalCode { get; set; }
 
-        [SqlField("CountryRegionName", typeof(vVendorWithAddresses_CountryRegionName))]
+        [SqlField("CountryRegionName", typeof(vVendorWithAddresses_CountryRegionName), FrameworkTypeEnum.Nvarcahr)]
         public string CountryRegionName { get; set; }
     }
 
@@ -2758,40 +2758,40 @@ namespace Database.Purchasing
     [SqlTable("Purchasing", "vVendorWithContacts")]
     public class vVendorWithContacts : Row
     {
-        [SqlField("BusinessEntityID", typeof(vVendorWithContacts_BusinessEntityID))]
+        [SqlField("BusinessEntityID", typeof(vVendorWithContacts_BusinessEntityID), FrameworkTypeEnum.Int)]
         public int BusinessEntityID { get; set; }
 
-        [SqlField("Name", typeof(vVendorWithContacts_Name))]
+        [SqlField("Name", typeof(vVendorWithContacts_Name), FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
 
-        [SqlField("ContactType", typeof(vVendorWithContacts_ContactType))]
+        [SqlField("ContactType", typeof(vVendorWithContacts_ContactType), FrameworkTypeEnum.Nvarcahr)]
         public string ContactType { get; set; }
 
-        [SqlField("Title", typeof(vVendorWithContacts_Title))]
+        [SqlField("Title", typeof(vVendorWithContacts_Title), FrameworkTypeEnum.Nvarcahr)]
         public string Title { get; set; }
 
-        [SqlField("FirstName", typeof(vVendorWithContacts_FirstName))]
+        [SqlField("FirstName", typeof(vVendorWithContacts_FirstName), FrameworkTypeEnum.Nvarcahr)]
         public string FirstName { get; set; }
 
-        [SqlField("MiddleName", typeof(vVendorWithContacts_MiddleName))]
+        [SqlField("MiddleName", typeof(vVendorWithContacts_MiddleName), FrameworkTypeEnum.Nvarcahr)]
         public string MiddleName { get; set; }
 
-        [SqlField("LastName", typeof(vVendorWithContacts_LastName))]
+        [SqlField("LastName", typeof(vVendorWithContacts_LastName), FrameworkTypeEnum.Nvarcahr)]
         public string LastName { get; set; }
 
-        [SqlField("Suffix", typeof(vVendorWithContacts_Suffix))]
+        [SqlField("Suffix", typeof(vVendorWithContacts_Suffix), FrameworkTypeEnum.Nvarcahr)]
         public string Suffix { get; set; }
 
-        [SqlField("PhoneNumber", typeof(vVendorWithContacts_PhoneNumber))]
+        [SqlField("PhoneNumber", typeof(vVendorWithContacts_PhoneNumber), FrameworkTypeEnum.Nvarcahr)]
         public string PhoneNumber { get; set; }
 
-        [SqlField("PhoneNumberType", typeof(vVendorWithContacts_PhoneNumberType))]
+        [SqlField("PhoneNumberType", typeof(vVendorWithContacts_PhoneNumberType), FrameworkTypeEnum.Nvarcahr)]
         public string PhoneNumberType { get; set; }
 
-        [SqlField("EmailAddress", typeof(vVendorWithContacts_EmailAddress))]
+        [SqlField("EmailAddress", typeof(vVendorWithContacts_EmailAddress), FrameworkTypeEnum.Nvarcahr)]
         public string EmailAddress { get; set; }
 
-        [SqlField("EmailPromotion", typeof(vVendorWithContacts_EmailPromotion))]
+        [SqlField("EmailPromotion", typeof(vVendorWithContacts_EmailPromotion), FrameworkTypeEnum.Int)]
         public int EmailPromotion { get; set; }
     }
 
@@ -2828,11 +2828,11 @@ namespace Database.Sales
     [SqlTable("Sales", "CountryRegionCurrency")]
     public class CountryRegionCurrency : Row
     {
-        [SqlField("CountryRegionCode", typeof(CountryRegionCurrency_CountryRegionCode), true)]
+        [SqlField("CountryRegionCode", typeof(CountryRegionCurrency_CountryRegionCode), true, FrameworkTypeEnum.Nvarcahr)]
         public string CountryRegionCode { get; set; }
 
 
-        [SqlField("ModifiedDate", typeof(CountryRegionCurrency_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(CountryRegionCurrency_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -2845,22 +2845,22 @@ namespace Database.Sales
     [SqlTable("Sales", "CreditCard")]
     public class CreditCard : Row
     {
-        [SqlField("CreditCardID", typeof(CreditCard_CreditCardID), true)]
+        [SqlField("CreditCardID", typeof(CreditCard_CreditCardID), true, FrameworkTypeEnum.Int)]
         public int CreditCardID { get; set; }
 
-        [SqlField("CardType", typeof(CreditCard_CardType))]
+        [SqlField("CardType", typeof(CreditCard_CardType), FrameworkTypeEnum.Nvarcahr)]
         public string CardType { get; set; }
 
-        [SqlField("CardNumber", typeof(CreditCard_CardNumber))]
+        [SqlField("CardNumber", typeof(CreditCard_CardNumber), FrameworkTypeEnum.Nvarcahr)]
         public string CardNumber { get; set; }
 
-        [SqlField("ExpMonth", typeof(CreditCard_ExpMonth))]
+        [SqlField("ExpMonth", typeof(CreditCard_ExpMonth), FrameworkTypeEnum.Tinyint)]
         public Byte ExpMonth { get; set; }
 
-        [SqlField("ExpYear", typeof(CreditCard_ExpYear))]
+        [SqlField("ExpYear", typeof(CreditCard_ExpYear), FrameworkTypeEnum.Smallint)]
         public Int16 ExpYear { get; set; }
 
-        [SqlField("ModifiedDate", typeof(CreditCard_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(CreditCard_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -2880,10 +2880,10 @@ namespace Database.Sales
     public class Currency : Row
     {
 
-        [SqlField("Name", typeof(Currency_Name))]
+        [SqlField("Name", typeof(Currency_Name), FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
 
-        [SqlField("ModifiedDate", typeof(Currency_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(Currency_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -2896,21 +2896,21 @@ namespace Database.Sales
     [SqlTable("Sales", "CurrencyRate")]
     public class CurrencyRate : Row
     {
-        [SqlField("CurrencyRateID", typeof(CurrencyRate_CurrencyRateID), true)]
+        [SqlField("CurrencyRateID", typeof(CurrencyRate_CurrencyRateID), true, FrameworkTypeEnum.Int)]
         public int CurrencyRateID { get; set; }
 
-        [SqlField("CurrencyRateDate", typeof(CurrencyRate_CurrencyRateDate))]
+        [SqlField("CurrencyRateDate", typeof(CurrencyRate_CurrencyRateDate), FrameworkTypeEnum.Datetime)]
         public DateTime CurrencyRateDate { get; set; }
 
 
 
-        [SqlField("AverageRate", typeof(CurrencyRate_AverageRate))]
+        [SqlField("AverageRate", typeof(CurrencyRate_AverageRate), FrameworkTypeEnum.Money)]
         public Decimal AverageRate { get; set; }
 
-        [SqlField("EndOfDayRate", typeof(CurrencyRate_EndOfDayRate))]
+        [SqlField("EndOfDayRate", typeof(CurrencyRate_EndOfDayRate), FrameworkTypeEnum.Money)]
         public Decimal EndOfDayRate { get; set; }
 
-        [SqlField("ModifiedDate", typeof(CurrencyRate_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(CurrencyRate_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -2931,25 +2931,25 @@ namespace Database.Sales
     [SqlTable("Sales", "Customer")]
     public class Customer : Row
     {
-        [SqlField("CustomerID", typeof(Customer_CustomerID), true)]
+        [SqlField("CustomerID", typeof(Customer_CustomerID), true, FrameworkTypeEnum.Int)]
         public int CustomerID { get; set; }
 
-        [SqlField("PersonID", typeof(Customer_PersonID))]
+        [SqlField("PersonID", typeof(Customer_PersonID), FrameworkTypeEnum.Int)]
         public int? PersonID { get; set; }
 
-        [SqlField("StoreID", typeof(Customer_StoreID))]
+        [SqlField("StoreID", typeof(Customer_StoreID), FrameworkTypeEnum.Int)]
         public int? StoreID { get; set; }
 
-        [SqlField("TerritoryID", typeof(Customer_TerritoryID))]
+        [SqlField("TerritoryID", typeof(Customer_TerritoryID), FrameworkTypeEnum.Int)]
         public int? TerritoryID { get; set; }
 
-        [SqlField("AccountNumber", typeof(Customer_AccountNumber))]
+        [SqlField("AccountNumber", typeof(Customer_AccountNumber), FrameworkTypeEnum.Varchar)]
         public string AccountNumber { get; set; }
 
-        [SqlField("rowguid", typeof(Customer_rowguid))]
+        [SqlField("rowguid", typeof(Customer_rowguid), FrameworkTypeEnum.Uniqueidentifier)]
         public Guid rowguid { get; set; }
 
-        [SqlField("ModifiedDate", typeof(Customer_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(Customer_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -2970,13 +2970,13 @@ namespace Database.Sales
     [SqlTable("Sales", "PersonCreditCard")]
     public class PersonCreditCard : Row
     {
-        [SqlField("BusinessEntityID", typeof(PersonCreditCard_BusinessEntityID), true)]
+        [SqlField("BusinessEntityID", typeof(PersonCreditCard_BusinessEntityID), true, FrameworkTypeEnum.Int)]
         public int BusinessEntityID { get; set; }
 
-        [SqlField("CreditCardID", typeof(PersonCreditCard_CreditCardID), true)]
+        [SqlField("CreditCardID", typeof(PersonCreditCard_CreditCardID), true, FrameworkTypeEnum.Int)]
         public int CreditCardID { get; set; }
 
-        [SqlField("ModifiedDate", typeof(PersonCreditCard_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(PersonCreditCard_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -2989,37 +2989,37 @@ namespace Database.Sales
     [SqlTable("Sales", "SalesOrderDetail")]
     public class SalesOrderDetail : Row
     {
-        [SqlField("SalesOrderID", typeof(SalesOrderDetail_SalesOrderID), true)]
+        [SqlField("SalesOrderID", typeof(SalesOrderDetail_SalesOrderID), true, FrameworkTypeEnum.Int)]
         public int SalesOrderID { get; set; }
 
-        [SqlField("SalesOrderDetailID", typeof(SalesOrderDetail_SalesOrderDetailID), true)]
+        [SqlField("SalesOrderDetailID", typeof(SalesOrderDetail_SalesOrderDetailID), true, FrameworkTypeEnum.Int)]
         public int SalesOrderDetailID { get; set; }
 
-        [SqlField("CarrierTrackingNumber", typeof(SalesOrderDetail_CarrierTrackingNumber))]
+        [SqlField("CarrierTrackingNumber", typeof(SalesOrderDetail_CarrierTrackingNumber), FrameworkTypeEnum.Nvarcahr)]
         public string CarrierTrackingNumber { get; set; }
 
-        [SqlField("OrderQty", typeof(SalesOrderDetail_OrderQty))]
+        [SqlField("OrderQty", typeof(SalesOrderDetail_OrderQty), FrameworkTypeEnum.Smallint)]
         public Int16 OrderQty { get; set; }
 
-        [SqlField("ProductID", typeof(SalesOrderDetail_ProductID))]
+        [SqlField("ProductID", typeof(SalesOrderDetail_ProductID), FrameworkTypeEnum.Int)]
         public int ProductID { get; set; }
 
-        [SqlField("SpecialOfferID", typeof(SalesOrderDetail_SpecialOfferID))]
+        [SqlField("SpecialOfferID", typeof(SalesOrderDetail_SpecialOfferID), FrameworkTypeEnum.Int)]
         public int SpecialOfferID { get; set; }
 
-        [SqlField("UnitPrice", typeof(SalesOrderDetail_UnitPrice))]
+        [SqlField("UnitPrice", typeof(SalesOrderDetail_UnitPrice), FrameworkTypeEnum.Money)]
         public Decimal UnitPrice { get; set; }
 
-        [SqlField("UnitPriceDiscount", typeof(SalesOrderDetail_UnitPriceDiscount))]
+        [SqlField("UnitPriceDiscount", typeof(SalesOrderDetail_UnitPriceDiscount), FrameworkTypeEnum.Money)]
         public Decimal UnitPriceDiscount { get; set; }
 
-        [SqlField("LineTotal", typeof(SalesOrderDetail_LineTotal))]
+        [SqlField("LineTotal", typeof(SalesOrderDetail_LineTotal), FrameworkTypeEnum.Numeric)]
         public Decimal LineTotal { get; set; }
 
-        [SqlField("rowguid", typeof(SalesOrderDetail_rowguid))]
+        [SqlField("rowguid", typeof(SalesOrderDetail_rowguid), FrameworkTypeEnum.Uniqueidentifier)]
         public Guid rowguid { get; set; }
 
-        [SqlField("ModifiedDate", typeof(SalesOrderDetail_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(SalesOrderDetail_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -3048,82 +3048,82 @@ namespace Database.Sales
     [SqlTable("Sales", "SalesOrderHeader")]
     public class SalesOrderHeader : Row
     {
-        [SqlField("SalesOrderID", typeof(SalesOrderHeader_SalesOrderID), true)]
+        [SqlField("SalesOrderID", typeof(SalesOrderHeader_SalesOrderID), true, FrameworkTypeEnum.Int)]
         public int SalesOrderID { get; set; }
 
-        [SqlField("RevisionNumber", typeof(SalesOrderHeader_RevisionNumber))]
+        [SqlField("RevisionNumber", typeof(SalesOrderHeader_RevisionNumber), FrameworkTypeEnum.Tinyint)]
         public Byte RevisionNumber { get; set; }
 
-        [SqlField("OrderDate", typeof(SalesOrderHeader_OrderDate))]
+        [SqlField("OrderDate", typeof(SalesOrderHeader_OrderDate), FrameworkTypeEnum.Datetime)]
         public DateTime OrderDate { get; set; }
 
-        [SqlField("DueDate", typeof(SalesOrderHeader_DueDate))]
+        [SqlField("DueDate", typeof(SalesOrderHeader_DueDate), FrameworkTypeEnum.Datetime)]
         public DateTime DueDate { get; set; }
 
-        [SqlField("ShipDate", typeof(SalesOrderHeader_ShipDate))]
+        [SqlField("ShipDate", typeof(SalesOrderHeader_ShipDate), FrameworkTypeEnum.Datetime)]
         public DateTime? ShipDate { get; set; }
 
-        [SqlField("Status", typeof(SalesOrderHeader_Status))]
+        [SqlField("Status", typeof(SalesOrderHeader_Status), FrameworkTypeEnum.Tinyint)]
         public Byte Status { get; set; }
 
-        [SqlField("OnlineOrderFlag", typeof(SalesOrderHeader_OnlineOrderFlag))]
+        [SqlField("OnlineOrderFlag", typeof(SalesOrderHeader_OnlineOrderFlag), FrameworkTypeEnum.Bit)]
         public bool OnlineOrderFlag { get; set; }
 
-        [SqlField("SalesOrderNumber", typeof(SalesOrderHeader_SalesOrderNumber))]
+        [SqlField("SalesOrderNumber", typeof(SalesOrderHeader_SalesOrderNumber), FrameworkTypeEnum.Nvarcahr)]
         public string SalesOrderNumber { get; set; }
 
-        [SqlField("PurchaseOrderNumber", typeof(SalesOrderHeader_PurchaseOrderNumber))]
+        [SqlField("PurchaseOrderNumber", typeof(SalesOrderHeader_PurchaseOrderNumber), FrameworkTypeEnum.Nvarcahr)]
         public string PurchaseOrderNumber { get; set; }
 
-        [SqlField("AccountNumber", typeof(SalesOrderHeader_AccountNumber))]
+        [SqlField("AccountNumber", typeof(SalesOrderHeader_AccountNumber), FrameworkTypeEnum.Nvarcahr)]
         public string AccountNumber { get; set; }
 
-        [SqlField("CustomerID", typeof(SalesOrderHeader_CustomerID))]
+        [SqlField("CustomerID", typeof(SalesOrderHeader_CustomerID), FrameworkTypeEnum.Int)]
         public int CustomerID { get; set; }
 
-        [SqlField("SalesPersonID", typeof(SalesOrderHeader_SalesPersonID))]
+        [SqlField("SalesPersonID", typeof(SalesOrderHeader_SalesPersonID), FrameworkTypeEnum.Int)]
         public int? SalesPersonID { get; set; }
 
-        [SqlField("TerritoryID", typeof(SalesOrderHeader_TerritoryID))]
+        [SqlField("TerritoryID", typeof(SalesOrderHeader_TerritoryID), FrameworkTypeEnum.Int)]
         public int? TerritoryID { get; set; }
 
-        [SqlField("BillToAddressID", typeof(SalesOrderHeader_BillToAddressID))]
+        [SqlField("BillToAddressID", typeof(SalesOrderHeader_BillToAddressID), FrameworkTypeEnum.Int)]
         public int BillToAddressID { get; set; }
 
-        [SqlField("ShipToAddressID", typeof(SalesOrderHeader_ShipToAddressID))]
+        [SqlField("ShipToAddressID", typeof(SalesOrderHeader_ShipToAddressID), FrameworkTypeEnum.Int)]
         public int ShipToAddressID { get; set; }
 
-        [SqlField("ShipMethodID", typeof(SalesOrderHeader_ShipMethodID))]
+        [SqlField("ShipMethodID", typeof(SalesOrderHeader_ShipMethodID), FrameworkTypeEnum.Int)]
         public int ShipMethodID { get; set; }
 
-        [SqlField("CreditCardID", typeof(SalesOrderHeader_CreditCardID))]
+        [SqlField("CreditCardID", typeof(SalesOrderHeader_CreditCardID), FrameworkTypeEnum.Int)]
         public int? CreditCardID { get; set; }
 
-        [SqlField("CreditCardApprovalCode", typeof(SalesOrderHeader_CreditCardApprovalCode))]
+        [SqlField("CreditCardApprovalCode", typeof(SalesOrderHeader_CreditCardApprovalCode), FrameworkTypeEnum.Varchar)]
         public string CreditCardApprovalCode { get; set; }
 
-        [SqlField("CurrencyRateID", typeof(SalesOrderHeader_CurrencyRateID))]
+        [SqlField("CurrencyRateID", typeof(SalesOrderHeader_CurrencyRateID), FrameworkTypeEnum.Int)]
         public int? CurrencyRateID { get; set; }
 
-        [SqlField("SubTotal", typeof(SalesOrderHeader_SubTotal))]
+        [SqlField("SubTotal", typeof(SalesOrderHeader_SubTotal), FrameworkTypeEnum.Money)]
         public Decimal SubTotal { get; set; }
 
-        [SqlField("TaxAmt", typeof(SalesOrderHeader_TaxAmt))]
+        [SqlField("TaxAmt", typeof(SalesOrderHeader_TaxAmt), FrameworkTypeEnum.Money)]
         public Decimal TaxAmt { get; set; }
 
-        [SqlField("Freight", typeof(SalesOrderHeader_Freight))]
+        [SqlField("Freight", typeof(SalesOrderHeader_Freight), FrameworkTypeEnum.Money)]
         public Decimal Freight { get; set; }
 
-        [SqlField("TotalDue", typeof(SalesOrderHeader_TotalDue))]
+        [SqlField("TotalDue", typeof(SalesOrderHeader_TotalDue), FrameworkTypeEnum.Money)]
         public Decimal TotalDue { get; set; }
 
-        [SqlField("Comment", typeof(SalesOrderHeader_Comment))]
+        [SqlField("Comment", typeof(SalesOrderHeader_Comment), FrameworkTypeEnum.Nvarcahr)]
         public string Comment { get; set; }
 
-        [SqlField("rowguid", typeof(SalesOrderHeader_rowguid))]
+        [SqlField("rowguid", typeof(SalesOrderHeader_rowguid), FrameworkTypeEnum.Uniqueidentifier)]
         public Guid rowguid { get; set; }
 
-        [SqlField("ModifiedDate", typeof(SalesOrderHeader_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(SalesOrderHeader_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -3182,13 +3182,13 @@ namespace Database.Sales
     [SqlTable("Sales", "SalesOrderHeaderSalesReason")]
     public class SalesOrderHeaderSalesReason : Row
     {
-        [SqlField("SalesOrderID", typeof(SalesOrderHeaderSalesReason_SalesOrderID), true)]
+        [SqlField("SalesOrderID", typeof(SalesOrderHeaderSalesReason_SalesOrderID), true, FrameworkTypeEnum.Int)]
         public int SalesOrderID { get; set; }
 
-        [SqlField("SalesReasonID", typeof(SalesOrderHeaderSalesReason_SalesReasonID), true)]
+        [SqlField("SalesReasonID", typeof(SalesOrderHeaderSalesReason_SalesReasonID), true, FrameworkTypeEnum.Int)]
         public int SalesReasonID { get; set; }
 
-        [SqlField("ModifiedDate", typeof(SalesOrderHeaderSalesReason_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(SalesOrderHeaderSalesReason_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -3201,29 +3201,29 @@ namespace Database.Sales
     [SqlTable("Sales", "SalesPerson")]
     public class SalesPerson : Row
     {
-        [SqlField("BusinessEntityID", typeof(SalesPerson_BusinessEntityID), true)]
+        [SqlField("BusinessEntityID", typeof(SalesPerson_BusinessEntityID), true, FrameworkTypeEnum.Int)]
         public int BusinessEntityID { get; set; }
 
-        [SqlField("TerritoryID", typeof(SalesPerson_TerritoryID))]
+        [SqlField("TerritoryID", typeof(SalesPerson_TerritoryID), FrameworkTypeEnum.Int)]
         public int? TerritoryID { get; set; }
 
-        [SqlField("SalesQuota", typeof(SalesPerson_SalesQuota))]
+        [SqlField("SalesQuota", typeof(SalesPerson_SalesQuota), FrameworkTypeEnum.Money)]
         public Decimal? SalesQuota { get; set; }
 
-        [SqlField("Bonus", typeof(SalesPerson_Bonus))]
+        [SqlField("Bonus", typeof(SalesPerson_Bonus), FrameworkTypeEnum.Money)]
         public Decimal Bonus { get; set; }
 
 
-        [SqlField("SalesYTD", typeof(SalesPerson_SalesYTD))]
+        [SqlField("SalesYTD", typeof(SalesPerson_SalesYTD), FrameworkTypeEnum.Money)]
         public Decimal SalesYTD { get; set; }
 
-        [SqlField("SalesLastYear", typeof(SalesPerson_SalesLastYear))]
+        [SqlField("SalesLastYear", typeof(SalesPerson_SalesLastYear), FrameworkTypeEnum.Money)]
         public Decimal SalesLastYear { get; set; }
 
-        [SqlField("rowguid", typeof(SalesPerson_rowguid))]
+        [SqlField("rowguid", typeof(SalesPerson_rowguid), FrameworkTypeEnum.Uniqueidentifier)]
         public Guid rowguid { get; set; }
 
-        [SqlField("ModifiedDate", typeof(SalesPerson_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(SalesPerson_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -3248,19 +3248,19 @@ namespace Database.Sales
     [SqlTable("Sales", "SalesPersonQuotaHistory")]
     public class SalesPersonQuotaHistory : Row
     {
-        [SqlField("BusinessEntityID", typeof(SalesPersonQuotaHistory_BusinessEntityID), true)]
+        [SqlField("BusinessEntityID", typeof(SalesPersonQuotaHistory_BusinessEntityID), true, FrameworkTypeEnum.Int)]
         public int BusinessEntityID { get; set; }
 
-        [SqlField("QuotaDate", typeof(SalesPersonQuotaHistory_QuotaDate), true)]
+        [SqlField("QuotaDate", typeof(SalesPersonQuotaHistory_QuotaDate), true, FrameworkTypeEnum.Datetime)]
         public DateTime QuotaDate { get; set; }
 
-        [SqlField("SalesQuota", typeof(SalesPersonQuotaHistory_SalesQuota))]
+        [SqlField("SalesQuota", typeof(SalesPersonQuotaHistory_SalesQuota), FrameworkTypeEnum.Money)]
         public Decimal SalesQuota { get; set; }
 
-        [SqlField("rowguid", typeof(SalesPersonQuotaHistory_rowguid))]
+        [SqlField("rowguid", typeof(SalesPersonQuotaHistory_rowguid), FrameworkTypeEnum.Uniqueidentifier)]
         public Guid rowguid { get; set; }
 
-        [SqlField("ModifiedDate", typeof(SalesPersonQuotaHistory_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(SalesPersonQuotaHistory_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -3277,16 +3277,16 @@ namespace Database.Sales
     [SqlTable("Sales", "SalesReason")]
     public class SalesReason : Row
     {
-        [SqlField("SalesReasonID", typeof(SalesReason_SalesReasonID), true)]
+        [SqlField("SalesReasonID", typeof(SalesReason_SalesReasonID), true, FrameworkTypeEnum.Int)]
         public int SalesReasonID { get; set; }
 
-        [SqlField("Name", typeof(SalesReason_Name))]
+        [SqlField("Name", typeof(SalesReason_Name), FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
 
-        [SqlField("ReasonType", typeof(SalesReason_ReasonType))]
+        [SqlField("ReasonType", typeof(SalesReason_ReasonType), FrameworkTypeEnum.Nvarcahr)]
         public string ReasonType { get; set; }
 
-        [SqlField("ModifiedDate", typeof(SalesReason_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(SalesReason_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -3301,23 +3301,23 @@ namespace Database.Sales
     [SqlTable("Sales", "SalesTaxRate")]
     public class SalesTaxRate : Row
     {
-        [SqlField("SalesTaxRateID", typeof(SalesTaxRate_SalesTaxRateID), true)]
+        [SqlField("SalesTaxRateID", typeof(SalesTaxRate_SalesTaxRateID), true, FrameworkTypeEnum.Int)]
         public int SalesTaxRateID { get; set; }
 
-        [SqlField("StateProvinceID", typeof(SalesTaxRate_StateProvinceID))]
+        [SqlField("StateProvinceID", typeof(SalesTaxRate_StateProvinceID), FrameworkTypeEnum.Int)]
         public int StateProvinceID { get; set; }
 
-        [SqlField("TaxType", typeof(SalesTaxRate_TaxType))]
+        [SqlField("TaxType", typeof(SalesTaxRate_TaxType), FrameworkTypeEnum.Tinyint)]
         public Byte TaxType { get; set; }
 
 
-        [SqlField("Name", typeof(SalesTaxRate_Name))]
+        [SqlField("Name", typeof(SalesTaxRate_Name), FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
 
-        [SqlField("rowguid", typeof(SalesTaxRate_rowguid))]
+        [SqlField("rowguid", typeof(SalesTaxRate_rowguid), FrameworkTypeEnum.Uniqueidentifier)]
         public Guid rowguid { get; set; }
 
-        [SqlField("ModifiedDate", typeof(SalesTaxRate_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(SalesTaxRate_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -3338,34 +3338,34 @@ namespace Database.Sales
     [SqlTable("Sales", "SalesTerritory")]
     public class SalesTerritory : Row
     {
-        [SqlField("TerritoryID", typeof(SalesTerritory_TerritoryID), true)]
+        [SqlField("TerritoryID", typeof(SalesTerritory_TerritoryID), true, FrameworkTypeEnum.Int)]
         public int TerritoryID { get; set; }
 
-        [SqlField("Name", typeof(SalesTerritory_Name))]
+        [SqlField("Name", typeof(SalesTerritory_Name), FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
 
-        [SqlField("CountryRegionCode", typeof(SalesTerritory_CountryRegionCode))]
+        [SqlField("CountryRegionCode", typeof(SalesTerritory_CountryRegionCode), FrameworkTypeEnum.Nvarcahr)]
         public string CountryRegionCode { get; set; }
 
-        [SqlField("Group", typeof(SalesTerritory_Group))]
+        [SqlField("Group", typeof(SalesTerritory_Group), FrameworkTypeEnum.Nvarcahr)]
         public string Group { get; set; }
 
-        [SqlField("SalesYTD", typeof(SalesTerritory_SalesYTD))]
+        [SqlField("SalesYTD", typeof(SalesTerritory_SalesYTD), FrameworkTypeEnum.Money)]
         public Decimal SalesYTD { get; set; }
 
-        [SqlField("SalesLastYear", typeof(SalesTerritory_SalesLastYear))]
+        [SqlField("SalesLastYear", typeof(SalesTerritory_SalesLastYear), FrameworkTypeEnum.Money)]
         public Decimal SalesLastYear { get; set; }
 
-        [SqlField("CostYTD", typeof(SalesTerritory_CostYTD))]
+        [SqlField("CostYTD", typeof(SalesTerritory_CostYTD), FrameworkTypeEnum.Money)]
         public Decimal CostYTD { get; set; }
 
-        [SqlField("CostLastYear", typeof(SalesTerritory_CostLastYear))]
+        [SqlField("CostLastYear", typeof(SalesTerritory_CostLastYear), FrameworkTypeEnum.Money)]
         public Decimal CostLastYear { get; set; }
 
-        [SqlField("rowguid", typeof(SalesTerritory_rowguid))]
+        [SqlField("rowguid", typeof(SalesTerritory_rowguid), FrameworkTypeEnum.Uniqueidentifier)]
         public Guid rowguid { get; set; }
 
-        [SqlField("ModifiedDate", typeof(SalesTerritory_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(SalesTerritory_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -3392,22 +3392,22 @@ namespace Database.Sales
     [SqlTable("Sales", "SalesTerritoryHistory")]
     public class SalesTerritoryHistory : Row
     {
-        [SqlField("BusinessEntityID", typeof(SalesTerritoryHistory_BusinessEntityID), true)]
+        [SqlField("BusinessEntityID", typeof(SalesTerritoryHistory_BusinessEntityID), true, FrameworkTypeEnum.Int)]
         public int BusinessEntityID { get; set; }
 
-        [SqlField("TerritoryID", typeof(SalesTerritoryHistory_TerritoryID), true)]
+        [SqlField("TerritoryID", typeof(SalesTerritoryHistory_TerritoryID), true, FrameworkTypeEnum.Int)]
         public int TerritoryID { get; set; }
 
-        [SqlField("StartDate", typeof(SalesTerritoryHistory_StartDate), true)]
+        [SqlField("StartDate", typeof(SalesTerritoryHistory_StartDate), true, FrameworkTypeEnum.Datetime)]
         public DateTime StartDate { get; set; }
 
-        [SqlField("EndDate", typeof(SalesTerritoryHistory_EndDate))]
+        [SqlField("EndDate", typeof(SalesTerritoryHistory_EndDate), FrameworkTypeEnum.Datetime)]
         public DateTime? EndDate { get; set; }
 
-        [SqlField("rowguid", typeof(SalesTerritoryHistory_rowguid))]
+        [SqlField("rowguid", typeof(SalesTerritoryHistory_rowguid), FrameworkTypeEnum.Uniqueidentifier)]
         public Guid rowguid { get; set; }
 
-        [SqlField("ModifiedDate", typeof(SalesTerritoryHistory_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(SalesTerritoryHistory_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -3426,22 +3426,22 @@ namespace Database.Sales
     [SqlTable("Sales", "ShoppingCartItem")]
     public class ShoppingCartItem : Row
     {
-        [SqlField("ShoppingCartItemID", typeof(ShoppingCartItem_ShoppingCartItemID), true)]
+        [SqlField("ShoppingCartItemID", typeof(ShoppingCartItem_ShoppingCartItemID), true, FrameworkTypeEnum.Int)]
         public int ShoppingCartItemID { get; set; }
 
-        [SqlField("ShoppingCartID", typeof(ShoppingCartItem_ShoppingCartID))]
+        [SqlField("ShoppingCartID", typeof(ShoppingCartItem_ShoppingCartID), FrameworkTypeEnum.Nvarcahr)]
         public string ShoppingCartID { get; set; }
 
-        [SqlField("Quantity", typeof(ShoppingCartItem_Quantity))]
+        [SqlField("Quantity", typeof(ShoppingCartItem_Quantity), FrameworkTypeEnum.Int)]
         public int Quantity { get; set; }
 
-        [SqlField("ProductID", typeof(ShoppingCartItem_ProductID))]
+        [SqlField("ProductID", typeof(ShoppingCartItem_ProductID), FrameworkTypeEnum.Int)]
         public int ProductID { get; set; }
 
-        [SqlField("DateCreated", typeof(ShoppingCartItem_DateCreated))]
+        [SqlField("DateCreated", typeof(ShoppingCartItem_DateCreated), FrameworkTypeEnum.Datetime)]
         public DateTime DateCreated { get; set; }
 
-        [SqlField("ModifiedDate", typeof(ShoppingCartItem_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(ShoppingCartItem_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -3460,35 +3460,35 @@ namespace Database.Sales
     [SqlTable("Sales", "SpecialOffer")]
     public class SpecialOffer : Row
     {
-        [SqlField("SpecialOfferID", typeof(SpecialOffer_SpecialOfferID), true)]
+        [SqlField("SpecialOfferID", typeof(SpecialOffer_SpecialOfferID), true, FrameworkTypeEnum.Int)]
         public int SpecialOfferID { get; set; }
 
-        [SqlField("Description", typeof(SpecialOffer_Description))]
+        [SqlField("Description", typeof(SpecialOffer_Description), FrameworkTypeEnum.Nvarcahr)]
         public string Description { get; set; }
 
 
-        [SqlField("Type", typeof(SpecialOffer_Type))]
+        [SqlField("Type", typeof(SpecialOffer_Type), FrameworkTypeEnum.Nvarcahr)]
         public string Type { get; set; }
 
-        [SqlField("Category", typeof(SpecialOffer_Category))]
+        [SqlField("Category", typeof(SpecialOffer_Category), FrameworkTypeEnum.Nvarcahr)]
         public string Category { get; set; }
 
-        [SqlField("StartDate", typeof(SpecialOffer_StartDate))]
+        [SqlField("StartDate", typeof(SpecialOffer_StartDate), FrameworkTypeEnum.Datetime)]
         public DateTime StartDate { get; set; }
 
-        [SqlField("EndDate", typeof(SpecialOffer_EndDate))]
+        [SqlField("EndDate", typeof(SpecialOffer_EndDate), FrameworkTypeEnum.Datetime)]
         public DateTime EndDate { get; set; }
 
-        [SqlField("MinQty", typeof(SpecialOffer_MinQty))]
+        [SqlField("MinQty", typeof(SpecialOffer_MinQty), FrameworkTypeEnum.Int)]
         public int MinQty { get; set; }
 
-        [SqlField("MaxQty", typeof(SpecialOffer_MaxQty))]
+        [SqlField("MaxQty", typeof(SpecialOffer_MaxQty), FrameworkTypeEnum.Int)]
         public int? MaxQty { get; set; }
 
-        [SqlField("rowguid", typeof(SpecialOffer_rowguid))]
+        [SqlField("rowguid", typeof(SpecialOffer_rowguid), FrameworkTypeEnum.Uniqueidentifier)]
         public Guid rowguid { get; set; }
 
-        [SqlField("ModifiedDate", typeof(SpecialOffer_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(SpecialOffer_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -3517,16 +3517,16 @@ namespace Database.Sales
     [SqlTable("Sales", "SpecialOfferProduct")]
     public class SpecialOfferProduct : Row
     {
-        [SqlField("SpecialOfferID", typeof(SpecialOfferProduct_SpecialOfferID), true)]
+        [SqlField("SpecialOfferID", typeof(SpecialOfferProduct_SpecialOfferID), true, FrameworkTypeEnum.Int)]
         public int SpecialOfferID { get; set; }
 
-        [SqlField("ProductID", typeof(SpecialOfferProduct_ProductID), true)]
+        [SqlField("ProductID", typeof(SpecialOfferProduct_ProductID), true, FrameworkTypeEnum.Int)]
         public int ProductID { get; set; }
 
-        [SqlField("rowguid", typeof(SpecialOfferProduct_rowguid))]
+        [SqlField("rowguid", typeof(SpecialOfferProduct_rowguid), FrameworkTypeEnum.Uniqueidentifier)]
         public Guid rowguid { get; set; }
 
-        [SqlField("ModifiedDate", typeof(SpecialOfferProduct_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(SpecialOfferProduct_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -3541,20 +3541,20 @@ namespace Database.Sales
     [SqlTable("Sales", "Store")]
     public class Store : Row
     {
-        [SqlField("BusinessEntityID", typeof(Store_BusinessEntityID), true)]
+        [SqlField("BusinessEntityID", typeof(Store_BusinessEntityID), true, FrameworkTypeEnum.Int)]
         public int BusinessEntityID { get; set; }
 
-        [SqlField("Name", typeof(Store_Name))]
+        [SqlField("Name", typeof(Store_Name), FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
 
-        [SqlField("SalesPersonID", typeof(Store_SalesPersonID))]
+        [SqlField("SalesPersonID", typeof(Store_SalesPersonID), FrameworkTypeEnum.Int)]
         public int? SalesPersonID { get; set; }
 
 
-        [SqlField("rowguid", typeof(Store_rowguid))]
+        [SqlField("rowguid", typeof(Store_rowguid), FrameworkTypeEnum.Uniqueidentifier)]
         public Guid rowguid { get; set; }
 
-        [SqlField("ModifiedDate", typeof(Store_ModifiedDate))]
+        [SqlField("ModifiedDate", typeof(Store_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
     }
 
@@ -3573,55 +3573,55 @@ namespace Database.Sales
     [SqlTable("Sales", "vIndividualCustomer")]
     public class vIndividualCustomer : Row
     {
-        [SqlField("BusinessEntityID", typeof(vIndividualCustomer_BusinessEntityID))]
+        [SqlField("BusinessEntityID", typeof(vIndividualCustomer_BusinessEntityID), FrameworkTypeEnum.Int)]
         public int BusinessEntityID { get; set; }
 
-        [SqlField("Title", typeof(vIndividualCustomer_Title))]
+        [SqlField("Title", typeof(vIndividualCustomer_Title), FrameworkTypeEnum.Nvarcahr)]
         public string Title { get; set; }
 
-        [SqlField("FirstName", typeof(vIndividualCustomer_FirstName))]
+        [SqlField("FirstName", typeof(vIndividualCustomer_FirstName), FrameworkTypeEnum.Nvarcahr)]
         public string FirstName { get; set; }
 
-        [SqlField("MiddleName", typeof(vIndividualCustomer_MiddleName))]
+        [SqlField("MiddleName", typeof(vIndividualCustomer_MiddleName), FrameworkTypeEnum.Nvarcahr)]
         public string MiddleName { get; set; }
 
-        [SqlField("LastName", typeof(vIndividualCustomer_LastName))]
+        [SqlField("LastName", typeof(vIndividualCustomer_LastName), FrameworkTypeEnum.Nvarcahr)]
         public string LastName { get; set; }
 
-        [SqlField("Suffix", typeof(vIndividualCustomer_Suffix))]
+        [SqlField("Suffix", typeof(vIndividualCustomer_Suffix), FrameworkTypeEnum.Nvarcahr)]
         public string Suffix { get; set; }
 
-        [SqlField("PhoneNumber", typeof(vIndividualCustomer_PhoneNumber))]
+        [SqlField("PhoneNumber", typeof(vIndividualCustomer_PhoneNumber), FrameworkTypeEnum.Nvarcahr)]
         public string PhoneNumber { get; set; }
 
-        [SqlField("PhoneNumberType", typeof(vIndividualCustomer_PhoneNumberType))]
+        [SqlField("PhoneNumberType", typeof(vIndividualCustomer_PhoneNumberType), FrameworkTypeEnum.Nvarcahr)]
         public string PhoneNumberType { get; set; }
 
-        [SqlField("EmailAddress", typeof(vIndividualCustomer_EmailAddress))]
+        [SqlField("EmailAddress", typeof(vIndividualCustomer_EmailAddress), FrameworkTypeEnum.Nvarcahr)]
         public string EmailAddress { get; set; }
 
-        [SqlField("EmailPromotion", typeof(vIndividualCustomer_EmailPromotion))]
+        [SqlField("EmailPromotion", typeof(vIndividualCustomer_EmailPromotion), FrameworkTypeEnum.Int)]
         public int EmailPromotion { get; set; }
 
-        [SqlField("AddressType", typeof(vIndividualCustomer_AddressType))]
+        [SqlField("AddressType", typeof(vIndividualCustomer_AddressType), FrameworkTypeEnum.Nvarcahr)]
         public string AddressType { get; set; }
 
-        [SqlField("AddressLine1", typeof(vIndividualCustomer_AddressLine1))]
+        [SqlField("AddressLine1", typeof(vIndividualCustomer_AddressLine1), FrameworkTypeEnum.Nvarcahr)]
         public string AddressLine1 { get; set; }
 
-        [SqlField("AddressLine2", typeof(vIndividualCustomer_AddressLine2))]
+        [SqlField("AddressLine2", typeof(vIndividualCustomer_AddressLine2), FrameworkTypeEnum.Nvarcahr)]
         public string AddressLine2 { get; set; }
 
-        [SqlField("City", typeof(vIndividualCustomer_City))]
+        [SqlField("City", typeof(vIndividualCustomer_City), FrameworkTypeEnum.Nvarcahr)]
         public string City { get; set; }
 
-        [SqlField("StateProvinceName", typeof(vIndividualCustomer_StateProvinceName))]
+        [SqlField("StateProvinceName", typeof(vIndividualCustomer_StateProvinceName), FrameworkTypeEnum.Nvarcahr)]
         public string StateProvinceName { get; set; }
 
-        [SqlField("PostalCode", typeof(vIndividualCustomer_PostalCode))]
+        [SqlField("PostalCode", typeof(vIndividualCustomer_PostalCode), FrameworkTypeEnum.Nvarcahr)]
         public string PostalCode { get; set; }
 
-        [SqlField("CountryRegionName", typeof(vIndividualCustomer_CountryRegionName))]
+        [SqlField("CountryRegionName", typeof(vIndividualCustomer_CountryRegionName), FrameworkTypeEnum.Nvarcahr)]
         public string CountryRegionName { get; set; }
 
     }
@@ -3665,43 +3665,43 @@ namespace Database.Sales
     [SqlTable("Sales", "vPersonDemographics")]
     public class vPersonDemographics : Row
     {
-        [SqlField("BusinessEntityID", typeof(vPersonDemographics_BusinessEntityID))]
+        [SqlField("BusinessEntityID", typeof(vPersonDemographics_BusinessEntityID), FrameworkTypeEnum.Int)]
         public int BusinessEntityID { get; set; }
 
-        [SqlField("TotalPurchaseYTD", typeof(vPersonDemographics_TotalPurchaseYTD))]
+        [SqlField("TotalPurchaseYTD", typeof(vPersonDemographics_TotalPurchaseYTD), FrameworkTypeEnum.Money)]
         public Decimal? TotalPurchaseYTD { get; set; }
 
-        [SqlField("DateFirstPurchase", typeof(vPersonDemographics_DateFirstPurchase))]
+        [SqlField("DateFirstPurchase", typeof(vPersonDemographics_DateFirstPurchase), FrameworkTypeEnum.Datetime)]
         public DateTime? DateFirstPurchase { get; set; }
 
-        [SqlField("BirthDate", typeof(vPersonDemographics_BirthDate))]
+        [SqlField("BirthDate", typeof(vPersonDemographics_BirthDate), FrameworkTypeEnum.Datetime)]
         public DateTime? BirthDate { get; set; }
 
-        [SqlField("MaritalStatus", typeof(vPersonDemographics_MaritalStatus))]
+        [SqlField("MaritalStatus", typeof(vPersonDemographics_MaritalStatus), FrameworkTypeEnum.Nvarcahr)]
         public string MaritalStatus { get; set; }
 
-        [SqlField("YearlyIncome", typeof(vPersonDemographics_YearlyIncome))]
+        [SqlField("YearlyIncome", typeof(vPersonDemographics_YearlyIncome), FrameworkTypeEnum.Nvarcahr)]
         public string YearlyIncome { get; set; }
 
-        [SqlField("Gender", typeof(vPersonDemographics_Gender))]
+        [SqlField("Gender", typeof(vPersonDemographics_Gender), FrameworkTypeEnum.Nvarcahr)]
         public string Gender { get; set; }
 
-        [SqlField("TotalChildren", typeof(vPersonDemographics_TotalChildren))]
+        [SqlField("TotalChildren", typeof(vPersonDemographics_TotalChildren), FrameworkTypeEnum.Int)]
         public int? TotalChildren { get; set; }
 
-        [SqlField("NumberChildrenAtHome", typeof(vPersonDemographics_NumberChildrenAtHome))]
+        [SqlField("NumberChildrenAtHome", typeof(vPersonDemographics_NumberChildrenAtHome), FrameworkTypeEnum.Int)]
         public int? NumberChildrenAtHome { get; set; }
 
-        [SqlField("Education", typeof(vPersonDemographics_Education))]
+        [SqlField("Education", typeof(vPersonDemographics_Education), FrameworkTypeEnum.Nvarcahr)]
         public string Education { get; set; }
 
-        [SqlField("Occupation", typeof(vPersonDemographics_Occupation))]
+        [SqlField("Occupation", typeof(vPersonDemographics_Occupation), FrameworkTypeEnum.Nvarcahr)]
         public string Occupation { get; set; }
 
-        [SqlField("HomeOwnerFlag", typeof(vPersonDemographics_HomeOwnerFlag))]
+        [SqlField("HomeOwnerFlag", typeof(vPersonDemographics_HomeOwnerFlag), FrameworkTypeEnum.Bit)]
         public bool? HomeOwnerFlag { get; set; }
 
-        [SqlField("NumberCarsOwned", typeof(vPersonDemographics_NumberCarsOwned))]
+        [SqlField("NumberCarsOwned", typeof(vPersonDemographics_NumberCarsOwned), FrameworkTypeEnum.Int)]
         public int? NumberCarsOwned { get; set; }
     }
 
@@ -3734,70 +3734,70 @@ namespace Database.Sales
     [SqlTable("Sales", "vSalesPerson")]
     public class vSalesPerson : Row
     {
-        [SqlField("BusinessEntityID", typeof(vSalesPerson_BusinessEntityID))]
+        [SqlField("BusinessEntityID", typeof(vSalesPerson_BusinessEntityID), FrameworkTypeEnum.Int)]
         public int BusinessEntityID { get; set; }
 
-        [SqlField("Title", typeof(vSalesPerson_Title))]
+        [SqlField("Title", typeof(vSalesPerson_Title), FrameworkTypeEnum.Nvarcahr)]
         public string Title { get; set; }
 
-        [SqlField("FirstName", typeof(vSalesPerson_FirstName))]
+        [SqlField("FirstName", typeof(vSalesPerson_FirstName), FrameworkTypeEnum.Nvarcahr)]
         public string FirstName { get; set; }
 
-        [SqlField("MiddleName", typeof(vSalesPerson_MiddleName))]
+        [SqlField("MiddleName", typeof(vSalesPerson_MiddleName), FrameworkTypeEnum.Nvarcahr)]
         public string MiddleName { get; set; }
 
-        [SqlField("LastName", typeof(vSalesPerson_LastName))]
+        [SqlField("LastName", typeof(vSalesPerson_LastName), FrameworkTypeEnum.Nvarcahr)]
         public string LastName { get; set; }
 
-        [SqlField("Suffix", typeof(vSalesPerson_Suffix))]
+        [SqlField("Suffix", typeof(vSalesPerson_Suffix), FrameworkTypeEnum.Nvarcahr)]
         public string Suffix { get; set; }
 
-        [SqlField("JobTitle", typeof(vSalesPerson_JobTitle))]
+        [SqlField("JobTitle", typeof(vSalesPerson_JobTitle), FrameworkTypeEnum.Nvarcahr)]
         public string JobTitle { get; set; }
 
-        [SqlField("PhoneNumber", typeof(vSalesPerson_PhoneNumber))]
+        [SqlField("PhoneNumber", typeof(vSalesPerson_PhoneNumber), FrameworkTypeEnum.Nvarcahr)]
         public string PhoneNumber { get; set; }
 
-        [SqlField("PhoneNumberType", typeof(vSalesPerson_PhoneNumberType))]
+        [SqlField("PhoneNumberType", typeof(vSalesPerson_PhoneNumberType), FrameworkTypeEnum.Nvarcahr)]
         public string PhoneNumberType { get; set; }
 
-        [SqlField("EmailAddress", typeof(vSalesPerson_EmailAddress))]
+        [SqlField("EmailAddress", typeof(vSalesPerson_EmailAddress), FrameworkTypeEnum.Nvarcahr)]
         public string EmailAddress { get; set; }
 
-        [SqlField("EmailPromotion", typeof(vSalesPerson_EmailPromotion))]
+        [SqlField("EmailPromotion", typeof(vSalesPerson_EmailPromotion), FrameworkTypeEnum.Int)]
         public int EmailPromotion { get; set; }
 
-        [SqlField("AddressLine1", typeof(vSalesPerson_AddressLine1))]
+        [SqlField("AddressLine1", typeof(vSalesPerson_AddressLine1), FrameworkTypeEnum.Nvarcahr)]
         public string AddressLine1 { get; set; }
 
-        [SqlField("AddressLine2", typeof(vSalesPerson_AddressLine2))]
+        [SqlField("AddressLine2", typeof(vSalesPerson_AddressLine2), FrameworkTypeEnum.Nvarcahr)]
         public string AddressLine2 { get; set; }
 
-        [SqlField("City", typeof(vSalesPerson_City))]
+        [SqlField("City", typeof(vSalesPerson_City), FrameworkTypeEnum.Nvarcahr)]
         public string City { get; set; }
 
-        [SqlField("StateProvinceName", typeof(vSalesPerson_StateProvinceName))]
+        [SqlField("StateProvinceName", typeof(vSalesPerson_StateProvinceName), FrameworkTypeEnum.Nvarcahr)]
         public string StateProvinceName { get; set; }
 
-        [SqlField("PostalCode", typeof(vSalesPerson_PostalCode))]
+        [SqlField("PostalCode", typeof(vSalesPerson_PostalCode), FrameworkTypeEnum.Nvarcahr)]
         public string PostalCode { get; set; }
 
-        [SqlField("CountryRegionName", typeof(vSalesPerson_CountryRegionName))]
+        [SqlField("CountryRegionName", typeof(vSalesPerson_CountryRegionName), FrameworkTypeEnum.Nvarcahr)]
         public string CountryRegionName { get; set; }
 
-        [SqlField("TerritoryName", typeof(vSalesPerson_TerritoryName))]
+        [SqlField("TerritoryName", typeof(vSalesPerson_TerritoryName), FrameworkTypeEnum.Nvarcahr)]
         public string TerritoryName { get; set; }
 
-        [SqlField("TerritoryGroup", typeof(vSalesPerson_TerritoryGroup))]
+        [SqlField("TerritoryGroup", typeof(vSalesPerson_TerritoryGroup), FrameworkTypeEnum.Nvarcahr)]
         public string TerritoryGroup { get; set; }
 
-        [SqlField("SalesQuota", typeof(vSalesPerson_SalesQuota))]
+        [SqlField("SalesQuota", typeof(vSalesPerson_SalesQuota), FrameworkTypeEnum.Money)]
         public Decimal? SalesQuota { get; set; }
 
-        [SqlField("SalesYTD", typeof(vSalesPerson_SalesYTD))]
+        [SqlField("SalesYTD", typeof(vSalesPerson_SalesYTD), FrameworkTypeEnum.Money)]
         public Decimal SalesYTD { get; set; }
 
-        [SqlField("SalesLastYear", typeof(vSalesPerson_SalesLastYear))]
+        [SqlField("SalesLastYear", typeof(vSalesPerson_SalesLastYear), FrameworkTypeEnum.Money)]
         public Decimal SalesLastYear { get; set; }
     }
 
@@ -3848,26 +3848,17 @@ namespace Database.Sales
     [SqlTable("Sales", "vSalesPersonSalesByFiscalYears")]
     public class vSalesPersonSalesByFiscalYears : Row
     {
-        [SqlField("SalesPersonID", typeof(vSalesPersonSalesByFiscalYears_SalesPersonID))]
+        [SqlField("SalesPersonID", typeof(vSalesPersonSalesByFiscalYears_SalesPersonID), FrameworkTypeEnum.Int)]
         public int? SalesPersonID { get; set; }
 
-        [SqlField("FullName", typeof(vSalesPersonSalesByFiscalYears_FullName))]
+        [SqlField("FullName", typeof(vSalesPersonSalesByFiscalYears_FullName), FrameworkTypeEnum.Nvarcahr)]
         public string FullName { get; set; }
 
-        [SqlField("JobTitle", typeof(vSalesPersonSalesByFiscalYears_JobTitle))]
+        [SqlField("JobTitle", typeof(vSalesPersonSalesByFiscalYears_JobTitle), FrameworkTypeEnum.Nvarcahr)]
         public string JobTitle { get; set; }
 
-        [SqlField("SalesTerritory", typeof(vSalesPersonSalesByFiscalYears_SalesTerritory))]
+        [SqlField("SalesTerritory", typeof(vSalesPersonSalesByFiscalYears_SalesTerritory), FrameworkTypeEnum.Nvarcahr)]
         public string SalesTerritory { get; set; }
-
-        [SqlField("2002", typeof(vSalesPersonSalesByFiscalYears_2002))]
-        public Decimal? X2002 { get; set; }
-
-        [SqlField("2003", typeof(vSalesPersonSalesByFiscalYears_2003))]
-        public Decimal? X2003 { get; set; }
-
-        [SqlField("2004", typeof(vSalesPersonSalesByFiscalYears_2004))]
-        public Decimal? X2004 { get; set; }
     }
 
     public class vSalesPersonSalesByFiscalYears_SalesPersonID : Cell<vSalesPersonSalesByFiscalYears> { }
@@ -3887,31 +3878,31 @@ namespace Database.Sales
     [SqlTable("Sales", "vStoreWithAddresses")]
     public class vStoreWithAddresses : Row
     {
-        [SqlField("BusinessEntityID", typeof(vStoreWithAddresses_BusinessEntityID))]
+        [SqlField("BusinessEntityID", typeof(vStoreWithAddresses_BusinessEntityID), FrameworkTypeEnum.Int)]
         public int BusinessEntityID { get; set; }
 
-        [SqlField("Name", typeof(vStoreWithAddresses_Name))]
+        [SqlField("Name", typeof(vStoreWithAddresses_Name), FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
 
-        [SqlField("AddressType", typeof(vStoreWithAddresses_AddressType))]
+        [SqlField("AddressType", typeof(vStoreWithAddresses_AddressType), FrameworkTypeEnum.Nvarcahr)]
         public string AddressType { get; set; }
 
-        [SqlField("AddressLine1", typeof(vStoreWithAddresses_AddressLine1))]
+        [SqlField("AddressLine1", typeof(vStoreWithAddresses_AddressLine1), FrameworkTypeEnum.Nvarcahr)]
         public string AddressLine1 { get; set; }
 
-        [SqlField("AddressLine2", typeof(vStoreWithAddresses_AddressLine2))]
+        [SqlField("AddressLine2", typeof(vStoreWithAddresses_AddressLine2), FrameworkTypeEnum.Nvarcahr)]
         public string AddressLine2 { get; set; }
 
-        [SqlField("City", typeof(vStoreWithAddresses_City))]
+        [SqlField("City", typeof(vStoreWithAddresses_City), FrameworkTypeEnum.Nvarcahr)]
         public string City { get; set; }
 
-        [SqlField("StateProvinceName", typeof(vStoreWithAddresses_StateProvinceName))]
+        [SqlField("StateProvinceName", typeof(vStoreWithAddresses_StateProvinceName), FrameworkTypeEnum.Nvarcahr)]
         public string StateProvinceName { get; set; }
 
-        [SqlField("PostalCode", typeof(vStoreWithAddresses_PostalCode))]
+        [SqlField("PostalCode", typeof(vStoreWithAddresses_PostalCode), FrameworkTypeEnum.Nvarcahr)]
         public string PostalCode { get; set; }
 
-        [SqlField("CountryRegionName", typeof(vStoreWithAddresses_CountryRegionName))]
+        [SqlField("CountryRegionName", typeof(vStoreWithAddresses_CountryRegionName), FrameworkTypeEnum.Nvarcahr)]
         public string CountryRegionName { get; set; }
     }
 
@@ -3936,40 +3927,40 @@ namespace Database.Sales
     [SqlTable("Sales", "vStoreWithContacts")]
     public class vStoreWithContacts : Row
     {
-        [SqlField("BusinessEntityID", typeof(vStoreWithContacts_BusinessEntityID))]
+        [SqlField("BusinessEntityID", typeof(vStoreWithContacts_BusinessEntityID), FrameworkTypeEnum.Int)]
         public int BusinessEntityID { get; set; }
 
-        [SqlField("Name", typeof(vStoreWithContacts_Name))]
+        [SqlField("Name", typeof(vStoreWithContacts_Name), FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
 
-        [SqlField("ContactType", typeof(vStoreWithContacts_ContactType))]
+        [SqlField("ContactType", typeof(vStoreWithContacts_ContactType), FrameworkTypeEnum.Nvarcahr)]
         public string ContactType { get; set; }
 
-        [SqlField("Title", typeof(vStoreWithContacts_Title))]
+        [SqlField("Title", typeof(vStoreWithContacts_Title), FrameworkTypeEnum.Nvarcahr)]
         public string Title { get; set; }
 
-        [SqlField("FirstName", typeof(vStoreWithContacts_FirstName))]
+        [SqlField("FirstName", typeof(vStoreWithContacts_FirstName), FrameworkTypeEnum.Nvarcahr)]
         public string FirstName { get; set; }
 
-        [SqlField("MiddleName", typeof(vStoreWithContacts_MiddleName))]
+        [SqlField("MiddleName", typeof(vStoreWithContacts_MiddleName), FrameworkTypeEnum.Nvarcahr)]
         public string MiddleName { get; set; }
 
-        [SqlField("LastName", typeof(vStoreWithContacts_LastName))]
+        [SqlField("LastName", typeof(vStoreWithContacts_LastName), FrameworkTypeEnum.Nvarcahr)]
         public string LastName { get; set; }
 
-        [SqlField("Suffix", typeof(vStoreWithContacts_Suffix))]
+        [SqlField("Suffix", typeof(vStoreWithContacts_Suffix), FrameworkTypeEnum.Nvarcahr)]
         public string Suffix { get; set; }
 
-        [SqlField("PhoneNumber", typeof(vStoreWithContacts_PhoneNumber))]
+        [SqlField("PhoneNumber", typeof(vStoreWithContacts_PhoneNumber), FrameworkTypeEnum.Nvarcahr)]
         public string PhoneNumber { get; set; }
 
-        [SqlField("PhoneNumberType", typeof(vStoreWithContacts_PhoneNumberType))]
+        [SqlField("PhoneNumberType", typeof(vStoreWithContacts_PhoneNumberType), FrameworkTypeEnum.Nvarcahr)]
         public string PhoneNumberType { get; set; }
 
-        [SqlField("EmailAddress", typeof(vStoreWithContacts_EmailAddress))]
+        [SqlField("EmailAddress", typeof(vStoreWithContacts_EmailAddress), FrameworkTypeEnum.Nvarcahr)]
         public string EmailAddress { get; set; }
 
-        [SqlField("EmailPromotion", typeof(vStoreWithContacts_EmailPromotion))]
+        [SqlField("EmailPromotion", typeof(vStoreWithContacts_EmailPromotion), FrameworkTypeEnum.Int)]
         public int EmailPromotion { get; set; }
     }
 
@@ -4000,40 +3991,40 @@ namespace Database.Sales
     [SqlTable("Sales", "vStoreWithDemographics")]
     public class vStoreWithDemographics : Row
     {
-        [SqlField("BusinessEntityID", typeof(vStoreWithDemographics_BusinessEntityID))]
+        [SqlField("BusinessEntityID", typeof(vStoreWithDemographics_BusinessEntityID), FrameworkTypeEnum.Int)]
         public int BusinessEntityID { get; set; }
 
-        [SqlField("Name", typeof(vStoreWithDemographics_Name))]
+        [SqlField("Name", typeof(vStoreWithDemographics_Name), FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
 
-        [SqlField("AnnualSales", typeof(vStoreWithDemographics_AnnualSales))]
+        [SqlField("AnnualSales", typeof(vStoreWithDemographics_AnnualSales), FrameworkTypeEnum.Money)]
         public Decimal? AnnualSales { get; set; }
 
-        [SqlField("AnnualRevenue", typeof(vStoreWithDemographics_AnnualRevenue))]
+        [SqlField("AnnualRevenue", typeof(vStoreWithDemographics_AnnualRevenue), FrameworkTypeEnum.Money)]
         public Decimal? AnnualRevenue { get; set; }
 
-        [SqlField("BankName", typeof(vStoreWithDemographics_BankName))]
+        [SqlField("BankName", typeof(vStoreWithDemographics_BankName), FrameworkTypeEnum.Nvarcahr)]
         public string BankName { get; set; }
 
-        [SqlField("BusinessType", typeof(vStoreWithDemographics_BusinessType))]
+        [SqlField("BusinessType", typeof(vStoreWithDemographics_BusinessType), FrameworkTypeEnum.Nvarcahr)]
         public string BusinessType { get; set; }
 
-        [SqlField("YearOpened", typeof(vStoreWithDemographics_YearOpened))]
+        [SqlField("YearOpened", typeof(vStoreWithDemographics_YearOpened), FrameworkTypeEnum.Int)]
         public int? YearOpened { get; set; }
 
-        [SqlField("Specialty", typeof(vStoreWithDemographics_Specialty))]
+        [SqlField("Specialty", typeof(vStoreWithDemographics_Specialty), FrameworkTypeEnum.Nvarcahr)]
         public string Specialty { get; set; }
 
-        [SqlField("SquareFeet", typeof(vStoreWithDemographics_SquareFeet))]
+        [SqlField("SquareFeet", typeof(vStoreWithDemographics_SquareFeet), FrameworkTypeEnum.Int)]
         public int? SquareFeet { get; set; }
 
-        [SqlField("Brands", typeof(vStoreWithDemographics_Brands))]
+        [SqlField("Brands", typeof(vStoreWithDemographics_Brands), FrameworkTypeEnum.Nvarcahr)]
         public string Brands { get; set; }
 
-        [SqlField("Internet", typeof(vStoreWithDemographics_Internet))]
+        [SqlField("Internet", typeof(vStoreWithDemographics_Internet), FrameworkTypeEnum.Nvarcahr)]
         public string Internet { get; set; }
 
-        [SqlField("NumberEmployees", typeof(vStoreWithDemographics_NumberEmployees))]
+        [SqlField("NumberEmployees", typeof(vStoreWithDemographics_NumberEmployees), FrameworkTypeEnum.Int)]
         public int? NumberEmployees { get; set; }
     }
 
