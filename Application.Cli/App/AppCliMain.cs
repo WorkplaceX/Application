@@ -1,6 +1,8 @@
 ﻿namespace Application.Cli
 {
-    using Database.dbo;
+    extern alias Application;
+
+    using Application::Database.dbo; // Framework and Application contain same namespace.
     using Framework.Cli.Command;
     using Framework.Cli.Config;
     using Microsoft.Extensions.CommandLineUtils;
