@@ -191,6 +191,11 @@
             return UtilDal.Query<HelloWorld>();
         }
 
+        protected override void GridQueryConfig(out IQueryable<FrameworkConfigGrid> configGridQuery)
+        {
+            configGridQuery = new FrameworkConfigGrid[] { new FrameworkConfigGrid { RowCountMax = 3 } }.AsQueryable();
+        }
+
         protected override Task ButtonClickAsync(Button button)
         {
             if (button == ButtonDelete())
