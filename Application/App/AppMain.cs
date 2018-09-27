@@ -191,9 +191,10 @@
             return UtilDal.Query<HelloWorld>();
         }
 
-        protected override void GridQueryConfig(out IQueryable<FrameworkConfigGrid> configGridQuery)
+        protected override void GridQueryConfig(Grid grid, ref IQueryable<FrameworkConfigGridBuiltIn> configGridQuery, ref IQueryable<FrameworkConfigFieldBuiltIn> configFieldQuery)
         {
-            configGridQuery = new FrameworkConfigGrid[] { new FrameworkConfigGrid { RowCountMax = 3 } }.AsQueryable();
+            configGridQuery = new [] { new FrameworkConfigGridBuiltIn { RowCountMax = 3 } }.AsQueryable();
+            configFieldQuery = new [] { new FrameworkConfigFieldBuiltIn { FieldNameCSharp = "Text",  Text = "My Text",  } }.AsQueryable();
         }
 
         protected override Task ButtonClickAsync(Button button)
