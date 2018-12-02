@@ -195,7 +195,7 @@
         {
             config.ConfigGridQuery = new[] { new FrameworkConfigGridBuiltIn { RowCountMax = 3 } }.AsQueryable();
             config.ConfigFieldQuery = new[] {
-                new FrameworkConfigFieldBuiltIn { FieldNameCSharp = "Text", Text = "My Text", TableNameCSharp = "DD" },
+                new FrameworkConfigFieldBuiltIn { FieldNameCSharp = "Text", Text = "My Text" },
             }.AsQueryable();
         }
 
