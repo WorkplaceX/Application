@@ -26,6 +26,9 @@
             base.RegisterCommand();
         }
 
+        /// <summary>
+        /// Set default values if file ConfigCli.json does not exist.
+        /// </summary>
         protected override void InitConfigCli(ConfigCli configCli)
         {
             configCli.WebsiteList.Add(new ConfigCliWebsite()
