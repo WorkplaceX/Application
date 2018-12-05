@@ -8,6 +8,7 @@ Develop business applications with WorkplaceX framework.
 ```cmd
 git clone https://github.com/WorkplaceX/Application.git --recursive
 ```
+Recursive argument enables additional cloning of submodule (Framework).
 
 ## Command Line Interface (CLI)
 In the root folder type cli for framework cli.
