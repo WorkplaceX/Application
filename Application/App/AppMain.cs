@@ -6,10 +6,10 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using DatabaseCustom.Person;
     using System.Threading.Tasks;
     using System.Linq.Dynamic.Core;
     using Database.dbo;
+    using Database.Person;
 
     public class AppMain : AppJson
     {
@@ -23,6 +23,7 @@
 
         protected override async Task InitAsync()
         {
+            await this.PageShowAsync<NavigationPage>();
             await this.PageShowAsync<MyPage>();
 
             new Html(this) { TextHtml = "Delete item: " };
@@ -158,6 +159,42 @@
         }
 
         public bool? IsYes;
+    }
+
+    public class NavigationPage : Page
+    {
+        public NavigationPage() { }
+
+        public NavigationPage(ComponentJson owner)
+            : base(owner)
+        {
+
+        }
+
+        protected override async Task InitAsync()
+        {
+            await Grid().LoadAsync();
+        }
+
+        [ThreadStatic]
+        private static List<Database.Memory.Navigation> list;
+
+        protected override IQueryable GridQuery(Grid grid)
+        {
+            if (list == null)
+            {
+                list = new List<Database.Memory.Navigation>();
+                list.Add(new Database.Memory.Navigation() { Id = 1, Text = "Hello" });
+                list.Add(new Database.Memory.Navigation() { Id = 2, Text = "World" });
+            }
+            return list.AsQueryable();
+            // return UtilDal.Query<Database.Memory.Navigation>();
+        }
+
+        public Grid Grid()
+        {
+            return this.GetOrCreate<Grid>();
+        }
     }
 
     public class MyPage : Page
