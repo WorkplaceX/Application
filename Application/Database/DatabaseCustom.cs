@@ -1,14 +1,13 @@
 ﻿// Custom implementation of database table and field.
 
-namespace DatabaseCustom.Person
+using Framework.Dal;
+
+namespace Database.Memory
 {
-    public class vAdditionalContactInfo : Database.Person.vAdditionalContactInfo
+    public class Navigation : Row
     {
+        public int Id { get; set; }
 
-    }
-
-    public class Person : Database.Person.Person
-    {
-
+        public string Text { get; set; }
     }
 }
