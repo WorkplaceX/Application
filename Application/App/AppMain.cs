@@ -24,7 +24,9 @@
 
         protected override async Task InitAsync()
         {
+            BootstrapNavbar();
             await this.PageShowAsync<NavigationPage>();
+            await this.PageShowAsync<LanguagePage>();
             await this.PageShowAsync<MyPage>();
 
             new Html(this) { TextHtml = "Delete item: " };
@@ -34,6 +36,11 @@
             GridPerson();
 
             await grid.LoadAsync();
+        }
+
+        public BootstrapNavbar BootstrapNavbar()
+        {
+            return this.GetOrCreate<BootstrapNavbar>();
         }
 
         public Grid GridContact()
@@ -182,11 +189,47 @@
             List<Database.Memory.Navigation> list = UtilDal.MemoryRowList<Database.Memory.Navigation>();
             if (list.Count == 0)
             {
-                list.Add(new Database.Memory.Navigation() { Id = 1, Text = "Hello" });
-                list.Add(new Database.Memory.Navigation() { Id = 2, Text = "World" });
+                list.Add(new Database.Memory.Navigation() { Id = 1, Text = "Home" });
+                list.Add(new Database.Memory.Navigation() { Id = 2, Text = "Data" });
+                list.Add(new Database.Memory.Navigation() { Id = 2, Text = "About" });
             }
 
             return UtilDal.Query<Database.Memory.Navigation>(ScopeEnum.MemorySingleton);
+        }
+
+        public Grid Grid()
+        {
+            return this.GetOrCreate<Grid>();
+        }
+    }
+
+    public class LanguagePage : Page
+    {
+        public LanguagePage() { }
+
+        public LanguagePage(ComponentJson owner)
+            : base(owner)
+        {
+
+        }
+
+        protected override async Task InitAsync()
+        {
+            await Grid().LoadAsync();
+        }
+
+        protected override IQueryable GridQuery(Grid grid)
+        {
+            List<Database.Memory.Language> list = UtilDal.MemoryRowList<Database.Memory.Language>();
+            if (list.Count == 0)
+            {
+                list.Add(new Database.Memory.Language() { Id = 1, Text = "English", FlagIcon = "flag-icon-gb" });
+                list.Add(new Database.Memory.Language() { Id = 2, Text = "German", FlagIcon = "flag-icon-de" });
+                list.Add(new Database.Memory.Language() { Id = 2, Text = "French", FlagIcon = "flag-icon-fr" });
+                list.Add(new Database.Memory.Language() { Id = 2, Text = "Italien", FlagIcon = "flag-icon-it" });
+            }
+
+            return UtilDal.Query<Database.Memory.Language>(ScopeEnum.MemorySingleton);
         }
 
         public Grid Grid()

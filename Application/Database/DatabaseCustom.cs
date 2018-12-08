@@ -10,4 +10,13 @@ namespace Database.Memory
 
         public string Text { get; set; }
     }
+
+    public class Language : Row
+    {
+        public int Id { get; set; }
+
+        public string Text { get; set; }
+
+        public string FlagIcon { get; set; }
+    }
 }
