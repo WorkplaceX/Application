@@ -10,6 +10,7 @@
     using System.Linq.Dynamic.Core;
     using Database.dbo;
     using Database.Person;
+    using Framework.Dal.Memory;
 
     public class AppMain : AppJson
     {
@@ -176,19 +177,16 @@
             await Grid().LoadAsync();
         }
 
-        [ThreadStatic]
-        private static List<Database.Memory.Navigation> list;
-
         protected override IQueryable GridQuery(Grid grid)
         {
-            if (list == null)
+            List<Database.Memory.Navigation> list = UtilDal.MemoryRowList<Database.Memory.Navigation>();
+            if (list.Count == 0)
             {
-                list = new List<Database.Memory.Navigation>();
                 list.Add(new Database.Memory.Navigation() { Id = 1, Text = "Hello" });
                 list.Add(new Database.Memory.Navigation() { Id = 2, Text = "World" });
             }
-            return list.AsQueryable();
-            // return UtilDal.Query<Database.Memory.Navigation>();
+
+            return UtilDal.Query<Database.Memory.Navigation>(ScopeEnum.MemorySingleton);
         }
 
         public Grid Grid()
