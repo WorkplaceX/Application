@@ -202,7 +202,7 @@
             List<Database.Memory.Navigation> list = UtilDal.MemoryRowList<Database.Memory.Navigation>();
             if (list.Count == 0)
             {
-                list.Add(new Database.Memory.Navigation() { Id = 1, Text = "Home" });
+                list.Add(new Database.Memory.Navigation() { Id = 1, Text = "<i class='fas fa-home'></i> Home" });
                 list.Add(new Database.Memory.Navigation() { Id = 2, Text = "<i class='fas fa-user'></i> User" });
                 list.Add(new Database.Memory.Navigation() { Id = 3, Text = "About" });
                 list.Add(new Database.Memory.Navigation() { Id = 4, Text = "<span class='flag-icon flag-icon-gb'></span> English" });
