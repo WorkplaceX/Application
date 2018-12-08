@@ -194,6 +194,7 @@
 
         protected override async Task InitAsync()
         {
+            Grid().IsHide = true;
             await Grid().LoadAsync();
         }
 
@@ -204,7 +205,7 @@
             {
                 list.Add(new Database.Memory.Navigation() { Id = 1, Text = "<i class='fas fa-home'></i> Home" });
                 list.Add(new Database.Memory.Navigation() { Id = 2, Text = "<i class='fas fa-user'></i> User" });
-                list.Add(new Database.Memory.Navigation() { Id = 3, Text = "About" });
+                list.Add(new Database.Memory.Navigation() { Id = 3, Text = "<i class='far fa-address-card'></i> Contact" });
                 list.Add(new Database.Memory.Navigation() { Id = 4, Text = "<span class='flag-icon flag-icon-gb'></span> English" });
             }
 
@@ -214,6 +215,11 @@
         public Grid Grid()
         {
             return this.GetOrCreate<Grid>();
+        }
+
+        protected override Task GridRowSelectedAsync(Grid grid)
+        {
+            return base.GridRowSelectedAsync(grid);
         }
     }
 
