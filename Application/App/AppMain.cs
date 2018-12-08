@@ -11,6 +11,7 @@
     using Database.dbo;
     using Database.Person;
     using Framework.Dal.Memory;
+    using Database.Memory;
 
     public class AppMain : AppJson
     {
@@ -24,10 +25,12 @@
 
         protected override async Task InitAsync()
         {
+            Label().TextHtml = "MyLabel";
             BootstrapNavbar();
             await this.PageShowAsync<NavigationPage>();
             await this.PageShowAsync<LanguagePage>();
             await this.PageShowAsync<MyPage>();
+            BootstrapNavbar().GridIndex = this.Get<NavigationPage>().Grid().Index;
 
             new Html(this) { TextHtml = "Delete item: " };
             ButtonDelete();
@@ -38,9 +41,14 @@
             await grid.LoadAsync();
         }
 
+        public Html Label()
+        {
+            return this.GetOrCreate<Html>();
+        }
+
         public BootstrapNavbar BootstrapNavbar()
         {
-            return this.GetOrCreate<BootstrapNavbar>();
+            return this.GetOrCreate<BootstrapNavbar>((bootstrapNavbar) => { bootstrapNavbar.BrandTextHtml = "<b>Hello</b>World"; });
         }
 
         public Grid GridContact()
@@ -120,6 +128,11 @@
             }
 
             Name = "HelloWorld " + DateTime.Now.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss.fff");
+
+            Language language = this.Get<LanguagePage>().Grid().RowSelected() as Language;
+
+            Label().TextHtml = language?.Text;
+
             return base.ProcessAsync();
         }
     }
@@ -190,8 +203,9 @@
             if (list.Count == 0)
             {
                 list.Add(new Database.Memory.Navigation() { Id = 1, Text = "Home" });
-                list.Add(new Database.Memory.Navigation() { Id = 2, Text = "Data" });
-                list.Add(new Database.Memory.Navigation() { Id = 2, Text = "About" });
+                list.Add(new Database.Memory.Navigation() { Id = 2, Text = "<i class='fas fa-user'></i> User" });
+                list.Add(new Database.Memory.Navigation() { Id = 3, Text = "About" });
+                list.Add(new Database.Memory.Navigation() { Id = 4, Text = "<span class='flag-icon flag-icon-gb'></span> English" });
             }
 
             return UtilDal.Query<Database.Memory.Navigation>(ScopeEnum.MemorySingleton);
@@ -225,8 +239,8 @@
             {
                 list.Add(new Database.Memory.Language() { Id = 1, Text = "English", FlagIcon = "flag-icon-gb" });
                 list.Add(new Database.Memory.Language() { Id = 2, Text = "German", FlagIcon = "flag-icon-de" });
-                list.Add(new Database.Memory.Language() { Id = 2, Text = "French", FlagIcon = "flag-icon-fr" });
-                list.Add(new Database.Memory.Language() { Id = 2, Text = "Italien", FlagIcon = "flag-icon-it" });
+                list.Add(new Database.Memory.Language() { Id = 3, Text = "French", FlagIcon = "flag-icon-fr" });
+                list.Add(new Database.Memory.Language() { Id = 4, Text = "Italien", FlagIcon = "flag-icon-it" });
             }
 
             return UtilDal.Query<Database.Memory.Language>(ScopeEnum.MemorySingleton);
