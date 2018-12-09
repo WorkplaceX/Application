@@ -25,9 +25,21 @@
 
         protected override async Task InitAsync()
         {
-            Label().TextHtml = "MyLabel";
             BootstrapNavbar();
+            new Html(this) { TextHtml = @"
+            <section id='#'>
+                <div class='container'>
+                    <h1>Home</h1>
+                    <p>Welcome to Hello World!</p>
+                    <figure class='figure'>
+                        <img src='logo.jpg' class='figure-img img-fluid rounded' alt='Company'>
+                        <figcaption class='figure-caption'>Hello world application.</figcaption>
+                    </figure>
+                </div>
+            </section>
+            " };
             await this.PageShowAsync<NavigationPage>();
+            Label().TextHtml = "MyLabel";
             await this.PageShowAsync<LanguagePage>();
             await this.PageShowAsync<MyPage>();
             BootstrapNavbar().GridIndex = this.Get<NavigationPage>().Grid().Index;
@@ -53,12 +65,12 @@
 
         public Grid GridContact()
         {
-            return this.GetOrCreate<Grid>("Contact");
+            return this.GetOrCreate<Grid>("Contact", (grid) => { grid.CssClass = "container"; });
         }
 
         public Grid GridPerson()
         {
-            return this.GetOrCreate<Grid>("Person");
+            return this.GetOrCreate<Grid>("Person", (grid) => { grid.CssClass = "container"; });
         }
 
         public Button ButtonDelete()
@@ -214,7 +226,7 @@
 
         public Grid Grid()
         {
-            return this.GetOrCreate<Grid>();
+            return this.GetOrCreate<Grid>((grid) => { grid.CssClass = "container"; });
         }
 
         protected override Task GridRowSelectedAsync(Grid grid)
@@ -254,7 +266,7 @@
 
         public Grid Grid()
         {
-            return this.GetOrCreate<Grid>();
+            return this.GetOrCreate<Grid>((grid) => { grid.CssClass = "container"; });
         }
     }
 
@@ -276,7 +288,7 @@
 
         public Grid Grid()
         {
-            return this.GetOrCreate<Grid>();
+            return this.GetOrCreate<Grid>((grid) => { grid.CssClass = "container"; });
         }
 
         public Button ButtonDelete()
