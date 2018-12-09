@@ -264,9 +264,14 @@
             return UtilDal.Query<Database.Memory.Language>(ScopeEnum.MemorySingleton);
         }
 
+        public Div Div()
+        {
+            return this.GetOrCreate<Div>((div) => { div.CssClass = "container"; });
+        }
+
         public Grid Grid()
         {
-            return this.GetOrCreate<Grid>((grid) => { grid.CssClass = "container"; });
+            return Div().GetOrCreate<Grid>();
         }
     }
 
