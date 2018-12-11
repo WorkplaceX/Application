@@ -228,6 +228,29 @@
             }
             return base.GridQuery(grid);
         }
+
+        protected override void CellTextFromValue(Grid grid, Row row, string fieldName, ref string text)
+        {
+            LoginUser loginUser = row as LoginUser;
+            if (loginUser != null)
+            {
+                if (fieldName == nameof(LoginUser.IsActive))
+                {
+                    if (loginUser.IsActive)
+                    {
+                        text = "Yes";
+                    }
+                    else
+                    {
+                        text = "No";
+                    }
+                }
+                if (fieldName == nameof(LoginUser.Password))
+                {
+                    text = "*****";
+                }
+            }
+        }
     }
 
     public class LoginUserRolePage : Page
