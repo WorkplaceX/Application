@@ -168,6 +168,78 @@ namespace Database.dbo
 
     public class LoginUser_IsActive : Cell<LoginUser> { }
 
+    [SqlTable("dbo", "LoginUserRole")]
+    public class LoginUserRole : Row
+    {
+        [SqlField("Id", typeof(LoginUserRole_Id), true, FrameworkTypeEnum.Int)]
+        public int Id { get; set; }
+
+        [SqlField("RoleName", typeof(LoginUserRole_RoleName), FrameworkTypeEnum.Nvarcahr)]
+        public string RoleName { get; set; }
+
+        [SqlField("IsActive", typeof(LoginUserRole_IsActive), FrameworkTypeEnum.Bit)]
+        public bool IsActive { get; set; }
+    }
+
+    public class LoginUserRole_Id : Cell<LoginUserRole> { }
+
+    public class LoginUserRole_RoleName : Cell<LoginUserRole> { }
+
+    public class LoginUserRole_IsActive : Cell<LoginUserRole> { }
+
+    [SqlTable("dbo", "LoginUserRoleDisplay")]
+    public class LoginUserRoleDisplay : Row
+    {
+        [SqlField("UserId", typeof(LoginUserRoleDisplay_UserId), FrameworkTypeEnum.Int)]
+        public int UserId { get; set; }
+
+        [SqlField("UserRoleId", typeof(LoginUserRoleDisplay_UserRoleId), FrameworkTypeEnum.Int)]
+        public int UserRoleId { get; set; }
+
+        [SqlField("UserRoleName", typeof(LoginUserRoleDisplay_UserRoleName), FrameworkTypeEnum.Nvarcahr)]
+        public string UserRoleName { get; set; }
+
+        [SqlField("UserUserRoleId", typeof(LoginUserRoleDisplay_UserUserRoleId), FrameworkTypeEnum.Int)]
+        public int? UserUserRoleId { get; set; }
+
+        [SqlField("IsActive", typeof(LoginUserRoleDisplay_IsActive), FrameworkTypeEnum.Bit)]
+        public bool? IsActive { get; set; }
+    }
+
+    public class LoginUserRoleDisplay_UserId : Cell<LoginUserRoleDisplay> { }
+
+    public class LoginUserRoleDisplay_UserRoleId : Cell<LoginUserRoleDisplay> { }
+
+    public class LoginUserRoleDisplay_UserRoleName : Cell<LoginUserRoleDisplay> { }
+
+    public class LoginUserRoleDisplay_UserUserRoleId : Cell<LoginUserRoleDisplay> { }
+
+    public class LoginUserRoleDisplay_IsActive : Cell<LoginUserRoleDisplay> { }
+
+    [SqlTable("dbo", "LoginUserUserRole")]
+    public class LoginUserUserRole : Row
+    {
+        [SqlField("Id", typeof(LoginUserUserRole_Id), true, FrameworkTypeEnum.Int)]
+        public int Id { get; set; }
+
+        [SqlField("UserId", typeof(LoginUserUserRole_UserId), FrameworkTypeEnum.Int)]
+        public int UserId { get; set; }
+
+        [SqlField("UserRoleId", typeof(LoginUserUserRole_UserRoleId), FrameworkTypeEnum.Int)]
+        public int UserRoleId { get; set; }
+
+        [SqlField("IsActive", typeof(LoginUserUserRole_IsActive), FrameworkTypeEnum.Bit)]
+        public bool IsActive { get; set; }
+    }
+
+    public class LoginUserUserRole_Id : Cell<LoginUserUserRole> { }
+
+    public class LoginUserUserRole_UserId : Cell<LoginUserUserRole> { }
+
+    public class LoginUserUserRole_UserRoleId : Cell<LoginUserUserRole> { }
+
+    public class LoginUserUserRole_IsActive : Cell<LoginUserUserRole> { }
+
     [SqlTable("dbo", "Wait")]
     public class Wait : Row
     {

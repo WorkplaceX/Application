@@ -104,6 +104,7 @@
             {
                 list.Add(new Database.Memory.Navigation() { Id = 1, Text = "<i class='fas fa-home'></i> Home" });
                 list.Add(new Database.Memory.Navigation() { Id = 2, Text = "<i class='fas fa-user'></i> User" });
+                list.Add(new Database.Memory.Navigation() { Id = 2, Text = "<i class='fas fa-key'></i> UserRole" });
                 list.Add(new Database.Memory.Navigation() { Id = 3, Text = "<i class='far fa-address-card'></i> Contact" });
                 list.Add(new Database.Memory.Navigation() { Id = 4, Text = "<span class='flag-icon flag-icon-gb'></span> English" });
             }
@@ -126,6 +127,10 @@
             if (navigation != null && navigation.Text.Contains("User"))
             {
                 await this.PageShowAsync<LoginUserPage>(ComponentJsonExtension.PageShowEnum.SiblingRemove);
+            }
+            if (navigation != null && navigation.Text.Contains("UserRole"))
+            {
+                await this.PageShowAsync<LoginUserRolePage>(ComponentJsonExtension.PageShowEnum.SiblingRemove);
             }
             if (navigation != null && navigation.Text.Contains("Contact"))
             {
@@ -181,6 +186,57 @@
         public LoginUserPage(ComponentJson owner)
             : base(owner)
         {
+            new Html(this).TextHtml = "<h1>User</h1>";
+            GridUser();
+            new Html(this).TextHtml = "<h1>User Role</h1>";
+            GridUserRoleDisplay();
+        }
+
+        public Grid GridUser()
+        {
+            return this.GetOrCreate<Grid>("User");
+        }
+
+        public Grid GridUserRoleDisplay()
+        {
+            return this.GetOrCreate<Grid>("UserRoleDisplay");
+        }
+
+        protected override async Task InitAsync()
+        {
+            await GridUser().LoadAsync();
+        }
+
+        protected override async Task GridRowSelectedAsync(Grid grid)
+        {
+            if (grid == GridUser())
+            {
+                await GridUserRoleDisplay().LoadAsync();
+            }
+        }
+
+        protected override IQueryable GridQuery(Grid grid)
+        {
+            if (grid == GridUser())
+            {
+                return UtilDal.Query<LoginUser>();
+            }
+            if (grid == GridUserRoleDisplay())
+            {
+                int userId = ((LoginUser)GridUser().RowSelected()).Id;
+                return UtilDal.Query<LoginUserRoleDisplay>().Where(item => item.UserId == userId);
+            }
+            return base.GridQuery(grid);
+        }
+    }
+
+    public class LoginUserRolePage : Page
+    {
+        public LoginUserRolePage() { }
+
+        public LoginUserRolePage(ComponentJson owner)
+            : base(owner)
+        {
             this.GetOrCreate<Grid>();
         }
 
@@ -191,7 +247,7 @@
 
         protected override IQueryable GridQuery(Grid grid)
         {
-            return UtilDal.Query<LoginUser>();
+            return UtilDal.Query<LoginUserRole>();
         }
     }
 
