@@ -25,7 +25,183 @@
 
         protected override async Task InitAsync()
         {
+            await this.PageShowAsync<NavigationPage>();
+        }
+    }
+
+    public class MessageBox : Page
+    {
+        public MessageBox() : this(null) { }
+
+        public MessageBox(ComponentJson owner)
+            : base(owner)
+        {
+
+        }
+
+        protected override Task InitAsync()
+        {
+            new Html() { TextHtml = "Delete record?" };
+            ButtonYes();
+            ButtonNo();
+            return base.InitAsync();
+        }
+
+        public Button ButtonYes()
+        {
+            return this.GetOrCreate<Button>("Yes", (button) => button.Text = "Yes");
+        }
+
+        public Button ButtonNo()
+        {
+            return this.GetOrCreate<Button>("No", (button) => button.Text = "No");
+        }
+
+        protected override Task ButtonClickAsync(Button button)
+        {
+            if (button == ButtonYes())
+            {
+                new Html(this).TextHtml = "<b>Ok</b>";
+                this.IsYes = true;
+            }
+            if (button == ButtonNo())
+            {
+                this.IsYes = false;
+            }
+            return base.ButtonClickAsync(button);
+        }
+
+        public bool? IsYes;
+    }
+
+    public class NavigationPage : Page
+    {
+        public NavigationPage() { }
+
+        public NavigationPage(ComponentJson owner)
+            : base(owner)
+        {
+
+        }
+
+        protected override async Task InitAsync()
+        {
             BootstrapNavbar();
+            await Grid().LoadAsync();
+            Grid().IsHide = true;
+            BootstrapNavbar().GridIndex = Grid().Index;
+        }
+
+        public BootstrapNavbar BootstrapNavbar()
+        {
+            return this.GetOrCreate<BootstrapNavbar>((bootstrapNavbar) => { bootstrapNavbar.BrandTextHtml = "<b>Hello</b>World"; });
+        }
+
+        protected override IQueryable GridQuery(Grid grid)
+        {
+            List<Database.Memory.Navigation> list = UtilDal.MemoryRowList<Database.Memory.Navigation>();
+            if (list.Count == 0)
+            {
+                list.Add(new Database.Memory.Navigation() { Id = 1, Text = "<i class='fas fa-home'></i> Home" });
+                list.Add(new Database.Memory.Navigation() { Id = 2, Text = "<i class='fas fa-user'></i> User" });
+                list.Add(new Database.Memory.Navigation() { Id = 3, Text = "<i class='far fa-address-card'></i> Contact" });
+                list.Add(new Database.Memory.Navigation() { Id = 4, Text = "<span class='flag-icon flag-icon-gb'></span> English" });
+            }
+
+            return UtilDal.Query<Database.Memory.Navigation>(ScopeEnum.MemorySingleton);
+        }
+
+        public Grid Grid()
+        {
+            return this.GetOrCreate<Grid>((grid) => { grid.CssClass = "container"; });
+        }
+
+        protected override async Task GridRowSelectedAsync(Grid grid)
+        {
+            Navigation navigation = grid.RowSelected() as Navigation;
+            if (navigation != null && navigation.Text.Contains("Home"))
+            {
+                await this.PageShowAsync<HomePage>(ComponentJsonExtension.PageShowEnum.SiblingRemove);
+            }
+            if (navigation != null && navigation.Text.Contains("User"))
+            {
+                await this.PageShowAsync<LoginUserPage>(ComponentJsonExtension.PageShowEnum.SiblingRemove);
+            }
+            if (navigation != null && navigation.Text.Contains("Contact"))
+            {
+                await this.PageShowAsync<ContactPage>(ComponentJsonExtension.PageShowEnum.SiblingRemove);
+            }
+        }
+    }
+
+    public class LanguagePage : Page
+    {
+        public LanguagePage() { }
+
+        public LanguagePage(ComponentJson owner)
+            : base(owner)
+        {
+
+        }
+
+        protected override async Task InitAsync()
+        {
+            await Grid().LoadAsync();
+        }
+
+        protected override IQueryable GridQuery(Grid grid)
+        {
+            List<Database.Memory.Language> list = UtilDal.MemoryRowList<Database.Memory.Language>();
+            if (list.Count == 0)
+            {
+                list.Add(new Database.Memory.Language() { Id = 1, Text = "English", FlagIcon = "flag-icon-gb" });
+                list.Add(new Database.Memory.Language() { Id = 2, Text = "German", FlagIcon = "flag-icon-de" });
+                list.Add(new Database.Memory.Language() { Id = 3, Text = "French", FlagIcon = "flag-icon-fr" });
+                list.Add(new Database.Memory.Language() { Id = 4, Text = "Italien", FlagIcon = "flag-icon-it" });
+            }
+
+            return UtilDal.Query<Database.Memory.Language>(ScopeEnum.MemorySingleton);
+        }
+
+        public Div Div()
+        {
+            return this.GetOrCreate<Div>((div) => { div.CssClass = "container"; });
+        }
+
+        public Grid Grid()
+        {
+            return Div().GetOrCreate<Grid>();
+        }
+    }
+
+    public class LoginUserPage : Page
+    {
+        public LoginUserPage() { }
+
+        public LoginUserPage(ComponentJson owner)
+            : base(owner)
+        {
+            this.GetOrCreate<Grid>();
+        }
+
+        protected override async Task InitAsync()
+        {
+            await this.GetOrCreate<Grid>().LoadAsync();
+        }
+
+        protected override IQueryable GridQuery(Grid grid)
+        {
+            return UtilDal.Query<LoginUser>();
+        }
+    }
+
+    public class HomePage : Page
+    {
+        public HomePage() { }
+
+        public HomePage(ComponentJson owner)
+            : base(owner)
+        {
             new Html(this) { TextHtml = @"
             <section id='#'>
                 <div class='container'>
@@ -38,11 +214,24 @@
                 </div>
             </section>
             " };
-            await this.PageShowAsync<NavigationPage>();
+        }
+    }
+
+    public class ContactPage : Page
+    {
+        public ContactPage() { }
+
+        public ContactPage(ComponentJson owner)
+            : base(owner)
+        {
+
+        }
+
+        protected override async Task InitAsync()
+        {
             Label().TextHtml = "MyLabel";
             await this.PageShowAsync<LanguagePage>();
             await this.PageShowAsync<MyPage>();
-            BootstrapNavbar().GridIndex = this.Get<NavigationPage>().Grid().Index;
 
             new Html(this) { TextHtml = "Delete item: " };
             ButtonDelete();
@@ -56,11 +245,6 @@
         public Html Label()
         {
             return this.GetOrCreate<Html>();
-        }
-
-        public BootstrapNavbar BootstrapNavbar()
-        {
-            return this.GetOrCreate<BootstrapNavbar>((bootstrapNavbar) => { bootstrapNavbar.BrandTextHtml = "<b>Hello</b>World"; });
         }
 
         public Grid GridContact()
@@ -146,132 +330,6 @@
             Label().TextHtml = language?.Text;
 
             return base.ProcessAsync();
-        }
-    }
-
-    public class MessageBox : Page
-    {
-        public MessageBox() : this(null) { }
-
-        public MessageBox(ComponentJson owner)
-            : base(owner)
-        {
-
-        }
-
-        protected override Task InitAsync()
-        {
-            new Html() { TextHtml = "Delete record?" };
-            ButtonYes();
-            ButtonNo();
-            return base.InitAsync();
-        }
-
-        public Button ButtonYes()
-        {
-            return this.GetOrCreate<Button>("Yes", (button) => button.Text = "Yes");
-        }
-
-        public Button ButtonNo()
-        {
-            return this.GetOrCreate<Button>("No", (button) => button.Text = "No");
-        }
-
-        protected override Task ButtonClickAsync(Button button)
-        {
-            if (button == ButtonYes())
-            {
-                new Html(this).TextHtml = "<b>Ok</b>";
-                this.IsYes = true;
-            }
-            if (button == ButtonNo())
-            {
-                this.IsYes = false;
-            }
-            return base.ButtonClickAsync(button);
-        }
-
-        public bool? IsYes;
-    }
-
-    public class NavigationPage : Page
-    {
-        public NavigationPage() { }
-
-        public NavigationPage(ComponentJson owner)
-            : base(owner)
-        {
-
-        }
-
-        protected override async Task InitAsync()
-        {
-            Grid().IsHide = true;
-            await Grid().LoadAsync();
-        }
-
-        protected override IQueryable GridQuery(Grid grid)
-        {
-            List<Database.Memory.Navigation> list = UtilDal.MemoryRowList<Database.Memory.Navigation>();
-            if (list.Count == 0)
-            {
-                list.Add(new Database.Memory.Navigation() { Id = 1, Text = "<i class='fas fa-home'></i> Home" });
-                list.Add(new Database.Memory.Navigation() { Id = 2, Text = "<i class='fas fa-user'></i> User" });
-                list.Add(new Database.Memory.Navigation() { Id = 3, Text = "<i class='far fa-address-card'></i> Contact" });
-                list.Add(new Database.Memory.Navigation() { Id = 4, Text = "<span class='flag-icon flag-icon-gb'></span> English" });
-            }
-
-            return UtilDal.Query<Database.Memory.Navigation>(ScopeEnum.MemorySingleton);
-        }
-
-        public Grid Grid()
-        {
-            return this.GetOrCreate<Grid>((grid) => { grid.CssClass = "container"; });
-        }
-
-        protected override Task GridRowSelectedAsync(Grid grid)
-        {
-            return base.GridRowSelectedAsync(grid);
-        }
-    }
-
-    public class LanguagePage : Page
-    {
-        public LanguagePage() { }
-
-        public LanguagePage(ComponentJson owner)
-            : base(owner)
-        {
-
-        }
-
-        protected override async Task InitAsync()
-        {
-            await Grid().LoadAsync();
-        }
-
-        protected override IQueryable GridQuery(Grid grid)
-        {
-            List<Database.Memory.Language> list = UtilDal.MemoryRowList<Database.Memory.Language>();
-            if (list.Count == 0)
-            {
-                list.Add(new Database.Memory.Language() { Id = 1, Text = "English", FlagIcon = "flag-icon-gb" });
-                list.Add(new Database.Memory.Language() { Id = 2, Text = "German", FlagIcon = "flag-icon-de" });
-                list.Add(new Database.Memory.Language() { Id = 3, Text = "French", FlagIcon = "flag-icon-fr" });
-                list.Add(new Database.Memory.Language() { Id = 4, Text = "Italien", FlagIcon = "flag-icon-it" });
-            }
-
-            return UtilDal.Query<Database.Memory.Language>(ScopeEnum.MemorySingleton);
-        }
-
-        public Div Div()
-        {
-            return this.GetOrCreate<Div>((div) => { div.CssClass = "container"; });
-        }
-
-        public Grid Grid()
-        {
-            return Div().GetOrCreate<Grid>();
         }
     }
 

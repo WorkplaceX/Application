@@ -4,3 +4,13 @@
 	Text NVARCHAR(256),
 	Number FLOAT,
 )
+
+CREATE TABLE LoginUser
+(
+	Id INT PRIMARY KEY IDENTITY,
+	UserName NVARCHAR(256),
+	Password NVARCHAR(256),
+	Email NVARCHAR(256),
+	IsActive BIT NOT NULL
+	INDEX IX_LoginUser UNIQUE (Id, UserName)
+)

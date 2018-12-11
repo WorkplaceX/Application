@@ -139,6 +139,35 @@ namespace Database.dbo
 
     public class HelloWorld_Number : Cell<HelloWorld> { }
 
+    [SqlTable("dbo", "LoginUser")]
+    public class LoginUser : Row
+    {
+        [SqlField("Id", typeof(LoginUser_Id), true, FrameworkTypeEnum.Int)]
+        public int Id { get; set; }
+
+        [SqlField("UserName", typeof(LoginUser_UserName), FrameworkTypeEnum.Nvarcahr)]
+        public string UserName { get; set; }
+
+        [SqlField("Password", typeof(LoginUser_Password), FrameworkTypeEnum.Nvarcahr)]
+        public string Password { get; set; }
+
+        [SqlField("Email", typeof(LoginUser_Email), FrameworkTypeEnum.Nvarcahr)]
+        public string Email { get; set; }
+
+        [SqlField("IsActive", typeof(LoginUser_IsActive), FrameworkTypeEnum.Bit)]
+        public bool IsActive { get; set; }
+    }
+
+    public class LoginUser_Id : Cell<LoginUser> { }
+
+    public class LoginUser_UserName : Cell<LoginUser> { }
+
+    public class LoginUser_Password : Cell<LoginUser> { }
+
+    public class LoginUser_Email : Cell<LoginUser> { }
+
+    public class LoginUser_IsActive : Cell<LoginUser> { }
+
     [SqlTable("dbo", "Wait")]
     public class Wait : Row
     {
