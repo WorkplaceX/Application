@@ -251,6 +251,25 @@
                 }
             }
         }
+
+        //protected override object CellTextToValue(Grid grid, Type typeRow, string fieldName, string text)
+        //{
+        //    if (typeRow == typeof(LoginUser))
+        //    {
+        //        if (fieldName == nameof(LoginUser.IsActive))
+        //        {
+        //            if (text.ToLower().Contains("n"))
+        //            {
+        //                return false;
+        //            }
+        //            if (text.ToLower().Contains("y"))
+        //            {
+        //                return true;
+        //            }
+        //        }
+        //    }
+        //    return base.CellTextToValue(grid, typeRow, fieldName, text);
+        //}
     }
 
     public class LoginUserRolePage : Page

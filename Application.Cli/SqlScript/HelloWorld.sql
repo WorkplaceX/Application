@@ -11,6 +11,8 @@ CREATE TABLE LoginUser
 	UserName NVARCHAR(256),
 	Password NVARCHAR(256),
 	Email NVARCHAR(256),
+	Value FLOAT,
+	ValueUOM NVARCHAR(256),
 	IsActive BIT NOT NULL
 	INDEX IX_LoginUser UNIQUE (Id, UserName)
 )

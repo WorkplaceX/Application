@@ -154,6 +154,12 @@ namespace Database.dbo
         [SqlField("Email", typeof(LoginUser_Email), FrameworkTypeEnum.Nvarcahr)]
         public string Email { get; set; }
 
+        [SqlField("Value", typeof(LoginUser_Value), FrameworkTypeEnum.Float)]
+        public double? Value { get; set; }
+
+        [SqlField("ValueUOM", typeof(LoginUser_ValueUOM), FrameworkTypeEnum.NChar)]
+        public string ValueUOM { get; set; }
+
         [SqlField("IsActive", typeof(LoginUser_IsActive), FrameworkTypeEnum.Bit)]
         public bool IsActive { get; set; }
     }
@@ -165,6 +171,10 @@ namespace Database.dbo
     public class LoginUser_Password : Cell<LoginUser> { }
 
     public class LoginUser_Email : Cell<LoginUser> { }
+
+    public class LoginUser_Value : Cell<LoginUser> { }
+
+    public class LoginUser_ValueUOM : Cell<LoginUser> { }
 
     public class LoginUser_IsActive : Cell<LoginUser> { }
 
@@ -301,7 +311,11 @@ namespace Database.HumanResources
         [SqlField("BirthDate", typeof(Employee_BirthDate), FrameworkTypeEnum.Date)]
         public DateTime BirthDate { get; set; }
 
+        [SqlField("MaritalStatus", typeof(Employee_MaritalStatus), FrameworkTypeEnum.NChar)]
+        public string MaritalStatus { get; set; }
 
+        [SqlField("Gender", typeof(Employee_Gender), FrameworkTypeEnum.NChar)]
+        public string Gender { get; set; }
 
         [SqlField("HireDate", typeof(Employee_HireDate), FrameworkTypeEnum.Date)]
         public DateTime HireDate { get; set; }
@@ -1140,6 +1154,8 @@ namespace Database.Person
         [SqlField("BusinessEntityID", typeof(Person_BusinessEntityID), true, FrameworkTypeEnum.Int)]
         public int BusinessEntityID { get; set; }
 
+        [SqlField("PersonType", typeof(Person_PersonType), FrameworkTypeEnum.NChar)]
+        public string PersonType { get; set; }
 
         [SqlField("NameStyle", typeof(Person_NameStyle), FrameworkTypeEnum.Bit)]
         public bool NameStyle { get; set; }
@@ -1246,6 +1262,8 @@ namespace Database.Person
         [SqlField("StateProvinceID", typeof(StateProvince_StateProvinceID), true, FrameworkTypeEnum.Int)]
         public int StateProvinceID { get; set; }
 
+        [SqlField("StateProvinceCode", typeof(StateProvince_StateProvinceCode), FrameworkTypeEnum.NChar)]
+        public string StateProvinceCode { get; set; }
 
         [SqlField("CountryRegionCode", typeof(StateProvince_CountryRegionCode), FrameworkTypeEnum.Nvarcahr)]
         public string CountryRegionCode { get; set; }
@@ -1377,6 +1395,8 @@ namespace Database.Person
         [SqlField("StateProvinceID", typeof(vStateProvinceCountryRegion_StateProvinceID), FrameworkTypeEnum.Int)]
         public int StateProvinceID { get; set; }
 
+        [SqlField("StateProvinceCode", typeof(vStateProvinceCountryRegion_StateProvinceCode), FrameworkTypeEnum.NChar)]
+        public string StateProvinceCode { get; set; }
 
         [SqlField("IsOnlyStateProvinceFlag", typeof(vStateProvinceCountryRegion_IsOnlyStateProvinceFlag), FrameworkTypeEnum.Bit)]
         public bool IsOnlyStateProvinceFlag { get; set; }
@@ -1432,6 +1452,8 @@ namespace Database.Production
         [SqlField("EndDate", typeof(BillOfMaterials_EndDate), FrameworkTypeEnum.Datetime)]
         public DateTime? EndDate { get; set; }
 
+        [SqlField("UnitMeasureCode", typeof(BillOfMaterials_UnitMeasureCode), FrameworkTypeEnum.NChar)]
+        public string UnitMeasureCode { get; set; }
 
         [SqlField("BOMLevel", typeof(BillOfMaterials_BOMLevel), FrameworkTypeEnum.Smallint)]
         public Int16 BOMLevel { get; set; }
@@ -1464,6 +1486,8 @@ namespace Database.Production
     [SqlTable("Production", "Culture")]
     public class Culture : Row
     {
+        [SqlField("CultureID", typeof(Culture_CultureID), true, FrameworkTypeEnum.NChar)]
+        public string CultureID { get; set; }
 
         [SqlField("Name", typeof(Culture_Name), FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
@@ -1500,6 +1524,8 @@ namespace Database.Production
         [SqlField("FileExtension", typeof(Document_FileExtension), FrameworkTypeEnum.Nvarcahr)]
         public string FileExtension { get; set; }
 
+        [SqlField("Revision", typeof(Document_Revision), FrameworkTypeEnum.NChar)]
+        public string Revision { get; set; }
 
         [SqlField("ChangeNumber", typeof(Document_ChangeNumber), FrameworkTypeEnum.Int)]
         public int ChangeNumber { get; set; }
@@ -1574,6 +1600,8 @@ namespace Database.Production
         [SqlField("Name", typeof(Location_Name), FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
 
+        [SqlField("CostRate", typeof(Location_CostRate), FrameworkTypeEnum.Smallmoney)]
+        public Decimal CostRate { get; set; }
 
         [SqlField("Availability", typeof(Location_Availability), FrameworkTypeEnum.Decimal)]
         public Decimal Availability { get; set; }
@@ -1628,7 +1656,11 @@ namespace Database.Production
         [SqlField("Size", typeof(Product_Size), FrameworkTypeEnum.Nvarcahr)]
         public string Size { get; set; }
 
+        [SqlField("SizeUnitMeasureCode", typeof(Product_SizeUnitMeasureCode), FrameworkTypeEnum.NChar)]
+        public string SizeUnitMeasureCode { get; set; }
 
+        [SqlField("WeightUnitMeasureCode", typeof(Product_WeightUnitMeasureCode), FrameworkTypeEnum.NChar)]
+        public string WeightUnitMeasureCode { get; set; }
 
         [SqlField("Weight", typeof(Product_Weight), FrameworkTypeEnum.Decimal)]
         public Decimal? Weight { get; set; }
@@ -1636,8 +1668,14 @@ namespace Database.Production
         [SqlField("DaysToManufacture", typeof(Product_DaysToManufacture), FrameworkTypeEnum.Int)]
         public int DaysToManufacture { get; set; }
 
+        [SqlField("ProductLine", typeof(Product_ProductLine), FrameworkTypeEnum.NChar)]
+        public string ProductLine { get; set; }
 
+        [SqlField("Class", typeof(Product_Class), FrameworkTypeEnum.NChar)]
+        public string Class { get; set; }
 
+        [SqlField("Style", typeof(Product_Style), FrameworkTypeEnum.NChar)]
+        public string Style { get; set; }
 
         [SqlField("ProductSubcategoryID", typeof(Product_ProductSubcategoryID), FrameworkTypeEnum.Int)]
         public int? ProductSubcategoryID { get; set; }
@@ -1931,6 +1969,8 @@ namespace Database.Production
         [SqlField("ProductDescriptionID", typeof(ProductModelProductDescriptionCulture_ProductDescriptionID), true, FrameworkTypeEnum.Int)]
         public int ProductDescriptionID { get; set; }
 
+        [SqlField("CultureID", typeof(ProductModelProductDescriptionCulture_CultureID), true, FrameworkTypeEnum.NChar)]
+        public string CultureID { get; set; }
 
         [SqlField("ModifiedDate", typeof(ProductModelProductDescriptionCulture_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
@@ -2112,6 +2152,8 @@ namespace Database.Production
         [SqlField("TransactionDate", typeof(TransactionHistory_TransactionDate), FrameworkTypeEnum.Datetime)]
         public DateTime TransactionDate { get; set; }
 
+        [SqlField("TransactionType", typeof(TransactionHistory_TransactionType), FrameworkTypeEnum.NChar)]
+        public string TransactionType { get; set; }
 
         [SqlField("Quantity", typeof(TransactionHistory_Quantity), FrameworkTypeEnum.Int)]
         public int Quantity { get; set; }
@@ -2159,6 +2201,8 @@ namespace Database.Production
         [SqlField("TransactionDate", typeof(TransactionHistoryArchive_TransactionDate), FrameworkTypeEnum.Datetime)]
         public DateTime TransactionDate { get; set; }
 
+        [SqlField("TransactionType", typeof(TransactionHistoryArchive_TransactionType), FrameworkTypeEnum.NChar)]
+        public string TransactionType { get; set; }
 
         [SqlField("Quantity", typeof(TransactionHistoryArchive_Quantity), FrameworkTypeEnum.Int)]
         public int Quantity { get; set; }
@@ -2191,6 +2235,8 @@ namespace Database.Production
     [SqlTable("Production", "UnitMeasure")]
     public class UnitMeasure : Row
     {
+        [SqlField("UnitMeasureCode", typeof(UnitMeasure_UnitMeasureCode), true, FrameworkTypeEnum.NChar)]
+        public string UnitMeasureCode { get; set; }
 
         [SqlField("Name", typeof(UnitMeasure_Name), FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
@@ -2217,6 +2263,8 @@ namespace Database.Production
         [SqlField("ProductModel", typeof(vProductAndDescription_ProductModel), FrameworkTypeEnum.Nvarcahr)]
         public string ProductModel { get; set; }
 
+        [SqlField("CultureID", typeof(vProductAndDescription_CultureID), FrameworkTypeEnum.NChar)]
+        public string CultureID { get; set; }
 
         [SqlField("Description", typeof(vProductAndDescription_Description), FrameworkTypeEnum.Nvarcahr)]
         public string Description { get; set; }
@@ -2574,6 +2622,8 @@ namespace Database.Purchasing
         [SqlField("OnOrderQty", typeof(ProductVendor_OnOrderQty), FrameworkTypeEnum.Int)]
         public int? OnOrderQty { get; set; }
 
+        [SqlField("UnitMeasureCode", typeof(ProductVendor_UnitMeasureCode), FrameworkTypeEnum.NChar)]
+        public string UnitMeasureCode { get; set; }
 
         [SqlField("ModifiedDate", typeof(ProductVendor_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
@@ -2932,6 +2982,8 @@ namespace Database.Sales
         [SqlField("CountryRegionCode", typeof(CountryRegionCurrency_CountryRegionCode), true, FrameworkTypeEnum.Nvarcahr)]
         public string CountryRegionCode { get; set; }
 
+        [SqlField("CurrencyCode", typeof(CountryRegionCurrency_CurrencyCode), true, FrameworkTypeEnum.NChar)]
+        public string CurrencyCode { get; set; }
 
         [SqlField("ModifiedDate", typeof(CountryRegionCurrency_ModifiedDate), FrameworkTypeEnum.Datetime)]
         public DateTime ModifiedDate { get; set; }
@@ -2980,6 +3032,8 @@ namespace Database.Sales
     [SqlTable("Sales", "Currency")]
     public class Currency : Row
     {
+        [SqlField("CurrencyCode", typeof(Currency_CurrencyCode), true, FrameworkTypeEnum.NChar)]
+        public string CurrencyCode { get; set; }
 
         [SqlField("Name", typeof(Currency_Name), FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
@@ -3003,7 +3057,11 @@ namespace Database.Sales
         [SqlField("CurrencyRateDate", typeof(CurrencyRate_CurrencyRateDate), FrameworkTypeEnum.Datetime)]
         public DateTime CurrencyRateDate { get; set; }
 
+        [SqlField("FromCurrencyCode", typeof(CurrencyRate_FromCurrencyCode), FrameworkTypeEnum.NChar)]
+        public string FromCurrencyCode { get; set; }
 
+        [SqlField("ToCurrencyCode", typeof(CurrencyRate_ToCurrencyCode), FrameworkTypeEnum.NChar)]
+        public string ToCurrencyCode { get; set; }
 
         [SqlField("AverageRate", typeof(CurrencyRate_AverageRate), FrameworkTypeEnum.Money)]
         public Decimal AverageRate { get; set; }
@@ -3314,6 +3372,8 @@ namespace Database.Sales
         [SqlField("Bonus", typeof(SalesPerson_Bonus), FrameworkTypeEnum.Money)]
         public Decimal Bonus { get; set; }
 
+        [SqlField("CommissionPct", typeof(SalesPerson_CommissionPct), FrameworkTypeEnum.Smallmoney)]
+        public Decimal CommissionPct { get; set; }
 
         [SqlField("SalesYTD", typeof(SalesPerson_SalesYTD), FrameworkTypeEnum.Money)]
         public Decimal SalesYTD { get; set; }
@@ -3411,6 +3471,8 @@ namespace Database.Sales
         [SqlField("TaxType", typeof(SalesTaxRate_TaxType), FrameworkTypeEnum.Tinyint)]
         public Byte TaxType { get; set; }
 
+        [SqlField("TaxRate", typeof(SalesTaxRate_TaxRate), FrameworkTypeEnum.Smallmoney)]
+        public Decimal TaxRate { get; set; }
 
         [SqlField("Name", typeof(SalesTaxRate_Name), FrameworkTypeEnum.Nvarcahr)]
         public string Name { get; set; }
@@ -3567,6 +3629,8 @@ namespace Database.Sales
         [SqlField("Description", typeof(SpecialOffer_Description), FrameworkTypeEnum.Nvarcahr)]
         public string Description { get; set; }
 
+        [SqlField("DiscountPct", typeof(SpecialOffer_DiscountPct), FrameworkTypeEnum.Smallmoney)]
+        public Decimal DiscountPct { get; set; }
 
         [SqlField("Type", typeof(SpecialOffer_Type), FrameworkTypeEnum.Nvarcahr)]
         public string Type { get; set; }
