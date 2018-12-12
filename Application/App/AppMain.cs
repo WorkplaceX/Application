@@ -245,6 +245,14 @@
                         text = "No";
                     }
                 }
+                if (fieldName == nameof(LoginUser.Value))
+                {
+                    text = loginUser.Value.ToString();
+                    if (loginUser.ValueUOM != null)
+                    {
+                        text += " " + loginUser.ValueUOM;
+                    }
+                }
                 if (fieldName == nameof(LoginUser.Password))
                 {
                     text = "*****";

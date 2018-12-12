@@ -157,7 +157,7 @@ namespace Database.dbo
         [SqlField("Value", typeof(LoginUser_Value), FrameworkTypeEnum.Float)]
         public double? Value { get; set; }
 
-        [SqlField("ValueUOM", typeof(LoginUser_ValueUOM), FrameworkTypeEnum.NChar)]
+        [SqlField("ValueUOM", typeof(LoginUser_ValueUOM), FrameworkTypeEnum.Nvarcahr)]
         public string ValueUOM { get; set; }
 
         [SqlField("IsActive", typeof(LoginUser_IsActive), FrameworkTypeEnum.Bit)]
