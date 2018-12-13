@@ -12,6 +12,7 @@
     using Database.Person;
     using Framework.Dal.Memory;
     using Database.Memory;
+    using Framework.Session;
 
     public class AppMain : AppJson
     {
@@ -229,7 +230,7 @@
             return base.GridQuery(grid);
         }
 
-        protected override void CellTextFromValue(Grid grid, Row row, string fieldName, ref string text)
+        protected override string CellTextFromValue(Grid grid, Row row, string fieldName)
         {
             LoginUser loginUser = row as LoginUser;
             if (loginUser != null)
@@ -238,46 +239,98 @@
                 {
                     if (loginUser.IsActive)
                     {
-                        text = "Yes";
+                        return "Yes";
                     }
                     else
                     {
-                        text = "No";
+                        return "No";
                     }
                 }
                 if (fieldName == nameof(LoginUser.Value))
                 {
-                    text = loginUser.Value.ToString();
+                    string text = loginUser.Value.ToString();
                     if (loginUser.ValueUOM != null)
                     {
                         text += " " + loginUser.ValueUOM;
                     }
+                    return text;
                 }
                 if (fieldName == nameof(LoginUser.Password))
                 {
-                    text = "*****";
+                    return "*****";
+                }
+            }
+            return base.CellTextFromValue(grid, row, fieldName);
+        }
+
+        protected override void CellTextToValue(Grid grid, Row row, string fieldName, string text, out bool isHandled)
+        {
+            isHandled = false;
+            LoginUser loginUser = row as LoginUser;
+            if (loginUser != null)
+            {
+                if (fieldName == nameof(LoginUser.IsActive))
+                {
+                    if (text.ToLower().StartsWith("n"))
+                    {
+                        loginUser.IsActive = false;
+                        isHandled = true;
+                    }
+                    if (text.ToLower().StartsWith("y"))
+                    {
+                        loginUser.IsActive = true;
+                        isHandled = true;
+                    }
+                }
+                if (fieldName == nameof(LoginUser.Value))
+                {
+                    string value = null;
+                    string valueUOM = null;
+                    foreach (var item in text)
+                    {
+                        if ((item >= '0' && item <= '9') || item == '.')
+                        {
+                            value += item;
+                        }
+                        else
+                        {
+                            if (item != ' ')
+                            {
+                                valueUOM += item;
+                            }
+                        }
+                    }
+                    loginUser.Value = double.Parse(value);
+                    loginUser.ValueUOM = valueUOM;
+                    isHandled = true;
                 }
             }
         }
 
-        //protected override object CellTextToValue(Grid grid, Type typeRow, string fieldName, string text)
-        //{
-        //    if (typeRow == typeof(LoginUser))
-        //    {
-        //        if (fieldName == nameof(LoginUser.IsActive))
-        //        {
-        //            if (text.ToLower().Contains("n"))
-        //            {
-        //                return false;
-        //            }
-        //            if (text.ToLower().Contains("y"))
-        //            {
-        //                return true;
-        //            }
-        //        }
-        //    }
-        //    return base.CellTextToValue(grid, typeRow, fieldName, text);
-        //}
+        protected override void CellTextToValueFilter(Grid grid, Type typeRow, string fieldName, string text, Filter filter, out bool isHandled)
+        {
+            isHandled = false;
+            if (typeRow == typeof(LoginUser))
+            {
+                if (fieldName == nameof(LoginUser.IsActive))
+                {
+                    if (text.ToLower().StartsWith("n"))
+                    {
+                        filter.FilterList[fieldName].FilterValue = false;
+                        filter.FilterList[fieldName].FilterOperator = FilterOperator.Equal;
+                        filter.FilterList[fieldName].Text = "No";
+                        isHandled = true;
+                    }
+                    if (text.ToLower().StartsWith("y"))
+                    {
+                        filter.FilterList[fieldName].FilterValue = true;
+                        filter.FilterList[fieldName].FilterOperator = FilterOperator.Equal;
+                        filter.FilterList[fieldName].Text = "Yes";
+                        isHandled = true;
+                    }
+                }
+            }
+        }
     }
 
     public class LoginUserRolePage : Page
