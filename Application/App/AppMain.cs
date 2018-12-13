@@ -263,7 +263,7 @@
             return base.CellTextFromValue(grid, row, fieldName);
         }
 
-        protected override void CellTextToValue(Grid grid, Row row, string fieldName, string text, out bool isHandled)
+        protected override void CellTextParse(Grid grid, string fieldName, string text, Row row, out bool isHandled)
         {
             isHandled = false;
             LoginUser loginUser = row as LoginUser;
@@ -275,12 +275,15 @@
                     {
                         loginUser.IsActive = false;
                         isHandled = true;
+                        return;
                     }
                     if (text.ToLower().StartsWith("y"))
                     {
                         loginUser.IsActive = true;
                         isHandled = true;
+                        return;
                     }
+                    throw new Exception("Invalid value!");
                 }
                 if (fieldName == nameof(LoginUser.Value))
                 {
@@ -307,7 +310,7 @@
             }
         }
 
-        protected override void CellTextToValueFilter(Grid grid, Type typeRow, string fieldName, string text, Filter filter, out bool isHandled)
+        protected override void CellTextParseFilter(Grid grid, Type typeRow, string fieldName, string text, Filter filter, out bool isHandled)
         {
             isHandled = false;
             if (typeRow == typeof(LoginUser))
@@ -316,16 +319,12 @@
                 {
                     if (text.ToLower().StartsWith("n"))
                     {
-                        filter.FilterList[fieldName].FilterValue = false;
-                        filter.FilterList[fieldName].FilterOperator = FilterOperator.Equal;
-                        filter.FilterList[fieldName].Text = "No";
+                        filter.SetValue(fieldName, false, FilterOperator.Equal, "No");
                         isHandled = true;
                     }
                     if (text.ToLower().StartsWith("y"))
                     {
-                        filter.FilterList[fieldName].FilterValue = true;
-                        filter.FilterList[fieldName].FilterOperator = FilterOperator.Equal;
-                        filter.FilterList[fieldName].Text = "Yes";
+                        filter.SetValue(fieldName, true, FilterOperator.Equal, "Yes");
                         isHandled = true;
                     }
                 }
