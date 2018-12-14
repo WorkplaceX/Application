@@ -306,6 +306,8 @@
                     loginUser.Value = double.Parse(value);
                     loginUser.ValueUOM = valueUOM;
                     isHandled = true;
+
+                    AlertSet("My <b>message</b>", (AlertEnum)loginUser.Value);
                 }
             }
         }
