@@ -169,14 +169,9 @@
             return UtilDal.Query<Database.Memory.Language>(ScopeEnum.MemorySingleton);
         }
 
-        public Div Div()
-        {
-            return this.GetOrCreate<Div>((div) => { div.CssClass = "container"; });
-        }
-
         public Grid Grid()
         {
-            return Div().GetOrCreate<Grid>();
+            return this.GetOrCreate<Grid>();
         }
     }
 
@@ -362,18 +357,19 @@
         public HomePage(ComponentJson owner)
             : base(owner)
         {
+            this.Owner<AppJson>().IsEmbedded(out string requestUrl);
             new Html(this) { TextHtml = @"
             <section id='#'>
                 <div class='container'>
                     <h1>Home</h1>
                     <p>Welcome to Hello World!</p>
                     <figure class='figure'>
-                        <img src='logo.jpg' class='figure-img img-fluid rounded' alt='Company'>
+                        <img src='{{RequestUrl}}logo.jpg' class='figure-img img-fluid rounded' alt='Company'>
                         <figcaption class='figure-caption'>Hello world application.</figcaption>
                     </figure>
                 </div>
             </section>
-            " };
+            ".Replace("{{RequestUrl}}", requestUrl) };
         }
     }
 
@@ -390,10 +386,10 @@
         protected override async Task InitAsync()
         {
             Label().TextHtml = "MyLabel";
-            await this.PageShowAsync<LanguagePage>();
-            await this.PageShowAsync<MyPage>();
+            await DivContainer().PageShowAsync<LanguagePage>();
+            await DivContainer().PageShowAsync<MyPage>();
 
-            new Html(this) { TextHtml = "Delete item: " };
+            new Html(DivContainer()) { TextHtml = "Delete item: " };
             ButtonDelete();
 
             var grid = GridContact();
@@ -407,19 +403,24 @@
             return this.GetOrCreate<Html>();
         }
 
+        public Div DivContainer()
+        {
+            return this.GetOrCreate<Div>(div => div.CssClass = "container");
+        }
+
         public Grid GridContact()
         {
-            return this.GetOrCreate<Grid>("Contact", (grid) => { grid.CssClass = "container"; });
+            return DivContainer().GetOrCreate<Grid>("Contact");
         }
 
         public Grid GridPerson()
         {
-            return this.GetOrCreate<Grid>("Person", (grid) => { grid.CssClass = "container"; });
+            return DivContainer().GetOrCreate<Grid>("Person");
         }
 
         public Button ButtonDelete()
         {
-            return this.GetOrCreate<Button>((button) => button.Text = "Delete");
+            return DivContainer().GetOrCreate<Button>((button) => button.Text = "Delete");
         }
 
         protected override IQueryable GridLookupQuery(Grid grid, Row row, string fieldName, string text)
@@ -485,7 +486,7 @@
 
             Name = "HelloWorld " + DateTime.Now.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss.fff");
 
-            Language language = this.Get<LanguagePage>().Grid().RowSelected() as Language;
+            Language language = DivContainer().Get<LanguagePage>().Grid().RowSelected() as Language;
 
             Label().TextHtml = language?.Text;
 
@@ -511,7 +512,7 @@
 
         public Grid Grid()
         {
-            return this.GetOrCreate<Grid>((grid) => { grid.CssClass = "container"; });
+            return this.GetOrCreate<Grid>();
         }
 
         public Button ButtonDelete()
