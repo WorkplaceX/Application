@@ -93,6 +93,19 @@
             BootstrapNavbar().GridIndex = Grid().Index;
         }
 
+        protected override Task ProcessAsync()
+        {
+            if (this.Owner<AppJson>().IsSessionExpired)
+            {
+                this.BootstrapAlert("alert", "Session expired!", BootstrapAlertEnum.Warning, BootstrapNavbar().Index() + 1);
+            }
+            else
+            {
+                this.RemoveItem("alert");
+            }
+            return base.ProcessAsync();
+        }
+
         public BootstrapNavbar BootstrapNavbar()
         {
             return this.GetOrCreate<BootstrapNavbar>((bootstrapNavbar) => { bootstrapNavbar.BrandTextHtml = "<b>Hello</b>World"; });
@@ -302,7 +315,7 @@
                     loginUser.ValueUOM = valueUOM;
                     isHandled = true;
 
-                    AlertSet("My <b>message</b>", (AlertEnum)loginUser.Value);
+                    this.BootstrapAlert("alert", "My <b>message</b>", (BootstrapAlertEnum)loginUser.Value);
                 }
             }
         }
