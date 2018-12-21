@@ -15,7 +15,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework.Cli", "Framework\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework.Test", "Framework\Framework.Test\Framework.Test.csproj", "{103FC4ED-70C9-43F5-A91C-779E8E2BD3A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Database", "Application.Database\Application.Database.csproj", "{93D9531B-6F07-4006-8E0F-C062DC6C149A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Database", "Application.Database\Application.Database.csproj", "{93D9531B-6F07-4006-8E0F-C062DC6C149A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B43B7410-C0FF-443C-973F-715E811B229A}"
+	ProjectSection(SolutionItems) = preProject
+		ConfigCli.json = ConfigCli.json
+		ConfigFramework.json = ConfigFramework.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

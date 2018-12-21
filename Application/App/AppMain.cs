@@ -50,12 +50,12 @@
 
         public Button ButtonYes()
         {
-            return this.GetOrCreate<Button>("Yes", (button) => button.Text = "Yes");
+            return this.ComponentGetOrCreate<Button>("Yes", (button) => button.Text = "Yes");
         }
 
         public Button ButtonNo()
         {
-            return this.GetOrCreate<Button>("No", (button) => button.Text = "No");
+            return this.ComponentGetOrCreate<Button>("No", (button) => button.Text = "No");
         }
 
         protected override Task ButtonClickAsync(Button button)
@@ -95,20 +95,20 @@
 
         protected override Task ProcessAsync()
         {
-            if (this.Owner<AppJson>().IsSessionExpired)
+            if (this.ComponentOwner<AppJson>().IsSessionExpired)
             {
-                this.BootstrapAlert("alert", "Session expired!", BootstrapAlertEnum.Warning, BootstrapNavbar().Index() + 1);
+                this.BootstrapAlert("alert", "Session expired!", BootstrapAlertEnum.Warning, BootstrapNavbar().ComponentIndex() + 1);
             }
             else
             {
-                this.RemoveItem("alert");
+                this.ComponentRemoveItem("alert");
             }
             return base.ProcessAsync();
         }
 
         public BootstrapNavbar BootstrapNavbar()
         {
-            return this.GetOrCreate<BootstrapNavbar>((bootstrapNavbar) => { bootstrapNavbar.BrandTextHtml = "<b>Hello</b>World"; });
+            return this.ComponentGetOrCreate<BootstrapNavbar>((bootstrapNavbar) => { bootstrapNavbar.BrandTextHtml = "<b>Hello</b>World"; });
         }
 
         protected override IQueryable GridQuery(Grid grid)
@@ -128,7 +128,7 @@
 
         public Grid Grid()
         {
-            return this.GetOrCreate<Grid>((grid) => { grid.CssClass = "container"; });
+            return this.ComponentGetOrCreate<Grid>((grid) => { grid.CssClass = "container"; });
         }
 
         protected override async Task GridRowSelectedAsync(Grid grid)
@@ -184,7 +184,7 @@
 
         public Grid Grid()
         {
-            return this.GetOrCreate<Grid>();
+            return this.ComponentGetOrCreate<Grid>();
         }
     }
 
@@ -203,12 +203,12 @@
 
         public Grid GridUser()
         {
-            return this.GetOrCreate<Grid>("User");
+            return this.ComponentGetOrCreate<Grid>("User");
         }
 
         public Grid GridUserRoleDisplay()
         {
-            return this.GetOrCreate<Grid>("UserRoleDisplay");
+            return this.ComponentGetOrCreate<Grid>("UserRoleDisplay");
         }
 
         protected override async Task InitAsync()
@@ -238,7 +238,7 @@
             return base.GridQuery(grid);
         }
 
-        protected override string CellTextFromValue(Grid grid, Row row, string fieldName)
+        protected override string CellText(Grid grid, Row row, string fieldName)
         {
             LoginUser loginUser = row as LoginUser;
             if (loginUser != null)
@@ -268,7 +268,7 @@
                     return "*****";
                 }
             }
-            return base.CellTextFromValue(grid, row, fieldName);
+            return base.CellText(grid, row, fieldName);
         }
 
         protected override void CellTextParse(Grid grid, string fieldName, string text, Row row, out bool isHandled)
@@ -340,6 +340,25 @@
                 }
             }
         }
+
+        protected override async Task<bool> GridUpdateAsync(Grid grid, Row row, Row rowNew, ScopeEnum scopeEnum)
+        {
+            LoginUserRoleDisplay loginUserRoleDisplay = rowNew as LoginUserRoleDisplay;
+            if (loginUserRoleDisplay != null)
+            {
+                if (loginUserRoleDisplay.UserUserRoleId == null)
+                {
+                    var loginUserUserRole = new LoginUserUserRole() { UserId = loginUserRoleDisplay.UserId, UserRoleId = loginUserRoleDisplay.UserRoleId, IsActive = loginUserRoleDisplay.IsActive.GetValueOrDefault() };
+                    await UtilDal.InsertAsync(loginUserUserRole);
+                }
+                else
+                {
+                   var loginUserUserRole = new LoginUserUserRole() { Id = loginUserRoleDisplay.UserUserRoleId.Value, UserId = loginUserRoleDisplay.UserId, UserRoleId = loginUserRoleDisplay.UserRoleId, IsActive = loginUserRoleDisplay.IsActive.GetValueOrDefault() };
+                    await UtilDal.UpdateAsync(loginUserUserRole, loginUserUserRole);
+                }
+            }
+            return true;
+        }
     }
 
     public class LoginUserRolePage : Page
@@ -349,12 +368,12 @@
         public LoginUserRolePage(ComponentJson owner)
             : base(owner)
         {
-            this.GetOrCreate<Grid>();
+            this.ComponentGetOrCreate<Grid>();
         }
 
         protected override async Task InitAsync()
         {
-            await this.GetOrCreate<Grid>().LoadAsync();
+            await this.ComponentGetOrCreate<Grid>().LoadAsync();
         }
 
         protected override IQueryable GridQuery(Grid grid)
@@ -370,7 +389,7 @@
         public HomePage(ComponentJson owner)
             : base(owner)
         {
-            this.Owner<AppJson>().IsEmbedded(out string requestUrl);
+            this.ComponentOwner<AppJson>().IsEmbedded(out string requestUrl);
             new Html(this) { TextHtml = @"
             <section id='#'>
                 <div class='container'>
@@ -413,27 +432,27 @@
 
         public Html Label()
         {
-            return this.GetOrCreate<Html>();
+            return this.ComponentGetOrCreate<Html>();
         }
 
         public Div DivContainer()
         {
-            return this.GetOrCreate<Div>(div => div.CssClass = "container");
+            return this.ComponentGetOrCreate<Div>(div => div.CssClass = "container");
         }
 
         public Grid GridContact()
         {
-            return DivContainer().GetOrCreate<Grid>("Contact");
+            return DivContainer().ComponentGetOrCreate<Grid>("Contact");
         }
 
         public Grid GridPerson()
         {
-            return DivContainer().GetOrCreate<Grid>("Person");
+            return DivContainer().ComponentGetOrCreate<Grid>("Person");
         }
 
         public Button ButtonDelete()
         {
-            return DivContainer().GetOrCreate<Button>((button) => button.Text = "Delete");
+            return DivContainer().ComponentGetOrCreate<Button>((button) => button.Text = "Delete");
         }
 
         protected override IQueryable GridLookupQuery(Grid grid, Row row, string fieldName, string text)
@@ -487,19 +506,19 @@
 
         protected override Task ProcessAsync()
         {
-            MessageBox messageBox = this.Get<MessageBox>();
+            MessageBox messageBox = this.ComponentGet<MessageBox>();
             if (messageBox?.IsYes != null)
             {
                 if (messageBox.IsYes == true)
                 {
                     new Html(this).TextHtml = "Deleted!";
                 }
-                messageBox.Remove();
+                messageBox.ComponentRemove();
             }
 
             Name = "HelloWorld " + DateTime.Now.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss.fff");
 
-            Language language = DivContainer().Get<LanguagePage>().Grid().RowSelected() as Language;
+            Language language = DivContainer().ComponentGet<LanguagePage>().Grid().RowSelected() as Language;
 
             Label().TextHtml = language?.Text;
 
@@ -525,12 +544,12 @@
 
         public Grid Grid()
         {
-            return this.GetOrCreate<Grid>();
+            return this.ComponentGetOrCreate<Grid>();
         }
 
         public Button ButtonDelete()
         {
-            return this.GetOrCreate((Button button) => button.Text = "Delete");
+            return this.ComponentGetOrCreate((Button button) => button.Text = "Delete");
         }
 
         protected override IQueryable GridQuery(Grid grid)
@@ -557,7 +576,7 @@
 
         protected override async Task ProcessAsync()
         {
-            var messageBox = this.Get<MessageBox>();
+            var messageBox = this.ComponentGet<MessageBox>();
             if (messageBox?.IsYes == true)
             {
                 var row = Grid().RowSelected();
@@ -569,7 +588,7 @@
             }
             if (messageBox?.IsYes != null)
             {
-                this.Get<MessageBox>().Remove();
+                this.ComponentGet<MessageBox>().ComponentRemove();
             }
         }
     }
