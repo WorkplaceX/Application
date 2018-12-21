@@ -10,7 +10,6 @@
     using System.Linq.Dynamic.Core;
     using Database.dbo;
     using Database.Person;
-    using Framework.Dal.Memory;
     using Database.Memory;
     using Framework.Session;
 
@@ -123,7 +122,7 @@
                 list.Add(new Database.Memory.Navigation() { Id = 4, Text = "<span class='flag-icon flag-icon-gb'></span> English" });
             }
 
-            return UtilDal.Query<Database.Memory.Navigation>(ScopeEnum.MemorySingleton);
+            return UtilDal.Query<Database.Memory.Navigation>(DatabaseEnum.MemorySingleton);
         }
 
         public Grid Grid()
@@ -179,7 +178,7 @@
                 list.Add(new Database.Memory.Language() { Id = 4, Text = "Italien", FlagIcon = "flag-icon-it" });
             }
 
-            return UtilDal.Query<Database.Memory.Language>(ScopeEnum.MemorySingleton);
+            return UtilDal.Query<Database.Memory.Language>(DatabaseEnum.MemorySingleton);
         }
 
         public Grid Grid()
@@ -341,7 +340,7 @@
             }
         }
 
-        protected override async Task<bool> GridUpdateAsync(Grid grid, Row row, Row rowNew, ScopeEnum scopeEnum)
+        protected override async Task<bool> GridUpdateAsync(Grid grid, Row row, Row rowNew, DatabaseEnum databaseEnum)
         {
             LoginUserRoleDisplay loginUserRoleDisplay = rowNew as LoginUserRoleDisplay;
             if (loginUserRoleDisplay != null)
