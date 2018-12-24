@@ -25,7 +25,7 @@
 
         protected override async Task InitAsync()
         {
-            await this.PageShowAsync<NavigationPage>();
+            await this.ComponentPageShowAsync<NavigationPage>();
         }
     }
 
@@ -132,22 +132,22 @@
 
         protected override async Task GridRowSelectedAsync(Grid grid)
         {
-            Navigation navigation = grid.RowSelected() as Navigation;
+            Navigation navigation = grid.GridRowSelected() as Navigation;
             if (navigation != null && navigation.Text.Contains("Home"))
             {
-                await this.PageShowAsync<HomePage>(ComponentJsonExtension.PageShowEnum.SiblingRemove);
+                await this.ComponentPageShowAsync<HomePage>(ComponentJsonExtension.PageShowEnum.SiblingRemove);
             }
             if (navigation != null && navigation.Text.Contains("User"))
             {
-                await this.PageShowAsync<LoginUserPage>(ComponentJsonExtension.PageShowEnum.SiblingRemove);
+                await this.ComponentPageShowAsync<LoginUserPage>(ComponentJsonExtension.PageShowEnum.SiblingRemove);
             }
             if (navigation != null && navigation.Text.Contains("UserRole"))
             {
-                await this.PageShowAsync<LoginUserRolePage>(ComponentJsonExtension.PageShowEnum.SiblingRemove);
+                await this.ComponentPageShowAsync<LoginUserRolePage>(ComponentJsonExtension.PageShowEnum.SiblingRemove);
             }
             if (navigation != null && navigation.Text.Contains("Contact"))
             {
-                await this.PageShowAsync<ContactPage>(ComponentJsonExtension.PageShowEnum.SiblingRemove);
+                await this.ComponentPageShowAsync<ContactPage>(ComponentJsonExtension.PageShowEnum.SiblingRemove);
             }
         }
     }
@@ -185,6 +185,15 @@
         {
             return this.ComponentGetOrCreate<Grid>();
         }
+
+        protected override void GridCellAnnotation(Grid grid, string fieldName, GridRowEnum gridRowEnum, Row row, GridCellAnnotationResult result)
+        {
+            Language language = row as Language;
+            if (fieldName == nameof(Language.Text) && language?.Text != null)
+            {
+                result.HtmlLeft = string.Format("<span class='flag-icon {0}'></span>", language.FlagIcon);
+            }
+        }
     }
 
     public class LoginUserPage : Page
@@ -198,6 +207,15 @@
             GridUser();
             new Html(this).TextHtml = "<h1>User Role</h1>";
             GridUserRoleDisplay();
+        }
+
+        protected override void GridCellAnnotation(Grid grid, string fieldName, GridRowEnum gridRowEnum, Row row, GridCellAnnotationResult result)
+        {
+            LoginUser loginUser = row as LoginUser;
+            if (fieldName == nameof(LoginUser.Password) && loginUser?.Password != null)
+            {
+                result.HtmlLeft = "<i class='fas fa-key'></i>";
+            }
         }
 
         public Grid GridUser()
@@ -231,13 +249,13 @@
             }
             if (grid == GridUserRoleDisplay())
             {
-                int userId = ((LoginUser)GridUser().RowSelected()).Id;
+                int userId = ((LoginUser)GridUser().GridRowSelected()).Id;
                 return UtilDal.Query<LoginUserRoleDisplay>().Where(item => item.UserId == userId);
             }
             return base.GridQuery(grid);
         }
 
-        protected override string CellText(Grid grid, Row row, string fieldName)
+        protected override string GridCellText(Grid grid, Row row, string fieldName)
         {
             LoginUser loginUser = row as LoginUser;
             if (loginUser != null)
@@ -262,15 +280,11 @@
                     }
                     return text;
                 }
-                if (fieldName == nameof(LoginUser.Password))
-                {
-                    return "*****";
-                }
             }
-            return base.CellText(grid, row, fieldName);
+            return base.GridCellText(grid, row, fieldName);
         }
 
-        protected override void CellTextParse(Grid grid, string fieldName, string text, Row row, out bool isHandled)
+        protected override void GridCellParse(Grid grid, string fieldName, string text, Row row, out bool isHandled)
         {
             isHandled = false;
             LoginUser loginUser = row as LoginUser;
@@ -319,7 +333,7 @@
             }
         }
 
-        protected override void CellTextParseFilter(Grid grid, Type typeRow, string fieldName, string text, Filter filter, out bool isHandled)
+        protected override void GridCellParseFilter(Grid grid, Type typeRow, string fieldName, string text, Filter filter, out bool isHandled)
         {
             isHandled = false;
             if (typeRow == typeof(LoginUser))
@@ -417,8 +431,8 @@
         protected override async Task InitAsync()
         {
             Label().TextHtml = "MyLabel";
-            await DivContainer().PageShowAsync<LanguagePage>();
-            await DivContainer().PageShowAsync<MyPage>();
+            await DivContainer().ComponentPageShowAsync<LanguagePage>();
+            await DivContainer().ComponentPageShowAsync<MyPage>();
 
             new Html(DivContainer()) { TextHtml = "Delete item: " };
             ButtonDelete();
@@ -473,10 +487,10 @@
             }
             if (grid == GridPerson())
             {
-                var rowSelected = (vAdditionalContactInfo)GridContact().RowSelected();
+                var rowSelected = (vAdditionalContactInfo)GridContact().GridRowSelected();
                 if (rowSelected != null) // Otherwise "new row" has been selected.
                 {
-                    string firstName = ((vAdditionalContactInfo)GridContact().RowSelected()).FirstName;
+                    string firstName = ((vAdditionalContactInfo)GridContact().GridRowSelected()).FirstName;
                     result = UtilDal.Query<Person>().Where(item => item.FirstName == firstName);
                 }
                 else
@@ -495,11 +509,20 @@
             }
         }
 
+        protected override void GridCellAnnotation(Grid grid, string fieldName, GridRowEnum gridRowEnum, Row row, GridCellAnnotationResult result)
+        {
+            vAdditionalContactInfo contact = row as vAdditionalContactInfo;
+            if (fieldName == nameof(vAdditionalContactInfo.TelephoneNumber) && contact?.TelephoneNumber != null)
+            {
+                result.HtmlLeft = "<i class='fas fa-phone-square'></i>";
+            }
+        }
+
         protected override async Task ButtonClickAsync(Button button)
         {
             if (button == ButtonDelete())
             {
-                await this.PageShowAsync<MessageBox>();
+                await this.ComponentPageShowAsync<MessageBox>();
             }
         }
 
@@ -517,7 +540,7 @@
 
             Name = "HelloWorld " + DateTime.Now.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss.fff");
 
-            Language language = DivContainer().ComponentGet<LanguagePage>().Grid().RowSelected() as Language;
+            Language language = DivContainer().ComponentGet<LanguagePage>().Grid().GridRowSelected() as Language;
 
             Label().TextHtml = language?.Text;
 
@@ -556,7 +579,7 @@
             return UtilDal.Query<HelloWorld>();
         }
 
-        protected override void GridQueryConfig(Grid grid, Config config)
+        protected override void GridQueryConfig(Grid grid, ConfigResult config)
         {
             config.ConfigGridQuery = new[] { new FrameworkConfigGridBuiltIn { RowCountMax = 3 } }.AsQueryable();
             config.ConfigFieldQuery = new[] {
@@ -568,7 +591,7 @@
         {
             if (button == ButtonDelete())
             {
-                this.PageShowAsync<MessageBox>();
+                this.ComponentPageShowAsync<MessageBox>();
             }
             return base.ButtonClickAsync(button);
         }
@@ -578,7 +601,7 @@
             var messageBox = this.ComponentGet<MessageBox>();
             if (messageBox?.IsYes == true)
             {
-                var row = Grid().RowSelected();
+                var row = Grid().GridRowSelected();
                 if (row != null)
                 {
                     await UtilDal.Delete(row);
