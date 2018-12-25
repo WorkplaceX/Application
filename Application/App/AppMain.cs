@@ -17,15 +17,38 @@
     {
         public AppMain() : this(null) { }
 
-        public AppMain(ComponentJson owner)
-            : base(owner)
-        {
-
-        }
+        public AppMain(ComponentJson owner) : base(owner) { }
 
         protected override async Task InitAsync()
         {
             await this.ComponentPageShowAsync<NavigationPage>();
+
+            // await this.ComponentCreate<Grid>().LoadAsync();
+        }
+
+        protected override IQueryable GridQuery(Grid grid)
+        {
+            return UtilDal.Query<HelloWorld>();
+        }
+
+        protected override void GridCellAnnotation(Grid grid, string fieldName, GridRowEnum gridRowEnum, Row row, GridCellAnnotationResult result)
+        {
+            HelloWorld helloWorld = row as HelloWorld;
+            if (fieldName == nameof(HelloWorld.Number))
+            {
+                if (helloWorld?.Number > 0)
+                {
+                    result.HtmlLeft = "<i class='fas fa-arrow-up green'></i>";
+                }
+                if (helloWorld?.Number < 0)
+                {
+                    result.HtmlLeft = "<i class='fas fa-arrow-down red'></i>";
+                }
+                if (helloWorld?.Number == 0)
+                {
+                    result.HtmlLeft = "<i class='fas fa-arrow-right'></i>";
+                }
+            }
         }
     }
 
@@ -215,6 +238,10 @@
             if (fieldName == nameof(LoginUser.Password) && loginUser?.Password != null)
             {
                 result.HtmlLeft = "<i class='fas fa-key'></i>";
+            }
+            if (fieldName == nameof(LoginUser.Email) && loginUser?.Email != null)
+            {
+                result.HtmlLeft = "<i class='fas fa-envelope'></i>";
             }
         }
 
