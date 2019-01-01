@@ -2,7 +2,7 @@
 {
     using Framework.Application;
     using Framework.Json;
-    using Framework.Dal;
+    using Framework.DataAccessLayer;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -28,7 +28,7 @@
 
         protected override IQueryable GridQuery(Grid grid)
         {
-            return UtilDal.Query<HelloWorld>();
+            return Data.Query<HelloWorld>();
         }
 
         protected override void GridCellAnnotation(Grid grid, string fieldName, GridRowEnum gridRowEnum, Row row, GridCellAnnotationResult result)
@@ -135,7 +135,7 @@
 
         protected override IQueryable GridQuery(Grid grid)
         {
-            List<Database.Memory.Navigation> list = UtilDal.MemoryRowList<Database.Memory.Navigation>();
+            List<Database.Memory.Navigation> list = Data.MemoryRowList<Database.Memory.Navigation>();
             if (list.Count == 0)
             {
                 list.Add(new Database.Memory.Navigation() { Id = 1, Text = "<i class='fas fa-home'></i> Home" });
@@ -145,7 +145,7 @@
                 list.Add(new Database.Memory.Navigation() { Id = 4, Text = "<span class='flag-icon flag-icon-gb'></span> English" });
             }
 
-            return UtilDal.Query<Database.Memory.Navigation>(DatabaseEnum.MemorySingleton);
+            return Data.Query<Database.Memory.Navigation>(DatabaseEnum.MemorySingleton);
         }
 
         public Grid Grid()
@@ -192,7 +192,7 @@
 
         protected override IQueryable GridQuery(Grid grid)
         {
-            List<Database.Memory.Language> list = UtilDal.MemoryRowList<Database.Memory.Language>();
+            List<Database.Memory.Language> list = Data.MemoryRowList<Database.Memory.Language>();
             if (list.Count == 0)
             {
                 list.Add(new Database.Memory.Language() { Id = 1, Text = "English", FlagIcon = "flag-icon-gb" });
@@ -201,7 +201,7 @@
                 list.Add(new Database.Memory.Language() { Id = 4, Text = "Italien", FlagIcon = "flag-icon-it" });
             }
 
-            return UtilDal.Query<Database.Memory.Language>(DatabaseEnum.MemorySingleton);
+            return Data.Query<Database.Memory.Language>(DatabaseEnum.MemorySingleton);
         }
 
         public Grid Grid()
@@ -272,12 +272,12 @@
         {
             if (grid == GridUser())
             {
-                return UtilDal.Query<LoginUser>();
+                return Data.Query<LoginUser>();
             }
             if (grid == GridUserRoleDisplay())
             {
                 int userId = ((LoginUser)GridUser().GridRowSelected()).Id;
-                return UtilDal.Query<LoginUserRoleDisplay>().Where(item => item.UserId == userId);
+                return Data.Query<LoginUserRoleDisplay>().Where(item => item.UserId == userId);
             }
             return base.GridQuery(grid);
         }
@@ -389,12 +389,12 @@
                 if (loginUserRoleDisplay.UserUserRoleId == null)
                 {
                     var loginUserUserRole = new LoginUserUserRole() { UserId = loginUserRoleDisplay.UserId, UserRoleId = loginUserRoleDisplay.UserRoleId, IsActive = loginUserRoleDisplay.IsActive.GetValueOrDefault() };
-                    await UtilDal.InsertAsync(loginUserUserRole);
+                    await Data.InsertAsync(loginUserUserRole);
                 }
                 else
                 {
                    var loginUserUserRole = new LoginUserUserRole() { Id = loginUserRoleDisplay.UserUserRoleId.Value, UserId = loginUserRoleDisplay.UserId, UserRoleId = loginUserRoleDisplay.UserRoleId, IsActive = loginUserRoleDisplay.IsActive.GetValueOrDefault() };
-                    await UtilDal.UpdateAsync(loginUserUserRole, loginUserUserRole);
+                    await Data.UpdateAsync(loginUserUserRole, loginUserUserRole);
                 }
             }
             return true;
@@ -418,7 +418,7 @@
 
         protected override IQueryable GridQuery(Grid grid)
         {
-            return UtilDal.Query<LoginUserRole>();
+            return Data.Query<LoginUserRole>();
         }
     }
 
@@ -497,7 +497,7 @@
 
         protected override IQueryable GridLookupQuery(Grid grid, Row row, string fieldName, string text)
         {
-            return UtilDal.Query<HelloWorld>().Where(item => item.Text.StartsWith(text));
+            return Data.Query<HelloWorld>().Where(item => item.Text.StartsWith(text));
         }
 
         protected override string GridLookupSelected(Grid grid, Row row, string fieldName, Row rowLookupSelected)
@@ -510,7 +510,7 @@
             IQueryable result = null;
             if (grid == GridContact())
             {
-                result = UtilDal.Query<vAdditionalContactInfo>();
+                result = Data.Query<vAdditionalContactInfo>();
             }
             if (grid == GridPerson())
             {
@@ -518,11 +518,11 @@
                 if (rowSelected != null) // Otherwise "new row" has been selected.
                 {
                     string firstName = ((vAdditionalContactInfo)GridContact().GridRowSelected()).FirstName;
-                    result = UtilDal.Query<Person>().Where(item => item.FirstName == firstName);
+                    result = Data.Query<Person>().Where(item => item.FirstName == firstName);
                 }
                 else
                 {
-                    return UtilDal.QueryEmpty<vAdditionalContactInfo>();
+                    return Data.QueryEmpty<vAdditionalContactInfo>();
                 }
             }
             return result;
@@ -603,7 +603,7 @@
 
         protected override IQueryable GridQuery(Grid grid)
         {
-            return UtilDal.Query<HelloWorld>();
+            return Data.Query<HelloWorld>();
         }
 
         protected override void GridQueryConfig(Grid grid, ConfigResult config)
@@ -631,7 +631,7 @@
                 var row = Grid().GridRowSelected();
                 if (row != null)
                 {
-                    await UtilDal.Delete(row);
+                    await Data.Delete(row);
                     await Grid().LoadAsync();
                 }
             }

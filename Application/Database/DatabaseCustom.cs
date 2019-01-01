@@ -1,6 +1,6 @@
 ﻿// Custom implementation of database table and field.
 
-using Framework.Dal;
+using Framework.DataAccessLayer;
 
 namespace Database.Memory
 {
