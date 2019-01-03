@@ -500,7 +500,7 @@
             return Data.Query<HelloWorld>().Where(item => item.Text.StartsWith(text));
         }
 
-        protected override string GridLookupSelected(Grid grid, Row row, string fieldName, Row rowLookupSelected)
+        protected override string GridLookupRowSelected(Grid grid, string fieldName, GridRowEnum gridRowEnum, Row rowLookupSelected)
         {
             return ((HelloWorld)rowLookupSelected).Text;
         }
