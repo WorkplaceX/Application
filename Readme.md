@@ -11,7 +11,7 @@ cd Application
 .\cli.cmd
 ```
 Command line interface CLI contains all necessary framework commands:
-![Cli](Framework/Application.Doc/Cli.png)
+![Cli](Application.Doc/Cli.png)
 
 For ConnectionString, deploy sql scripts to database and start the application see: https://workplacex.org/install#git-clone
 
