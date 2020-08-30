@@ -1,1 +1,0 @@
-﻿DROP TABLE [Demo].[Raw.OpenFlights.Plane]

@@ -1,0 +1,16 @@
+﻿CREATE TABLE HelloWorld
+(
+	Id INT PRIMARY KEY IDENTITY,
+	Name NVARCHAR(256) NOT NULL UNIQUE,
+	Text NVARCHAR(256),
+)
+
+GO
+CREATE VIEW HelloWorldIntegrate AS
+SELECT
+	Id,
+	Name AS IdName,
+	Name,
+	Text
+FROM
+	HelloWorld

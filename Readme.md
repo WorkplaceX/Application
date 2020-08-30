@@ -1,27 +1,19 @@
-# Application Demo
+# Application
 A template to get started with ASP.NET Core 3.1 application with Angular 10 client and MS-SQL Server database.
 
-![Build Status](https://github.com/WorkplaceX/ApplicationDemo/workflows/CI/badge.svg) (ApplicationDemo; github actions;)
-
-[![Build Status](https://travis-ci.org/WorkplaceX/ApplicationDemo.svg?branch=master)](https://travis-ci.org/WorkplaceX/ApplicationDemo) (ApplicationDemo; travis;)
-
-## Screenshot
-This demo shows the capabilities of the WorkplaceX.org framework. It uses airplanes and a countries stored in the database.
-![Screenshot](Application.Doc/Screenshot.png)
+![Build Status](https://github.com/WorkplaceX/Application/workflows/CI/badge.svg) (ApplicationDemo; github actions;)
 
 ## Getting Started
 Clone repo and start command line interface.
 ```cmd
-git clone https://github.com/WorkplaceX/ApplicationDemo.git --recursive
-cd ApplicationDemo
+git clone https://github.com/WorkplaceX/Application.git --recursive
+cd Application
 .\cli.cmd
 ```
 Command line interface CLI contains all necessary framework commands:
-![Cli](Application.Doc/Cli.png)
+![Cli](Framework/Application.Doc/Cli.png)
 
 For ConnectionString, deploy sql scripts to database and start the application see: https://workplacex.org/install#git-clone
-
-Or see this "ApplicationDemo" live in action: https://demo.workplacex.org/
 
 ## Project Folder and File Structure
 * "Application/" (Application with custom business logic in C#)
