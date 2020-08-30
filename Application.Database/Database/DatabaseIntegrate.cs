@@ -12,7 +12,7 @@ namespace DatabaseIntegrate.dbo
 
     public static class HelloWorldIntegrateApplication
     {
-        public enum IdNameEnum { [IdNameEnum(null)]None = 0 }
+        public enum IdNameEnum { [IdNameEnum(null)]None = 0, [IdNameEnum("Example1")]Example1 = 1, [IdNameEnum("Example2")]Example2 = 2 }
 
         public static HelloWorldIntegrate Row(this IdNameEnum value)
         {
@@ -35,6 +35,8 @@ namespace DatabaseIntegrate.dbo
             {
                 var result = new List<HelloWorldIntegrate>
                 {
+                    new HelloWorldIntegrate {Id = 1, IdName = "Example1", Name = "Example1", Text = "Hello example" },
+                    new HelloWorldIntegrate {Id = 2, IdName = "Example2", Name = "Example2", Text = "Hello other example" },
                 };
                 return result;
             }
