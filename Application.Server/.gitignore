@@ -1,6 +1,6 @@
 /bin/
 /obj/
-/Framework/dist/
-/Framework/Website/
+/Framework/Framework.Angular/
+/Framework/Application.Website/
 /Properties/PublishProfiles/
 /*.user
