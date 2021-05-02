@@ -1,0 +1,5 @@
+/bin/
+/obj/
+/Framework/Application.Website/
+/Properties/PublishProfiles/
+/*.user
