@@ -1,7 +1,0 @@
-{
-  "profiles": {
-    "Application.Cli": {
-      "commandName": "Project"
-    }
-  }
-}
